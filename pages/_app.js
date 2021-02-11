@@ -1,4 +1,4 @@
-import Layout from "../components/Layout";
+import Layout from "../components/Layout/";
 import "../node_modules/bootstrap/scss/bootstrap.scss";
 import "../styles/global.scss";
 import "../styles/custom.scss";
