@@ -1,5 +1,5 @@
 import Layout from "../components/Layout/";
-import "../node_modules/bootstrap/scss/bootstrap.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/global.scss";
 import "../styles/custom.scss";
 

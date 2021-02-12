@@ -7,7 +7,6 @@ export default function Home() {
       <Head>
         <title>klout</title>
       </Head>
-      <h1>init</h1>
     </>
   );
 }
