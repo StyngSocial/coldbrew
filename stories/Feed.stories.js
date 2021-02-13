@@ -1,9 +1,9 @@
 import React from "react";
-import Feed from "./Feed.stories.js";
+import MainLayout from "./MainLayout.stories.js";
 
 export default {
-  title: "Feed Layout",
-  component: Feed,
+  title: "MainLayout Layout",
+  component: MainLayout,
 };
 
-export const FeedStory = () => <Feed />;
+export const MainLayoutStory = () => <MainLayout />;
