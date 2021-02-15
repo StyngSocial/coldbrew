@@ -1,3 +1,13 @@
-$body-bg: #eeee;
+$primary: #d0be9c;
+$secondary: #b18f6a;
+$success: #52be41;
+$info: #4152be;
+$warning: #be6f41;
+$danger: #e0a293;
+$light: #fcfbf9;
+$dark: #362d26;
+$body-bg: $light;
+
+$btn-border-radius-lg: 2rem;
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";

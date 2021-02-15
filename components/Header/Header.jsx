@@ -17,13 +17,13 @@ import Link from "next/link";
 const Header = () => {
   return (
     <>
-      <header>
+      <header className="border-bottom">
         <Navbar
-          variant="dark"
-          bg="dark"
+          variant="light"
+          bg="light"
           expand="lg"
           fixed="top"
-          className={styles.navBar}
+          className={`${styles.navBar} border-bottom`}
         >
           <Container fluid>
             <Row className={`w-100 justify-content-between align-items-center`}>
