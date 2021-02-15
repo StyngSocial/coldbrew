@@ -6,7 +6,7 @@ import "../styles/custom.scss";
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <AppWrapper />
+      <Component {...pageProps} />
     </>
   );
 }
