@@ -16,7 +16,7 @@ const LogIn = () => {
         href="/api/auth/signin"
         onClick={(e) => {
           e.preventDefault();
-          signIn();
+          signIn("linkedin", { callbackUrl: "https://coldbrew.live/" });
         }}
       >
         Log In
