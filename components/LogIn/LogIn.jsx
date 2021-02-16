@@ -16,10 +16,7 @@ const LogIn = () => {
         href="/api/auth/signin"
         onClick={(e) => {
           e.preventDefault();
-          signIn("linkedin", {
-            callbackUrl:
-              "https://cold-brew.vercel.app/api/auth/callback/linkedin",
-          });
+          signIn("linkedin");
         }}
       >
         Log In
