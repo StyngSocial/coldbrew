@@ -1,3 +1,4 @@
+import { signIn } from "next-auth/client";
 import styles from "./MobileHeader.module.scss";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -8,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBell,
   faEnvelope,
-  faHourglassStart,
+  faCoffee,
 } from "@fortawesome/free-solid-svg-icons";
 
 import Link from "next/link";
@@ -23,10 +24,9 @@ const MobileHeader = () => {
       >
         <Link href="/" passHref>
           <Navbar.Brand className={`${styles.coldbrew}`}>
-            <FontAwesomeIcon icon={faHourglassStart} color="#d0be9c" />
+            <FontAwesomeIcon icon={faCoffee} color="#d0be9c" />
           </Navbar.Brand>
         </Link>
-        <div className="h4 text-dark m-2">Home</div>
 
         <Navbar.Collapse id="styng-nav" className="justify-content-end">
           <Nav className="d-flex">
@@ -49,16 +49,20 @@ const MobileHeader = () => {
               </Nav.Link>
             </Link>
 
-            <Link href="/profile" passHref>
-              <Nav.Link className={`p-0 ${styles.profile}`}>
-                <Image
-                  height={32}
-                  width={32}
-                  src={styng}
-                  className="rounded-circle"
-                />
-              </Nav.Link>
-            </Link>
+            <Nav.Link
+              className={`p-0 ${styles.profile}`}
+              onClick={(e) => {
+                e.preventDefault();
+                signIn();
+              }}
+            >
+              <Image
+                height={32}
+                width={32}
+                src={styng}
+                className="rounded-circle"
+              />
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
