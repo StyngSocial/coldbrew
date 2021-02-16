@@ -1,0 +1,32 @@
+.cortado {
+  font-size: 2rem !important;
+  font-family: "Cortado";
+}
+
+.profile {
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link:hover {
+  background-color: #f4f0e8;
+  border-radius: 100%;
+}
+
+.link {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  width: 35px;
+}
+
+.navBar {
+  height: 50px;
+}
+
+.icon {
+  font-size: 1.5rem;
+}

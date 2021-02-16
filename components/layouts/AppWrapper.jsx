@@ -1,13 +1,15 @@
 import { Col, Row, Container } from "react-bootstrap";
 
-import Header from "../Header/Header";
+import WebHeader from "../Header/WebHeader";
+import MobileHeader from "../Header/MobileHeader";
 import Explore from "../Explore/Explore";
 import Promoted from "../Promoted/Promoted";
 
 const AppWrapper = ({ children }) => {
   return (
     <>
-      <Header />
+      <WebHeader />
+      <MobileHeader />
       <Container className="mw-100 p-0 mt-5">
         <Row className="m-0">
           <Col lg={3} className="p-0 d-none d-lg-flex">
