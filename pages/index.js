@@ -1,7 +1,6 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.scss";
 import { useSession } from "next-auth/client";
-import AppWrapper from "../components/layouts/AppWrapper";
+import AppWrapper from "../layouts/AppWrapper";
 import Feed from "../components/Feed/Feed";
 import LogIn from "../components/LogIn/LogIn";
 

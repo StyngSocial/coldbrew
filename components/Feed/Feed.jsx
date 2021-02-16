@@ -1,3 +1,4 @@
+import styles from "./Feed.module.scss";
 import { Container } from "react-bootstrap";
 import Image from "next/image";
 import pio from "../../public/images/pio.jpeg";

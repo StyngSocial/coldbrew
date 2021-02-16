@@ -1,6 +1,10 @@
 import { Container, Button } from "react-bootstrap";
 import { signIn } from "next-auth/client";
 
+/**
+ * TODO: Make this a page
+ */
+
 const LogIn = () => {
   return (
     <Container className="text-center mt-4">
