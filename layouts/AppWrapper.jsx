@@ -1,10 +1,10 @@
 import { Col, Row, Container } from "react-bootstrap";
 
-import WebHeader from "../Header/WebHeader";
-import MobileHeader from "../Header/MobileHeader";
-import MobileNav from "../Mobile/MobileNav";
-import Explore from "../Explore/Explore";
-import Promoted from "../Promoted/Promoted";
+import WebHeader from "../components/Header/WebHeader";
+import MobileHeader from "../components/Header/MobileHeader";
+import MobileNav from "../components/Mobile/MobileNav";
+import Explore from "../components/Explore/Explore";
+import Promoted from "../components/Promoted/Promoted";
 
 const AppWrapper = ({ children }) => {
   return (
