@@ -1,4 +1,6 @@
-.navWeb {
+.navWeb,
+.navMobileTop,
+.navMobileBottom {
   height: 50px;
 }
 
@@ -31,4 +33,12 @@
 .link:hover {
   background-color: #f4f0e8;
   border-radius: 100%;
+}
+
+.bottomnav {
+  height: 100%;
+  width: 25%;
+  font-size: 2rem;
+  color: #362d26;
+  text-align: center;
 }

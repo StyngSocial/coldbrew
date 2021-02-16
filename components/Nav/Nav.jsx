@@ -6,9 +6,6 @@ import {
   Form,
   InputGroup,
   FormControl,
-  Col,
-  Row,
-  DropdownButton,
   Dropdown,
 } from "react-bootstrap/";
 
@@ -20,6 +17,10 @@ import {
   faBell,
   faEnvelope,
   faHouseUser,
+  faCoffee,
+  faUserFriends,
+  faUserCheck,
+  faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 
 import Link from "next/link";
@@ -100,6 +101,84 @@ const WebHeader = () => {
             />
           </Nav.Link>
         </Nav>
+      </Navbar>
+      <Navbar
+        variant="light"
+        bg="light"
+        fixed="top"
+        className={`border-bottom d-flex d-lg-none ${styles.navMobileTop}`}
+      >
+        <Link href="/" passHref>
+          <Navbar.Brand className={`${styles.brand}`}>
+            <FontAwesomeIcon icon={faCoffee} color="#362d26" />
+          </Navbar.Brand>
+        </Link>
+
+        <Navbar.Collapse id="styng-nav" className="justify-content-end">
+          <Nav className="d-flex">
+            <Link href="/messages" passHref>
+              <Nav.Link className={styles.link}>
+                <FontAwesomeIcon
+                  icon={faEnvelope}
+                  size="2x"
+                  className={styles.icon}
+                />
+              </Nav.Link>
+            </Link>
+            <Link href="/notifications" passHref>
+              <Nav.Link className={styles.link}>
+                <FontAwesomeIcon
+                  icon={faBell}
+                  size="2x"
+                  className={styles.icon}
+                />
+              </Nav.Link>
+            </Link>
+
+            <Nav.Link
+              className={`p-0 ${styles.profile}`}
+              onClick={(e) => {
+                e.preventDefault();
+                signIn();
+              }}
+            >
+              <Image
+                height={32}
+                width={32}
+                src={BBC}
+                className="rounded-circle"
+              />
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+      <Navbar
+        variant="light"
+        bg="light"
+        fixed="bottom"
+        className={`border-top p-0 d-flex d-lg-none justify-content-between align-items-center ${styles.navMobileBottom}`}
+      >
+        <Link href="/#" passHref active>
+          <a className={styles.bottomnav}>
+            <FontAwesomeIcon icon={faHouseUser} />
+          </a>
+        </Link>
+        <Link href="/#" passHref>
+          <a className={styles.bottomnav}>
+            <FontAwesomeIcon icon={faUserFriends} />
+          </a>
+        </Link>
+
+        <Link href="/#" passHref>
+          <a className={styles.bottomnav}>
+            <FontAwesomeIcon icon={faUserCheck} />
+          </a>
+        </Link>
+        <Link href="/#" passHref>
+          <a className={styles.bottomnav}>
+            <FontAwesomeIcon icon={faUsers} />
+          </a>
+        </Link>
       </Navbar>
     </>
   );
