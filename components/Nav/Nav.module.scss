@@ -1,0 +1,34 @@
+.navWeb {
+  height: 50px;
+}
+
+.brand {
+  font-size: 2rem;
+  font-family: "Cortado";
+}
+
+.icon {
+  font-size: 1.5rem;
+}
+
+.profile {
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  width: 42px;
+  padding: 0.25rem;
+  margin: 0.25rem;
+}
+
+.link:hover {
+  background-color: #f4f0e8;
+  border-radius: 100%;
+}
