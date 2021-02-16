@@ -74,8 +74,8 @@ const WebHeader = () => {
                 <Link href="/profile" passHref>
                   <Nav.Link className={styles.link}>
                     <Image
-                      height={40}
-                      width={40}
+                      height={32}
+                      width={32}
                       src={styng}
                       className={styles.profile}
                     />

@@ -15,7 +15,7 @@ import whit from "../../public/images/whit.png";
 
 const Feed = () => {
   return (
-    <Container className="px-4 w-100 text-center">
+    <Container className="px-4 py-2 w-100 text-center">
       <Image src={ah} height={500} width={500} />
       <Image src={baker} height={500} width={500} />
       <Image src={cle} height={500} width={500} />
