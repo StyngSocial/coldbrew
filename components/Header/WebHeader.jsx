@@ -92,7 +92,7 @@ const WebHeader = () => {
               <Image
                 height={32}
                 width={32}
-                src={styng}
+                src={BBC}
                 className={styles.profile}
               />
             </Nav.Link>

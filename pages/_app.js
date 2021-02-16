@@ -5,6 +5,9 @@ import "../styles/global.scss";
 import "../styles/custom.scss";
 
 function MyApp({ Component, pageProps }) {
+  if (pageProps.session) {
+    console.log(`Session: ${pageProps.session}`);
+  }
   return (
     <Provider session={pageProps.session}>
       <Component {...pageProps} />

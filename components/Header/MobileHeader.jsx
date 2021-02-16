@@ -4,6 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Image from "next/image";
 import styng from "../../public/images/avatar black.png";
+import BBC from "../../public/images/bennyblockchain.jpg";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -59,7 +60,7 @@ const MobileHeader = () => {
               <Image
                 height={32}
                 width={32}
-                src={styng}
+                src={BBC}
                 className="rounded-circle"
               />
             </Nav.Link>
