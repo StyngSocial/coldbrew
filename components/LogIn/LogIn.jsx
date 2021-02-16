@@ -8,7 +8,6 @@ import { signIn } from "next-auth/client";
 const LogIn = () => {
   return (
     <Container className="text-center mt-4">
-      <p>{process.env.NEXTAUTH_TWITTER_CLIENT_ID}</p>
       <h3>What's goin on, beautiful people?</h3>
       <p className="text-muted">you sick fucks</p>
       <h5 className="w-50 m-auto py-4">
