@@ -1,9 +1,9 @@
 import React from "react";
-import Header from "../components/Layout/Header/Header.jsx";
+import WebHeader from "../components/Layout/WebHeader.jsx";
 
 export default {
   title: "Header",
-  component: Header,
+  component: WebHeader,
 };
 
-export const HeaderStory = () => <Header />;
+export const HeaderStory = () => <WebHeader />;
