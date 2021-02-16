@@ -6,7 +6,6 @@ import LogIn from "../components/LogIn/LogIn";
 
 export default function Home() {
   const [session, loading] = useSession();
-  console.log("SESSION", session);
   return (
     <>
       <Head>
