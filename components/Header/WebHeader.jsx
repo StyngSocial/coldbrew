@@ -1,4 +1,5 @@
 import styles from "./WebHeader.module.scss";
+import { signOut } from "next-auth/client";
 import {
   Navbar,
   Nav,
@@ -87,16 +88,20 @@ const WebHeader = () => {
             </Nav.Link>
           </Link>
 
-          <Link href="/profile" passHref>
-            <Nav.Link className={styles.link}>
-              <Image
-                height={32}
-                width={32}
-                src={BBC}
-                className={styles.profile}
-              />
-            </Nav.Link>
-          </Link>
+          <Nav.Link
+            className={styles.link}
+            onClick={(e) => {
+              e.preventDefault();
+              signOut();
+            }}
+          >
+            <Image
+              height={32}
+              width={32}
+              src={BBC}
+              className={styles.profile}
+            />
+          </Nav.Link>
         </Nav>
       </Navbar>
     </>
