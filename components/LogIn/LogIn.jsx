@@ -22,7 +22,7 @@ const Login = () => {
         className="d-inline"
         onClick={(e) => {
           e.preventDefault();
-          signIn();
+          signIn("twitter");
         }}
       >
         Log In

@@ -6,7 +6,7 @@ import Login from "../components/Login/Login";
 import Nav from "../components/Nav/Nav";
 
 export default function Home() {
-  const [session, loading] = useSession();
+  const [session] = useSession();
   return (
     <>
       <Head>
