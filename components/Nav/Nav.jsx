@@ -40,7 +40,7 @@ const WebHeader = () => {
         </Link>
 
         <div className="container d-flex justify-content-center w-50">
-          <Dropdown className="d-flex ">
+          <Dropdown className="d-flex mx-4 px-5">
             <Dropdown.Toggle
               variant="light"
               id="dropdown-basic"
