@@ -1,13 +1,15 @@
 $primary: #d0be9c;
 $secondary: #b18f6a;
 $success: #52be41;
-$info: #4152be;
+$info: #edeae3;
 $warning: #be6f41;
-$danger: #e0a293;
+$danger: #f9f6f2;
 $light: #fcfbf9;
 $dark: #362d26;
 $body-bg: $light;
-
 $btn-border-radius-lg: 2rem;
 
+$card-border-radius: 1.5rem;
+$card-cap-bg: #f9f6f2;
+$card-bg: #f9f6f2; 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
