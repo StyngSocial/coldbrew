@@ -14,7 +14,7 @@
 }
 
 .icon {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: #362d26;
 }
 
@@ -31,8 +31,6 @@
   justify-content: center;
   height: 42px;
   width: 42px;
-  padding: 0.25rem;
-  margin: 0.25rem;
 }
 
 .link:hover {
@@ -46,6 +44,11 @@
   font-size: 2rem;
   color: #362d26;
   text-align: center;
+}
+
+.mobileIcon {
+  font-size: 1rem;
+  margin-bottom: 13px;
 }
 
 .dropdown:hover {

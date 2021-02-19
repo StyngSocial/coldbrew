@@ -78,34 +78,22 @@ const WebHeader = () => {
         <Nav className="d-flex">
           <Link href="/messages" passHref>
             <Nav.Link className={styles.link}>
-              <FontAwesomeIcon
-                icon={faWallet}
-                size="2x"
-                className={styles.icon}
-              />
+              <FontAwesomeIcon icon={faWallet} className={styles.icon} />
             </Nav.Link>
           </Link>
           <Link href="/messages" passHref>
             <Nav.Link className={styles.link}>
-              <FontAwesomeIcon
-                icon={faEnvelope}
-                size="2x"
-                className={styles.icon}
-              />
+              <FontAwesomeIcon icon={faEnvelope} className={styles.icon} />
             </Nav.Link>
           </Link>
           <Link href="/notifications" passHref>
             <Nav.Link className={styles.link}>
-              <FontAwesomeIcon
-                icon={faBell}
-                size="2x"
-                className={styles.icon}
-              />
+              <FontAwesomeIcon icon={faBell} className={styles.icon} />
             </Nav.Link>
           </Link>
           <Link href="/messages" passHref>
             <Nav.Link className={styles.link}>
-              <FontAwesomeIcon icon={faCog} size="2x" className={styles.icon} />
+              <FontAwesomeIcon icon={faCog} className={styles.icon} />
             </Nav.Link>
           </Link>
           <Nav.Link
@@ -159,27 +147,30 @@ const WebHeader = () => {
         variant="light"
         bg="light"
         fixed="bottom"
-        className={`border-top p-0 d-flex d-lg-none justify-content-between align-items-center ${styles.navMobileBottom}`}
+        className={`border-top p-0 d-flex d-lg-none justify-content-between align-items-start ${styles.navMobileBottom}`}
       >
         <Link href="/#" passHref active>
           <a className={styles.bottomnav}>
-            <FontAwesomeIcon icon={faHouseUser} />
+            <FontAwesomeIcon icon={faHouseUser} className={styles.mobileIcon} />
           </a>
         </Link>
         <Link href="/#" passHref>
           <a className={styles.bottomnav}>
-            <FontAwesomeIcon icon={faUserFriends} />
+            <FontAwesomeIcon
+              icon={faUserFriends}
+              className={styles.mobileIcon}
+            />
           </a>
         </Link>
 
         <Link href="/#" passHref>
           <a className={styles.bottomnav}>
-            <FontAwesomeIcon icon={faUserCheck} />
+            <FontAwesomeIcon icon={faUserCheck} className={styles.mobileIcon} />
           </a>
         </Link>
         <Link href="/#" passHref>
           <a className={styles.bottomnav}>
-            <FontAwesomeIcon icon={faUsers} />
+            <FontAwesomeIcon icon={faUsers} className={styles.mobileIcon} />
           </a>
         </Link>
       </Navbar>
