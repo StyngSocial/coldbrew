@@ -6,11 +6,16 @@
 
 .brand {
   font-size: 2rem;
+  @media (max-width: 992px) {
+    font-size: 1.5rem;
+  }
   font-family: "Cortado";
+  color: #362d26;
 }
 
 .icon {
   font-size: 1.5rem;
+  color: #362d26;
 }
 
 .profile {
@@ -41,4 +46,13 @@
   font-size: 2rem;
   color: #362d26;
   text-align: center;
+}
+
+.dropdown:hover {
+  background-color: #fcfbf9;
+}
+
+.formIcon {
+  background-color: #f9f6f2;
+  color: #362d26;
 }

@@ -21,6 +21,9 @@ import {
   faUserFriends,
   faUserCheck,
   faUsers,
+  faSearch,
+  faWallet,
+  faCog,
 } from "@fortawesome/free-solid-svg-icons";
 
 import Link from "next/link";
@@ -39,24 +42,30 @@ const WebHeader = () => {
           </Navbar.Brand>
         </Link>
 
-        <div className="container d-flex justify-content-center w-50">
-          <Dropdown className="d-flex mx-4 px-5">
+        <div className="container d-flex justify-content-evenly w-50 m-0">
+          <Dropdown className="d-flex rounded">
             <Dropdown.Toggle
               variant="light"
               id="dropdown-basic"
-              className="d-flex align-items-center"
+              className={`d-flex align-items-center bg-danger border ${styles.dropdown}`}
+              style={{ width: "300px" }}
             >
-              &cent;/Home
+              <p className="" style={{ margin: "0 190px 0 0" }}>{`¢ / Home`}</p>
             </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-              <Dropdown.Item href="/">&cent;/Browns</Dropdown.Item>
-              <Dropdown.Item href="/">&cent;/Apple</Dropdown.Item>
-              <Dropdown.Item href="/">&cent;/CallOfDuty</Dropdown.Item>
+            <Dropdown.Menu style={{ width: "300px" }}>
+              <Dropdown.Item href="/">{`¢ / Browns`}</Dropdown.Item>
+              <Dropdown.Item href="/">{`¢ / Bitcoin`}</Dropdown.Item>
+              <Dropdown.Item href="/">{`¢ / Programming`}</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-          <Form className="d-flex w-50">
+          <Form className="d-flex" style={{ width: "300px" }}>
             <InputGroup className="sm">
+              <InputGroup.Prepend>
+                <InputGroup.Text className={styles.formIcon}>
+                  <FontAwesomeIcon icon={faSearch} />
+                </InputGroup.Text>
+              </InputGroup.Prepend>
               <FormControl
                 placeholder="Search..."
                 aria-label="Search"
@@ -67,6 +76,15 @@ const WebHeader = () => {
         </div>
 
         <Nav className="d-flex">
+          <Link href="/messages" passHref>
+            <Nav.Link className={styles.link}>
+              <FontAwesomeIcon
+                icon={faWallet}
+                size="2x"
+                className={styles.icon}
+              />
+            </Nav.Link>
+          </Link>
           <Link href="/messages" passHref>
             <Nav.Link className={styles.link}>
               <FontAwesomeIcon
@@ -85,7 +103,11 @@ const WebHeader = () => {
               />
             </Nav.Link>
           </Link>
-
+          <Link href="/messages" passHref>
+            <Nav.Link className={styles.link}>
+              <FontAwesomeIcon icon={faCog} size="2x" className={styles.icon} />
+            </Nav.Link>
+          </Link>
           <Nav.Link
             className={styles.link}
             onClick={(e) => {
@@ -116,25 +138,6 @@ const WebHeader = () => {
 
         <Navbar.Collapse id="styng-nav" className="justify-content-end">
           <Nav className="d-flex">
-            <Link href="/messages" passHref>
-              <Nav.Link className={styles.link}>
-                <FontAwesomeIcon
-                  icon={faEnvelope}
-                  size="2x"
-                  className={styles.icon}
-                />
-              </Nav.Link>
-            </Link>
-            <Link href="/notifications" passHref>
-              <Nav.Link className={styles.link}>
-                <FontAwesomeIcon
-                  icon={faBell}
-                  size="2x"
-                  className={styles.icon}
-                />
-              </Nav.Link>
-            </Link>
-
             <Nav.Link
               className={`p-0 ${styles.profile}`}
               onClick={(e) => {
