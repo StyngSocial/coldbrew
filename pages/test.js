@@ -1,9 +1,9 @@
-import Nav from "../components/Nav/Nav";
+import Tweet from "../components/Tweet/Tweet";
 
 export default function Test() {
   return (
     <>
-      <Nav />
+      <Tweet />
     </>
   );
 }
