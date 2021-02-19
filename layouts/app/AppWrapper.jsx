@@ -1,7 +1,7 @@
 import { Col, Row, Container } from "react-bootstrap";
 
 import Explore from "../../components/Explore/Explore";
-import Promoted from "../../components/Promoted/Promoted";
+import Ads from "../../components/Promoted/Ads";
 import Nav from "../../components/Nav/Nav";
 
 const AppWrapper = ({ children }) => {
@@ -17,7 +17,7 @@ const AppWrapper = ({ children }) => {
             {children}
           </Col>
           <Col lg={3} className="p-0 d-none d-lg-flex bg-light">
-            <Promoted />
+            <Ads />
           </Col>
         </Row>
       </Container>
