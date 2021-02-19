@@ -8,18 +8,21 @@ import { signIn } from "next-auth/client";
 
 const Login = () => {
   return (
-    <Container className={`"text-center ${styles.login}`}>
-      <h3 className="text-center">What's goin on, beautiful people?</h3>
-      <p className="text-muted text-center">you sick fucks</p>
-      <h5 className="w-50 m-auto py-4 text-center">
-        I'm gonna need you to press that log in button. I have some important
-        information to share.
+    <Container className="d-flex flex-column vh-100 align-items-center justify-content-center w-50">
+      <h3 className="text-secondary">
+        Welcome to the Styng Social internal beta!
+      </h3>
+      <p className="text-muted">Questions/Comments: ben@styng.social</p>
+      <h5 className="w-50 fs-3 mb-4">
+        Log in with your Twitter to view your feed and interact with the Twitter
+        platform. The beta uses Twitter to get feedback before the main Styng
+        Social platform release.
       </h5>
       <Button
         variant="primary"
         size="lg"
         href="/api/auth/signin"
-        className="d-inline"
+        className=""
         onClick={(e) => {
           e.preventDefault();
           signIn("twitter");
