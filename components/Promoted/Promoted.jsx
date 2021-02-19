@@ -1,25 +1,108 @@
 import styles from "./Promoted.module.scss";
-import { Container, Card } from "react-bootstrap";
+import Image from "next/image";
+import { Container, Card, Row, Col } from "react-bootstrap";
+import logan from "../../public/promoted/DAVE.jpg";
+import lex from "../../public/promoted/lex.jpg";
+import steve from "../../public/promoted/steve.jpg";
+import joe from "../../public/promoted/joe.jpg";
+import geohot from "../../public/promoted/geohot.jpg";
+import elon from "../../public/promoted/elon.jpg";
 
 const Promoted = () => {
   return (
-    <Container
-      className={`d-flex flex-column align-items-start h-100 w-25 position-fixed ${styles.container}`}
-    >
-      <h2>Promoted</h2>
-      <Card style={{ width: "100%" }}>
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Subtitle className="mb-2 text-muted">
-            Card Subtitle
-          </Card.Subtitle>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Card.Link href="#">Card Link</Card.Link>
-          <Card.Link href="#">Another Link</Card.Link>
-        </Card.Body>
+    <Container className={`mt-4 p-0 d-flex flex-column ${styles.container}`}>
+      <Card border="info" className="w-100">
+        <Card.Header className="rounded-3 py-1">Promoted</Card.Header>
+        <Container>
+          <a href="#p">
+            <Row className="align-items-center py-2">
+              <Col className="col-auto">
+                <Image src={lex} width={100} height={65} className="rounded" />
+              </Col>
+
+              <Col className="px-0">
+                <p className="m-0 text-dark">Brendan Eich: Javacript...</p>
+                <p className="text-muted m-0">Lex Fridman</p>
+              </Col>
+            </Row>
+          </a>
+          <a href="#pr">
+            <Row className="align-items-center py-2 border-top">
+              <Col className="col-auto">
+                <Image
+                  src={steve}
+                  width={100}
+                  height={65}
+                  className="rounded"
+                />
+              </Col>
+
+              <Col className="px-0">
+                <p className="m-0 text-dark">Attempting to Drink 12...</p>
+                <p className="text-muted m-0">SteveWillDoIt</p>
+              </Col>
+            </Row>
+          </a>
+          <a href="#pro">
+            <Row className="align-items-center py-2 border-top">
+              <Col className="col-auto">
+                <Image src={joe} width={100} height={65} className="rounded" />
+              </Col>
+
+              <Col className="px-0">
+                <p className="m-0 text-dark">Joe Rogan is Under Attack</p>
+                <p className="text-muted m-0">Lex Fridman</p>
+              </Col>
+            </Row>
+          </a>
+          <a href="#prom">
+            <Row className="align-items-center py-2 border-top">
+              <Col className="col-auto">
+                <Image
+                  src={logan}
+                  width={100}
+                  height={65}
+                  className="rounded"
+                />
+              </Col>
+
+              <Col className="px-0">
+                <p className="m-0 text-dark">Dave Portnoy Calls Out...</p>
+                <p className="text-muted m-0">IMPAULSIVE</p>
+              </Col>
+            </Row>
+          </a>
+          <a href="#promo">
+            <Row className="align-items-center py-2 border-top">
+              <Col className="col-auto">
+                <Image
+                  src={geohot}
+                  width={100}
+                  height={65}
+                  className="rounded"
+                />
+              </Col>
+
+              <Col className="px-0">
+                <p className="m-0 text-dark">geohot | Programming...</p>
+                <p className="text-muted m-0">geohot</p>
+              </Col>
+            </Row>
+          </a>
+          <a href="#promot">
+            <Row className="align-items-center py-2 border-top">
+              <Col className="col-auto">
+                <Image src={elon} width={100} height={65} className="rounded" />
+              </Col>
+
+              <Col className="px-0">
+                <p className="m-0 text-dark">Elon Musk's Flame...</p>
+                <p className="text-muted m-0">PowerfulJRE</p>
+              </Col>
+            </Row>
+          </a>
+        </Container>
+        <Card.Footer></Card.Footer>
       </Card>
     </Container>
   );
