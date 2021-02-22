@@ -5,7 +5,7 @@ import { Container, Row, Col } from "react-bootstrap";
 const Tweet = ({ username, name, avatar, tweet, media }) => {
   return (
     <Container>
-      <Row className="py-2 bg-light border-top">
+      <Row className="py-2 bg-light border-top border-bottom">
         <Col className="col-auto">
           <a href="#">
             <Image
