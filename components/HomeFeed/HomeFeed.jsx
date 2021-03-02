@@ -1,9 +1,9 @@
 import useTrending from "../../hooks/useTrending";
-import Tweet from "../Tweet/Tweet";
-import bbc from "../../public/images/bennyblockchain.jpg";
+import Post from "../Post/Post";
+import styng from "../../public/tweets/avatar-black.png";
 
 const Feed = () => {
-  const [{ trending, loading, error }] = useTrending("coldbrew");
+  const [{ trending, loading, error }] = useTrending("coldbrew-app");
 
   return (
     <>
@@ -11,12 +11,13 @@ const Feed = () => {
       {trending &&
         trending.map((post) => {
           return (
-            <Tweet
+            <Post
               key={post.post_id}
               name={post.author}
               username={post.author}
-              avatar={bbc}
-              tweet={post.title}
+              avatar={styng}
+              title={post.title}
+              body={post.body}
             />
           );
         })}
