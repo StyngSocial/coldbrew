@@ -1,9 +1,11 @@
-import Tweet from "../components/Tweet/Tweet";
+import Community from "../pages/communities/[id]";
 
-export default function Test() {
+const test = () => {
   return (
-    <>
-      <Tweet />
-    </>
+    <div>
+      <h1>Page</h1>
+    </div>
   );
-}
+};
+
+export default test;
