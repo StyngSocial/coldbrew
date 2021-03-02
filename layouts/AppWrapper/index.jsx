@@ -4,7 +4,7 @@ import Explore from "./Explore/Explore";
 import Ads from "./Promoted/Ads";
 import Nav from "./Nav/Nav";
 
-const AppWrapper = ({ children }) => {
+export default function AppWrapper({ children }) {
   return (
     <>
       <Nav />
@@ -23,6 +23,6 @@ const AppWrapper = ({ children }) => {
       </Container>
     </>
   );
-};
+}
 
 export default AppWrapper;
