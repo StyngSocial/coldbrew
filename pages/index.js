@@ -1,6 +1,6 @@
 import Head from "next/head";
-import AppWrapper from "../layouts/app/AppWrapper";
-import HomeFeed from "../components/HomeFeed/HomeFeed";
+import AppWrapper from "../layouts/AppWrapper";
+import Feed from "../components/Feed/Feed";
 // import Login from "../components/Login/Login.jsx";
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
       </Head>
 
       <AppWrapper>
-        <HomeFeed />
+        <Feed />
       </AppWrapper>
     </>
   );

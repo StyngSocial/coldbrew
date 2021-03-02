@@ -1,12 +1,12 @@
 import styles from "./Promoted.module.scss";
 import Image from "next/image";
 import { Container, Card, Row, Col } from "react-bootstrap";
-import logan from "../../public/promoted/DAVE.jpg";
-import lex from "../../public/promoted/lex.jpg";
-import steve from "../../public/promoted/steve.jpg";
-import joe from "../../public/promoted/joe.jpg";
-import geohot from "../../public/promoted/geohot.jpg";
-import elon from "../../public/promoted/elon.jpg";
+import logan from "../../../public/promoted/DAVE.jpg";
+import lex from "../../../public/promoted/lex.jpg";
+import steve from "../../../public/promoted/steve.jpg";
+import joe from "../../../public/promoted/joe.jpg";
+import geohot from "../../../public/promoted/geohot.jpg";
+import elon from "../../../public/promoted/elon.jpg";
 
 const Promoted = () => {
   return (

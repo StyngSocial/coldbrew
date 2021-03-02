@@ -9,7 +9,7 @@ import {
 } from "react-bootstrap/";
 
 import Image from "next/image";
-import BBC from "../../public/tweets/avatar-black.png";
+import BBC from "../../../public/tweets/avatar-black.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
