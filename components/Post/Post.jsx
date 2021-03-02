@@ -5,7 +5,7 @@ import { Container, Row, Col } from "react-bootstrap";
 const Post = ({ username, name, avatar, title, body, media }) => {
   return (
     <Container>
-      <Row className="py-2 bg-light border-top border-bottom">
+      <Row className="py-2 bg-light border-bottom">
         <Col className="col-auto">
           <a href="#">
             <Image

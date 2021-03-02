@@ -1,8 +1,8 @@
 import { Col, Row, Container } from "react-bootstrap";
 
-import Explore from "../../components/Explore/Explore";
-import Ads from "../../components/Promoted/Ads";
-import Nav from "../../components/Nav/Nav";
+import Explore from "./Explore/Explore";
+import Ads from "./Promoted/Ads";
+import Nav from "./Nav/Nav";
 
 const AppWrapper = ({ children }) => {
   return (

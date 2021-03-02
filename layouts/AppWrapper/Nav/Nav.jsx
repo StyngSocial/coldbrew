@@ -1,5 +1,4 @@
 import styles from "./Nav.module.scss";
-import { signOut } from "next-auth/client";
 import {
   Navbar,
   Nav,
@@ -10,7 +9,7 @@ import {
 } from "react-bootstrap/";
 
 import Image from "next/image";
-import BBC from "../../public/images/bennyblockchain.jpg";
+import BBC from "../../public/tweets/avatar-black.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

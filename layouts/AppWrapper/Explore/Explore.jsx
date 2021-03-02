@@ -13,13 +13,13 @@ import { Container } from "react-bootstrap";
 const Explore = () => {
   return (
     <Container className={`p-0 mt-4 d-flex flex-column align-items-start`}>
-      <Link to="/" href="#">
+      <Link href="/" passHref>
         <a className={`${styles.button} d-flex align-items-center`}>
           <FontAwesomeIcon icon={faHouseUser} className="d-inline" />
           <div className="d-inline mx-3">Home</div>
         </a>
       </Link>
-      <Link to="/" href="#">
+      <Link href="/communities" passHref>
         <a className={`${styles.button} d-flex align-items-center`}>
           <FontAwesomeIcon icon={faUserFriends} className="d-inline" />
           <div className="d-inline mx-3">Friends</div>
