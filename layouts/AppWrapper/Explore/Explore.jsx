@@ -12,7 +12,9 @@ import { Container } from "react-bootstrap";
 
 const Explore = () => {
   return (
-    <Container className={`p-0 mt-4 d-flex flex-column align-items-start`}>
+    <Container
+      className={`p-0 mt-4 d-flex flex-column position-fixed align-items-start`}
+    >
       <Link href="/" passHref>
         <a className={`${styles.button} d-flex align-items-center`}>
           <FontAwesomeIcon icon={faHouseUser} className="d-inline" />
