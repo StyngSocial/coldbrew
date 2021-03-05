@@ -11,7 +11,7 @@ import elon from "../../../public/promoted/elon.jpg";
 const Promoted = () => {
   return (
     <Container className={`mt-4 p-0 d-flex flex-column ${styles.container}`}>
-      <Card border="info" className="w-100">
+      <Card border="milk" className="w-100">
         <Card.Header className="rounded-3 py-1">Promoted</Card.Header>
         <Container>
           <a href="#p">

@@ -37,7 +37,7 @@ const WebHeader = () => {
       >
         <Link href="/" passHref>
           <Navbar.Brand className={`d-flex ${styles.brand}`}>
-            cold brew
+            Cold Brew
           </Navbar.Brand>
         </Link>
 
@@ -46,7 +46,7 @@ const WebHeader = () => {
             <Dropdown.Toggle
               variant="light"
               id="dropdown-basic"
-              className={`d-flex align-items-center bg-danger border ${styles.dropdown}`}
+              className={`d-flex align-items-center bg-light border ${styles.dropdown}`}
               style={{ width: "300px" }}
             >
               <p className="" style={{ margin: "0 190px 0 0" }}>{`¢ / Home`}</p>
