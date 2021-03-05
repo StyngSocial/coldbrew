@@ -2,11 +2,11 @@ import Image from "next/image";
 import styles from "./Post.module.scss";
 import { Container, Row, Col } from "react-bootstrap";
 
-const Post = ({ username, name, avatar, title, body, media }) => {
+const Post = ({ username, avatar, title, body }) => {
   return (
     <Container>
       <Row className="py-2 bg-light border-bottom">
-        <Col className="col-auto">
+        <Col className="col-auto py-1">
           <a href="#">
             <Image
               src={avatar}
@@ -16,18 +16,16 @@ const Post = ({ username, name, avatar, title, body, media }) => {
             />
           </a>
         </Col>
-        <Col className="p-0 " style={{ marginRight: "20px" }}>
-          <a href="#">
-            <p className="d-inline text-dark">{name}</p>
-          </a>
-          <p className={`d-inline text-muted ${styles.tweet}`}>
-            &nbsp;@{username} · Feb 19
-          </p>
-          <p className="m-0">
+        <Col className="col-8 p-0 " style={{ marginRight: "20px" }}>
+          <p className="m-0 d-inline">
             <strong>{title}</strong>
           </p>
-          <p>{body}</p>
-          {media && (
+          <p className={`d-inline float-right text-muted ${styles.tweet}`}>
+            &nbsp;@{username} · Feb 19
+          </p>
+
+          <p className="m-0 pt-2 mw-100">{body}</p>
+          {/* {media && (
             <Container fluid className="text-center">
               <Image
                 src={media}
@@ -36,7 +34,7 @@ const Post = ({ username, name, avatar, title, body, media }) => {
                 className="rounded text-center"
               />
             </Container>
-          )}
+          )} */}
         </Col>
       </Row>
     </Container>
