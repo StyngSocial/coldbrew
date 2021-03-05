@@ -1,6 +1,6 @@
 import Container from "react-bootstrap/Container";
 
-import Promoted from "./Promoted";
+import Promoted from "./Promotes";
 import Sponsored from "./Sponsored";
 
 const Ads = () => {

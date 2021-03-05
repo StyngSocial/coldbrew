@@ -1,5 +1,5 @@
 import { useTrending } from "@bennyblockchain/barista/dist/barista";
-import Post from "../Post/Post";
+import Post from "../Post";
 import styng from "../../public/tweets/avatar-black.png";
 
 const Feed = () => {
