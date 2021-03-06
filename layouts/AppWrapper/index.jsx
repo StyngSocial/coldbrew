@@ -17,7 +17,8 @@ export default function AppWrapper({ children }) {
             {children}
           </Col>
           <Col lg={3} className="p-0 d-none d-lg-flex bg-light">
-            <Ads />
+            {/* <Ads /> */}
+            <h1 className="text-center text-primary">Sup, Dylan!</h1>
           </Col>
         </Row>
       </Container>

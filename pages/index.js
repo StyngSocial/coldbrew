@@ -1,17 +1,29 @@
 import Head from "next/head";
-import Brewing from "../beta/Brewing";
-// import Login from "../components/Login/Login.jsx";
+import { useSession } from "next-auth/client";
+import AppWrapper from "../layouts/AppWrapper";
+import Feed from "../components/Feed";
+import Welcome from "../beta/Welcome";
+import Login from "../components/Login";
 
 export default function Home() {
+  const [session, loading] = useSession();
+  if (typeof window !== "undefined" && loading) return null;
   return (
     <>
       <Head>
-        <title>Cold Brew</title>
+        <title>Beta! | Cold Brew</title>
       </Head>
-
-      <div className="container mw-100 vh-100 m-0 p-0 bg-dark text-center text-light">
-        <Brewing />
-      </div>
+      {!session && (
+        <>
+          <Welcome />
+        </>
+      )}
+      {loading && <h1>Loading...</h1>}
+      {session && (
+        <AppWrapper>
+          <Feed />
+        </AppWrapper>
+      )}
     </>
   );
 }

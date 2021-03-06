@@ -1,4 +1,5 @@
 import Background from "../../components/Background";
+import { useState } from "react";
 import coldbrew from "../../public/logo.png";
 import {
   Card,
@@ -10,10 +11,22 @@ import {
   Tabs,
   Tab,
 } from "react-bootstrap";
+import { signIn } from "next-auth/client";
 import styles from "./Welcome.module.scss";
 import Link from "next/link";
 
 const Welcome = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleEmail = (e) => {
+    e.preventDefault();
+    setEmail(e.target.value);
+  };
+  const handlePassword = (e) => {
+    e.preventDefault();
+    setPassword(e.target.value);
+  };
   return (
     <div className="d-flex vh-100 justify-content-center align-items-center text-center">
       <Card
@@ -40,13 +53,15 @@ const Welcome = () => {
                 <br />
                 Welcome!
               </Card.Title>
-              <Card.Subtitle className="mt-1 text-muted"></Card.Subtitle>
+              <Card.Subtitle className="mt-1 text-muted">
+                Styng Social &copy;
+              </Card.Subtitle>
               <Card.Text>
                 Cold Brew beta by <i>Styng Social</i> is only available through
                 invite currently. Provide an email to receive an invite in the
                 near future.
               </Card.Text>
-              <Form>
+              {/* <Form>
                 <InputGroup className="mb-4">
                   <InputGroup.Prepend>
                     <InputGroup.Text>@</InputGroup.Text>
@@ -57,10 +72,10 @@ const Welcome = () => {
                   />
                 </InputGroup>
 
-                <Button variant="primary" type="submit" className="text-light">
-                  Sign Up
-                </Button>
-              </Form>
+              </Form> */}
+              <Button variant="primary" type="submit" className="text-light">
+                Sign Up
+              </Button>
             </Card.Body>
           </Tab>
           <Tab eventKey="login" title="Log In" className="">
@@ -79,11 +94,37 @@ const Welcome = () => {
                 Welcome!
               </Card.Title>
               <Card.Subtitle className="mt-1 text-muted"></Card.Subtitle>
-              <Card.Text>
-                Cold Brew beta by <i>Styng Social</i> is only available through
-                invite currently. Provide an email to receive an invite in the
-                near future.
-              </Card.Text>
+              <Card.Text>Cold Brew</Card.Text>
+              {/* <Form>
+                <Form.Control
+                  type="email"
+                  placeholder="Enter email"
+                  value={email}
+                  onChange={handleEmail}
+                />
+
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={handlePassword}
+                />
+
+              </Form> */}
+              <Button
+                size="lg"
+                variant="primary"
+                type="submit"
+                onClick={() => {
+                  console.log(`Button click: ${email}`);
+                  signIn("credentials", {
+                    username: email,
+                    password: password,
+                  });
+                }}
+              >
+                Login
+              </Button>
             </Card.Body>
           </Tab>
         </Tabs>
@@ -92,5 +133,5 @@ const Welcome = () => {
     </div>
   );
 };
-
+//
 export default Welcome;
