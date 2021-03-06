@@ -15,7 +15,7 @@ export default function Home() {
       </Head>
       {!session && (
         <>
-          <Login />
+          <Welcome />
         </>
       )}
       {loading && <h1>Loading...</h1>}

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Brewing from "../components/Brewing";
+import Brewing from "../beta/Brewing";
 // import Login from "../components/Login/Login.jsx";
 
 export default function Home() {
