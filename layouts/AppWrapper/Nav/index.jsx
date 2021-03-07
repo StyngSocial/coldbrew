@@ -30,13 +30,20 @@ const WebHeader = () => {
   return (
     <>
       <Navbar
-        variant="light"
-        bg="light"
         fixed="top"
-        className={`border-bottom d-none d-lg-flex justify-content-between ${styles.navWeb}`}
+        bg="light"
+        className="py-0 px-5 my-0 d-none d-lg-flex justify-content-between"
+        style={{
+         
+          height: "50px",
+        }}
       >
         <Link href="/" passHref>
-          <Navbar.Brand className={`d-flex ${styles.brand}`}>
+          <Navbar.Brand className={`d-flex ${styles.brand}`} style={{
+          fontFamily: "Dancing Script",
+          fontWeight: "700",
+          height: "50px",
+        }}>
             Cold Brew
           </Navbar.Brand>
         </Link>
@@ -111,6 +118,7 @@ const WebHeader = () => {
           </Nav.Link>
         </Nav>
       </Navbar>
+      
       <Navbar
         variant="light"
         bg="light"

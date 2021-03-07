@@ -1,24 +1,29 @@
 import { Col, Row, Container } from "react-bootstrap";
-
-import Explore from "./Explore";
 import Ads from "./Promoted/Ads";
+import Explore from "./Explore";
+import ContentNav from "../../components/ContentNav";
 import Nav from "./Nav";
-
+/**
+ * Wrapper for the UI of the App. Split in 3 columns. Explore nav on left,
+ * feed in center, pormoted/ads on the right.
+ * ? Feels a bit over engineered.
+ * @param children Can be any object, feed is passed in pages/index.js
+ * TODO: Refactor for feeds and promoted. Less CSS on this page to?
+ */
 export default function AppWrapper({ children }) {
   return (
     <>
-      <Nav />
-      <Container className="mw-100 p-0 mt-5">
-        <Row className="m-0 justify-content-center">
-          <Col lg={2} className="vh-100 p-0 d-none d-lg-flex bg-light">
-            <Explore />
+      <Container fluid>
+        <Nav />
+        <Row className="mt-5 justify-content-center">
+          <Col lg={3} className="d-flex px-4">
+            <ContentNav />
           </Col>
-          <Col lg={5} md={12} className="p-0 border-left border-right bg-light">
+          <Col lg={6} md={12}>
             {children}
           </Col>
-          <Col lg={3} className="p-0 d-none d-lg-flex bg-light">
+          <Col lg={3} className="d-flex bg-milk">
             {/* <Ads /> */}
-            <h1 className="text-center text-primary">Sup, Dylan!</h1>
           </Col>
         </Row>
       </Container>
