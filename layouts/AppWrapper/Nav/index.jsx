@@ -18,6 +18,7 @@ import {
   faUserFriends,
   faUserCheck,
   faUsers,
+  faQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Appbar = () => {
@@ -43,8 +44,12 @@ const Appbar = () => {
             Cold Brew
           </Navbar.Brand>
         </Link>
-
         <Nav className="d-flex">
+          <Link href="/feedback" passHref>
+            <Nav.Link className={styles.link}>
+              <FontAwesomeIcon icon={faQuestion} className={styles.icon} />
+            </Nav.Link>
+          </Link>
           <Nav.Link
             className={styles.link}
             onClick={(e) => {
