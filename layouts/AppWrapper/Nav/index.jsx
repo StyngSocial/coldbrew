@@ -1,17 +1,13 @@
 import Link from "next/link";
+import axios from "axios";
 import Image from "next/image";
-import { signOut } from "next-auth/client";
-import BBC from "../../../public/tweets/avatar-black.png";
+import { useState } from "react";
+import { signOut, useSession } from "next-auth/client";
+import BBC from "../../../public/posts-tmp/avatar-black.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./Nav.module.scss";
-import {
-  Navbar,
-  Nav,
-  Form,
-  InputGroup,
-  FormControl,
-  Dropdown,
-} from "react-bootstrap/";
+import Feedback from "../../../components/Feedback";
+import { Navbar, Nav } from "react-bootstrap";
 import {
   faHouseUser,
   faCoffee,
@@ -22,6 +18,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Appbar = () => {
+  const [show, setShow] = useState(false);
+
   return (
     <>
       <Navbar
@@ -45,11 +43,15 @@ const Appbar = () => {
           </Navbar.Brand>
         </Link>
         <Nav className="d-flex">
-          <Link href="/feedback" passHref>
-            <Nav.Link className={styles.link}>
-              <FontAwesomeIcon icon={faQuestion} className={styles.icon} />
-            </Nav.Link>
-          </Link>
+          <Nav.Link
+            className={styles.link}
+            onClick={() => {
+              setShow(!show);
+            }}
+          >
+            <FontAwesomeIcon icon={faQuestion} className={styles.icon} />
+          </Nav.Link>
+
           <Nav.Link
             className={styles.link}
             onClick={(e) => {
@@ -80,6 +82,14 @@ const Appbar = () => {
 
         <Navbar.Collapse id="styng-nav" className="justify-content-end">
           <Nav className="d-flex">
+            <Nav.Link
+              className={styles.link}
+              onClick={() => {
+                setShow(!show);
+              }}
+            >
+              <FontAwesomeIcon icon={faQuestion} className={styles.icon} />
+            </Nav.Link>
             <Nav.Link
               className={`p-0 ${styles.profile}`}
               onClick={(e) => {
@@ -128,67 +138,9 @@ const Appbar = () => {
           </a>
         </Link>
       </Navbar>
+      <Feedback show={show} onHide={() => setShow(false)} />
     </>
   );
 };
 
 export default Appbar;
-
-// Dropdown for picking communities + Search bar
-{
-  /* <div className="container d-flex justify-content-evenly w-50 m-0">
-  <Dropdown className="d-flex rounded">
-    <Dropdown.Tqoggle
-      variant="light"
-      id="dropdown-basic"
-      className={`d-flex align-items-center bg-light border ${styles.dropdown}`}
-      style={{ width: "300px" }}
-    >
-      <p className="" style={{ margin: "0 190px 0 0" }}>{`¢ / Home`}</p>
-    </Dropdown.Toggle>
-
-    <Dropdown.Menu style={{ width: "300px" }}>
-      <Dropdown.Item href="/">{`¢ / Browns`}</Dropdown.Item>
-      <Dropdown.Item href="/">{`¢ / Bitcoin`}</Dropdown.Item>
-      <Dropdown.Item href="/">{`¢ / Programming`}</Dropdown.Item>
-    </Dropdown.Menu>
-  </Dropdown>
-  ;
-  <Form className="d-flex" style={{ width: "300px" }}>
-    <InputGroup className="sm">
-      <InputGroup.Prepend>
-        <InputGroup.Text className={styles.formIcon}>
-          <FontAwesomeIcon icon={faSearch} />
-        </InputGroup.Text>
-      </InputGroup.Prepend>
-      <FormControl
-        placeholder="Search..."
-        aria-label="Search"
-        aria-describedby="search"
-      />
-    </InputGroup>
-  </Form>
-</div>; */
-}
-
-// Appbar Icons
-// <Link href="/messages" passHref>
-//    <Nav.Link className={styles.link}>
-//           <FontAwesomeIcon icon={faWallet} className={styles.icon} />
-//           </Nav.Link>
-//         </Link>
-//         <Link href="/messages" passHref>
-//           <Nav.Link className={styles.link}>
-//             <FontAwesomeIcon icon={faEnvelope} className={styles.icon} />
-//           </Nav.Link>
-//         </Link>
-//         <Link href="/notifications" passHref>
-//           <Nav.Link className={styles.link}>
-//             <FontAwesomeIcon icon={faBell} className={styles.icon} />
-//           </Nav.Link>
-//         </Link>
-//         <Link href="/messages" passHref>
-//           <Nav.Link className={styles.link}>
-//             <FontAwesomeIcon icon={faCog} className={styles.icon} />
-//           </Nav.Link>
-//         </Link>
