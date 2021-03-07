@@ -4,9 +4,8 @@ import { Container } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouseUser,
-  faUserCheck,
+  faSearch,
   faUserFriends,
-  faAddressCard,
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -44,7 +43,7 @@ const ContentNav = () => {
           </a>
         </li>
       </Link>
-      <Link href="/communities" passHref>
+      <Link href="/c" passHref>
         <li className="nav-item">
           <a
             className={`nav-link py-3 rounded-pill ${styles.contentBtn}`}
@@ -66,7 +65,7 @@ const ContentNav = () => {
             href="#"
           >
             <h5 className="d-inline">
-              <FontAwesomeIcon icon={faAddressCard} className="d-inline" />
+              <FontAwesomeIcon icon={faSearch} className="d-inline" />
               <span className="mx-3">Explore</span>
             </h5>
           </a>
