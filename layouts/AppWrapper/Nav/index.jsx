@@ -1,14 +1,8 @@
 import Link from "next/link";
-import axios from "axios";
 import Image from "next/image";
+import { signOut } from "next-auth/client";
 import { useState } from "react";
-import { signOut, useSession } from "next-auth/client";
-import BBC from "../../../public/posts-tmp/avatar-black.png";
-import logo from "../../../public/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styles from "./Nav.module.scss";
-import Feedback from "../../../components/Feedback";
-import { Navbar, Nav, Button } from "react-bootstrap";
 import {
   faHouseUser,
   faUserFriends,
@@ -16,6 +10,9 @@ import {
   faQuestion,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
+import logo from "../../../public/logo.png";
+import Feedback from "../../../components/Feedback";
+import { Navbar, Nav, Button } from "react-bootstrap";
 
 const Appbar = () => {
   const [show, setShow] = useState(false);
@@ -31,7 +28,7 @@ const Appbar = () => {
         }}
       >
         <Link href="/" passHref>
-          <Navbar.Brand
+          <Nav.Link
             className="d-flex text-roast"
             style={{
               fontFamily: "Dancing Script",
@@ -41,24 +38,21 @@ const Appbar = () => {
             }}
           >
             Cold Brew
-          </Navbar.Brand>
-        </Link>
-        <Nav className="d-flex">
-          <Nav.Link>
-            <Button
-              variant="coffee"
-              size="sm"
-              onClick={() => {
-                setShow(!show);
-              }}
-            >
-              Feedback
-            </Button>
           </Nav.Link>
-          <Nav.Link className="px-0">
-            <Button variant="secondary" size="sm" onClick={() => signOut}>
-              Sign Out
-            </Button>
+        </Link>
+
+        <Nav className="d-flex">
+          <Nav.Link
+            className="btn-sm btn-coffee px-2 m-2 text-center d-flex align-items-center text-milk"
+            onClick={() => setShow(true)}
+          >
+            Feedback
+          </Nav.Link>
+          <Nav.Link
+            className="btn-sm btn-secondary px-2 my-2 text-center d-flex align-items-center text-milk"
+            onClick={() => signOut()}
+          >
+            Signout
           </Nav.Link>
         </Nav>
       </Navbar>
@@ -69,26 +63,24 @@ const Appbar = () => {
         className="py-0 border-bottom d-flex d-lg-none"
       >
         <Link href="/" passHref>
-          <Image src={logo} height={45} width={45} />
+          <Nav.Link>
+            <Image src={logo} height={45} width={45} />
+          </Nav.Link>
         </Link>
 
         <Navbar.Collapse id="styng-nav" className="justify-content-end">
           <Nav className="d-flex">
-            <Nav.Link>
-              <Button
-                variant="coffee"
-                size="sm"
-                onClick={() => {
-                  setShow(!show);
-                }}
-              >
-                Feedback
-              </Button>
+            <Nav.Link
+              className="btn-sm btn-coffee px-2 m-2 text-center d-flex align-items-center text-milk"
+              onClick={() => setShow(true)}
+            >
+              Feedback
             </Nav.Link>
-            <Nav.Link>
-              <Button variant="secondary" size="sm" onClick={() => signOut}>
-                Sign Out
-              </Button>
+            <Nav.Link
+              className="btn-sm btn-secondary px-2 my-2 text-center d-flex align-items-center text-milk"
+              onClick={() => signOut()}
+            >
+              Signout
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
@@ -99,38 +91,43 @@ const Appbar = () => {
         fixed="bottom"
         className="border-top p-0 d-flex d-lg-none justify-content-between align-items-start"
       >
-        <Link href="/" passHref active>
-          <a
-            className="w-25 text-roast text-center"
-            style={{ fontSize: "2rem" }}
-          >
-            <FontAwesomeIcon icon={faHouseUser} />
-          </a>
+        <Link href="/" passHref>
+          <Nav.Link>
+            <FontAwesomeIcon
+              icon={faHouseUser}
+              className="w-25 text-roast text-center"
+              style={{ fontSize: "2rem" }}
+            />
+          </Nav.Link>
         </Link>
+
         <Link href="/explore" passHref>
-          <a
-            className="w-25 text-roast text-center"
-            style={{ fontSize: "2rem" }}
-          >
-            <FontAwesomeIcon icon={faSearch} />
-          </a>
+          <Nav.Link>
+            <FontAwesomeIcon
+              icon={faSearch}
+              className="w-25 text-roast text-center"
+              style={{ fontSize: "2rem" }}
+            />
+          </Nav.Link>
         </Link>
 
         <Link href="/following" passHref>
-          <a
-            className="w-25 text-roast text-center"
-            style={{ fontSize: "2rem" }}
-          >
-            <FontAwesomeIcon icon={faUserFriends} />
-          </a>
+          <Nav.Link>
+            <FontAwesomeIcon
+              icon={faUserFriends}
+              className="w-25 text-roast text-center"
+              style={{ fontSize: "2rem" }}
+            />
+          </Nav.Link>
         </Link>
         <Link href="/c" passHref>
-          <a
-            className="w-25 text-roast text-center"
-            style={{ fontSize: "2rem" }}
-          >
-            <FontAwesomeIcon icon={faUsers} />
-          </a>
+          <Nav.Link>
+            <FontAwesomeIcon
+              icon={faUsers}
+              className="w-25 text-roast text-center"
+              style={{ fontSize: "2rem" }}
+            />
+          </Nav.Link>
         </Link>
       </Navbar>
       <Feedback show={show} onHide={() => setShow(false)} />

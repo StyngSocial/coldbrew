@@ -16,6 +16,7 @@ import { signIn } from "next-auth/client";
 import styles from "./Beta.module.scss";
 
 const Beta = () => {
+  const version = "v0.0.9";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -74,7 +75,7 @@ const Beta = () => {
                   Cold Brew
                 </div>
                 <Badge className="m-2 d-inline " variant="primary">
-                  v0.0.8
+                  {version}
                 </Badge>
               </Card.Title>
               <Card.Subtitle className="mt-2 text-muted">
@@ -124,7 +125,7 @@ const Beta = () => {
                     Cold Brew
                   </div>
                   <Badge className="m-2 d-inline text-roast" variant="primary">
-                    v0.0.8
+                    {version}
                   </Badge>
                 </Card.Title>
               </Card.Title>
