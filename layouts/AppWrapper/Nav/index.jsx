@@ -94,7 +94,7 @@ const Appbar = () => {
               className={`p-0 ${styles.profile}`}
               onClick={(e) => {
                 e.preventDefault();
-                signIn("auth0");
+                signOut();
               }}
             >
               <Image

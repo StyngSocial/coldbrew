@@ -148,15 +148,15 @@ const Beta = () => {
                   value={password}
                   onChange={handlePassword}
                 />
+                <Button
+                  size="lg"
+                  variant="primary"
+                  type="submit"
+                  href="/api/auth/signin"
+                >
+                  Login
+                </Button>
               </Form>
-              <Button
-                size="lg"
-                variant="primary"
-                type="submit"
-                href="/api/auth/signin"
-              >
-                Login
-              </Button>
             </Card.Body>
           </Tab>
         </Tabs>
