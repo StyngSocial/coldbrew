@@ -1,6 +1,4 @@
 import { Col, Row, Container } from "react-bootstrap";
-import Ads from "./Promoted/Ads";
-import Explore from "./Explore";
 import ContentNav from "./ContentNav";
 import Nav from "./Nav";
 /**
@@ -19,11 +17,11 @@ export default function AppWrapper({ children }) {
           <Col lg={3} className="d-none d-lg-flex px-4">
             <ContentNav />
           </Col>
-          <Col lg={6} md={12}>
+          <Col lg={6} md={12} className="bg-milk">
             {children}
           </Col>
-          <Col lg={3} className="d-flex">
-            {/* <Ads /> */}
+          <Col lg={3} className="d-flex bg-creamer">
+            karma
           </Col>
         </Row>
       </Container>

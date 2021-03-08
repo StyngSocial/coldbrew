@@ -12,7 +12,7 @@ import {
 const ContentNav = () => {
   return (
     <nav
-      class="nav nav-pills position-fixed flex-column mt-4 px-3"
+      className="nav nav-pills position-fixed flex-column mt-4 px-3"
       style={{ width: "" }}
     >
       <Link href="/" passHref>

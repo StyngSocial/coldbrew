@@ -4,8 +4,8 @@ export default function handler(req, res) {
   const { name, email, message } = req.body;
   const feedback = `${message}\n${name} (${email})`;
   var mail = {
-    from: "ben@styng.social",
-    to: "ben@styng.social",
+    from: process.env.EMAIL_USER,
+    to: process.env.EMAIL_BEN,
     subject: "New feedback message from Beta",
     text: feedback,
   };

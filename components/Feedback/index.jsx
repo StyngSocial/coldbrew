@@ -14,7 +14,7 @@ const Feedback = (prop) => {
 
   const sendFeedback = () => {
     axios
-      .post("/api/feedback", {
+      .post("/api/transport", {
         name: session.user.name,
         email: session.user.email,
         message: feedback,
