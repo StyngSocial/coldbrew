@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useSession } from "next-auth/client";
 import AppWrapper from "../../layouts/AppWrapper";
-import Welcome from "../../beta/Welcome";
+import Beta from "../../Beta";
 
 const following = () => {
   const [session, loading] = useSession();
@@ -12,7 +12,7 @@ const following = () => {
       </Head>
       {!session && (
         <>
-          <Welcome />
+          <Beta />
         </>
       )}
       {loading && <h1>Loading...</h1>}
