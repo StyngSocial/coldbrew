@@ -1,10 +1,10 @@
 import Image from "next/image";
-import styles from "./Post.module.scss";
 import { Container, Row, Col } from "react-bootstrap";
 
 const Post = ({ username, avatar, title, body }) => {
+  const brewBody = body.slice(0, 776);
   return (
-    <Container>
+    <Container fluid>
       <Row className="py-2 bg-light border-bottom">
         <Col className="col-auto py-1">
           <a href="#">
@@ -16,25 +16,15 @@ const Post = ({ username, avatar, title, body }) => {
             />
           </a>
         </Col>
-        <Col className="col-8 p-0 " style={{ marginRight: "20px" }}>
+        <Col className="col-10 p-0 " style={{ marginRight: "20px" }}>
           <p className="m-0 d-inline">
             <strong>{title}</strong>
           </p>
-          <p className={`d-inline float-right text-muted ${styles.tweet}`}>
+          <p className="d-inline float-right text-muted">
             &nbsp;@{username} · Feb 19
           </p>
 
-          <p className="m-0 pt-2 mw-100">{body}</p>
-          {/* {media && (
-            <Container fluid className="text-center">
-              <Image
-                src={media}
-                height={500}
-                width={250}
-                className="rounded text-center"
-              />
-            </Container>
-          )} */}
+          <p className="m-0 pt-2">{brewBody}</p>
         </Col>
       </Row>
     </Container>

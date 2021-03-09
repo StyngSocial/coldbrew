@@ -48,7 +48,7 @@
 
 "@bennyblockchain/barista@^0.0.8":
   version "0.0.8"
-  resolved "https://registry.npmjs.org/@bennyblockchain/barista/-/barista-0.0.8.tgz"
+  resolved "https://registry.yarnpkg.com/@bennyblockchain/barista/-/barista-0.0.8.tgz#b7274b7c3f5c47edac800e5ce216599f71e4f403"
   integrity sha512-ACalPYbXypXWVVW2cZjckHy+CHZBb7YGa0drHMy4aZK4Cdzs5MERsvQLhjjOiM4dg/w2g8vzSIZSQDe3fxy1eg==
   dependencies:
     react "^17.0.1"
