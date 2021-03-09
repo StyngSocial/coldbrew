@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useSession } from "next-auth/client";
 import AppWrapper from "../layouts/AppWrapper";
 import Beta from "../Beta";
-// import Feed from "../components/Feed";
+import Feed from "../components/Feed";
 
 export default function Home() {
   const [session, loading] = useSession();
@@ -20,7 +20,7 @@ export default function Home() {
       {loading && <h1>Loading...</h1>}
       {session && (
         <AppWrapper>
-          <p>useProfileFeed</p>
+          <Feed sort="trending" tag="coldbrew-app" />
         </AppWrapper>
       )}
     </>

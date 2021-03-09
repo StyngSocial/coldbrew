@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useSession } from "next-auth/client";
+import Feed from "../../components/Feed";
 import AppWrapper from "../../layouts/AppWrapper";
 import Beta from "../../Beta";
 
@@ -16,7 +17,12 @@ const c = () => {
         </>
       )}
       {loading && <h1>Loading...</h1>}
-      {session && <AppWrapper>useProfileCommunityFeed</AppWrapper>}
+      {session && (
+        <AppWrapper>
+          <h1>LeoFinance</h1>
+          <Feed sort="trending" tag="hive-167922" />
+        </AppWrapper>
+      )}
     </>
   );
 };

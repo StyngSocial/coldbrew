@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useSession } from "next-auth/client";
 import AppWrapper from "../../layouts/AppWrapper";
 import Beta from "../../Beta";
-
+import FollowingFeed from "../../components/FollowingFeed";
 const following = () => {
   const [session, loading] = useSession();
   return (
@@ -16,7 +16,11 @@ const following = () => {
         </>
       )}
       {loading && <h1>Loading...</h1>}
-      {session && <AppWrapper>useProfileFollowingFeed</AppWrapper>}
+      {session && (
+        <AppWrapper>
+          <FollowingFeed />
+        </AppWrapper>
+      )}
     </>
   );
 };
