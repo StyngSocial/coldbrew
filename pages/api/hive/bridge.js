@@ -20,6 +20,7 @@ export const getHiveProfile = async (account, observer) => {
     observer,
   };
   const bridgeCall = await hive.api.callAsync("bridge.get_profile", params);
+
   return bridgeCall;
 };
 
@@ -31,6 +32,7 @@ export const getPopularCommunities = async (limit) => {
     "bridge.list_pop_communities",
     params
   );
+
   return bridgeCall;
 };
 

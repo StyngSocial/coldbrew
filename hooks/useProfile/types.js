@@ -22,13 +22,15 @@ export const fullProfile = {
   context: { followed: false },
 };
 
-export const baseProfileType = {
-  name: "",
-  about: "",
-  website: "",
-  location: "",
-  cover_image: "",
-  profile_image: "",
-  blacklist_description: "",
-  muted_list_description: "",
+export const BaseProfile = {
+  id: Number,
+  name: String,
+  reputation: Number,
+  metadata: (Object = {
+    profile: (Object = {
+      about: String,
+      cover_image: String,
+      profile_image: String,
+    }),
+  }),
 };

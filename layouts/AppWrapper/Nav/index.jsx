@@ -8,6 +8,7 @@ import {
   faUserFriends,
   faUsers,
   faQuestion,
+  faSignOutAlt,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../../public/logo.png";
@@ -22,14 +23,14 @@ const Appbar = () => {
       <Navbar
         fixed="top"
         bg="light"
-        className="py-0 px-5 my-0 d-none d-lg-flex justify-content-between"
+        className="border-bottom py-0 px-5 my-0 d-flex justify-content-between"
         style={{
           height: "50px",
         }}
       >
         <Link href="/" passHref>
           <Nav.Link
-            className="d-flex text-roast"
+            className="d-flex text-roast pt-1"
             style={{
               fontFamily: "Dancing Script",
               fontWeight: "700",
@@ -43,47 +44,24 @@ const Appbar = () => {
 
         <Nav className="d-flex">
           <Nav.Link
-            className="btn-sm btn-coffee px-2 m-2 text-center d-flex align-items-center text-milk"
+            className="px-2 m-2 text-center d-flex align-items-center text-roast"
             onClick={() => setShow(true)}
           >
-            Feedback
+            <FontAwesomeIcon
+              icon={faQuestion}
+              style={{ fontSize: "1.25rem" }}
+            />
           </Nav.Link>
           <Nav.Link
-            className="btn-sm btn-secondary px-2 my-2 text-center d-flex align-items-center text-milk"
+            className="px-2 my-2 text-center d-flex align-items-center text-primary"
             onClick={() => signOut()}
           >
-            Signout
+            <FontAwesomeIcon
+              icon={faSignOutAlt}
+              style={{ fontSize: "1.25rem" }}
+            />
           </Nav.Link>
         </Nav>
-      </Navbar>
-      <Navbar
-        variant="light"
-        bg="light"
-        fixed="top"
-        className="py-0 border-bottom d-flex d-lg-none"
-      >
-        <Link href="/" passHref>
-          <Nav.Link>
-            <Image src={logo} height={45} width={45} />
-          </Nav.Link>
-        </Link>
-
-        <Navbar.Collapse id="styng-nav" className="justify-content-end">
-          <Nav className="d-flex">
-            <Nav.Link
-              className="btn-sm btn-coffee px-2 m-2 text-center d-flex align-items-center text-milk"
-              onClick={() => setShow(true)}
-            >
-              Feedback
-            </Nav.Link>
-            <Nav.Link
-              className="btn-sm btn-secondary px-2 my-2 text-center d-flex align-items-center text-milk"
-              onClick={() => signOut()}
-            >
-              Signout
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
       </Navbar>
       <Navbar
         variant="light"

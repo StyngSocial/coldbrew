@@ -12,7 +12,7 @@ const useRankedPosts = (sort, tag, observer) => {
       case "FETCHING":
         return { ...state, loading: true };
       case "FETCHED":
-        return { ...state, loading: false };
+        return { ...state, posts: action.payload, loading: false };
       case "ERROR":
         return { ...state, loading: false, error: true };
       default:
@@ -28,7 +28,7 @@ const useRankedPosts = (sort, tag, observer) => {
   const fetchRankedPosts = () => {
     getRankedPosts(sort, tag, observer).then((res) => {
       state.posts = res;
-      dispatch({ type: "FETCHED" });
+      dispatch({ type: "FETCHED", payload: res });
       return;
     });
   };

@@ -13,14 +13,14 @@ export default function AppWrapper({ children }) {
     <>
       <Container fluid>
         <Nav />
-        <Row className="mt-5 justify-content-center">
-          <Col lg={3} className="d-none d-lg-flex px-4">
+        <Row className="d-flex mt-5 justify-content-center">
+          <Col lg={3} className="px-4">
             <ContentNav />
           </Col>
-          <Col lg={6} md={12} className="bg-milk">
+          <Col lg={6} className="p-0 ">
             {children}
           </Col>
-          <Col lg={3} className="d-none d-lg-flex bg-creamer">
+          <Col lg={3} className="d-none d-lg-flex bg-milk">
             karma
           </Col>
         </Row>
