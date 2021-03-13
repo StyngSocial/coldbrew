@@ -1,26 +1,39 @@
 import Head from "next/head";
 import { useSession } from "next-auth/client";
+import axios from "axios";
+import useSWR from "swr";
 import Feed from "../../components/Feed";
 import AppWrapper from "../../layouts/AppWrapper";
 import Beta from "../../Beta";
 
+const fetcher = (url) => axios.get(url).then((r) => r.data);
+
 const c = () => {
   const [session, loading] = useSession();
+  const { data, error } = useSWR("/api/hive/communities?limit=10", fetcher);
+
   return (
     <>
       <Head>
-        <title>Communities | Cold Brew</title>
+        <title>Explore | Cold Brew</title>
       </Head>
-      {!session && (
+      {loading && <h1>Loading...</h1>}
+      {!session && !loading && (
         <>
           <Beta />
         </>
       )}
-      {loading && <h1>Loading...</h1>}
-      {session && (
+      {error && <h1>Error</h1>}
+      {session && data && (
         <AppWrapper>
-          <h1>LeoFinance</h1>
-          <Feed sort="trending" tag="hive-167922" />
+          {data.map((community) => {
+            return (
+              <>
+                <h1>{community.name}</h1>
+                <p>{community.category}</p>
+              </>
+            );
+          })}
         </AppWrapper>
       )}
     </>

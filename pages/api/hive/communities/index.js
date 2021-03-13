@@ -8,7 +8,15 @@ export default function handler(req, res) {
   hive.api
     .callAsync("bridge.list_pop_communities", params)
     .then((resp) => {
-      res.status(200).send(resp);
+      const popCommunities = [];
+      resp.map((comArray) => {
+        const comObj = {
+          category: comArray[0],
+          name: comArray[1],
+        };
+        popCommunities.push(comObj);
+      });
+      res.status(200).send(popCommunities);
     })
     .catch((err) => res.json({ error: err }));
 }
