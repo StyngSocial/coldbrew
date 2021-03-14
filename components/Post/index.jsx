@@ -2,7 +2,6 @@ import Image from "next/image";
 import { Container, Row, Col } from "react-bootstrap";
 
 const Post = ({ username, avatar, title, body }) => {
-  const brewBody = body.slice(0, 776);
   return (
     <Container fluid>
       <Row className="py-2 bg-light border-bottom">
@@ -24,7 +23,7 @@ const Post = ({ username, avatar, title, body }) => {
             &nbsp;@{username} · Feb 19
           </p>
 
-          <p className="m-0 pt-2">{brewBody}</p>
+          <p className="m-0 pt-2">{body}</p>
         </Col>
       </Row>
     </Container>

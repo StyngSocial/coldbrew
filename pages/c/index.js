@@ -15,7 +15,7 @@ const c = () => {
   return (
     <>
       <Head>
-        <title>Explore | Cold Brew</title>
+        <title>Communities | Cold Brew</title>
       </Head>
       {loading && <h1>Loading...</h1>}
       {!session && !loading && (
@@ -24,6 +24,11 @@ const c = () => {
         </>
       )}
       {error && <h1>Error</h1>}
+      {session && !data && (
+        <AppWrapper>
+          Loading...
+        </AppWrapper>
+      )}
       {session && data && (
         <AppWrapper>
           {data.map((community) => {

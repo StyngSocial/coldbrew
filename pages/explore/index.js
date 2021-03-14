@@ -23,6 +23,11 @@ const explore = () => {
         </>
       )}
       {error && <h1>Error</h1>}
+      {session && !data && (
+        <AppWrapper>
+          Loading...
+        </AppWrapper>
+      )}
       {session && data && (
         <AppWrapper>
           {data.map((community) => {
