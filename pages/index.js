@@ -12,7 +12,7 @@ const fetcher = (url) => axios.get(url).then((r) => r.data);
 export default function Home() {
   const [session, loading] = useSession();
   const { data, error } = useSWR(
-    "http://localhost:3000/api/hive/rankedposts?sort=trending&tag=coldbrew-app&observer=benny.blockchain",
+    "/api/hive/rankedposts?sort=trending&tag=coldbrew-app&observer=benny.blockchain",
     fetcher
   );
 

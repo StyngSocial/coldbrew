@@ -1,6 +1,5 @@
 import hive from "@hiveio/hive-js";
 import parseMarkdown from "../../../util/parseMarkdown"
-import removeMd from "remove-markdown"
 
 export default function handler(req, res) {
   const { sort, account, limit } = req.query;
