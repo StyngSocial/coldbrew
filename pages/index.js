@@ -5,15 +5,17 @@ import useSWR from "swr";
 import AppWrapper from "../layouts/AppWrapper";
 import Beta from "../Beta";
 import Feed from "../components/Feed";
+import parseMarkdown from "../util/parseMarkdown";
 
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 
 export default function Home() {
   const [session, loading] = useSession();
   const { data, error } = useSWR(
-    "http://localhost:3000/api/hive/rankedposts?sort=trending&tag=coldbrew-app&observer=benny.blockchain",
+    "/api/hive/rankedposts?sort=trending&tag=coldbrew-app&observer=benny.blockchain",
     fetcher
   );
+
   return (
     <>
       <Head>
@@ -24,6 +26,11 @@ export default function Home() {
         <>
           <Beta />
         </>
+      )}
+      {session && !data && (
+        <AppWrapper>
+          Loading...
+        </AppWrapper>
       )}
       {session && data && (
         <AppWrapper>
