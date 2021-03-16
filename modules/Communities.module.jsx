@@ -1,6 +1,7 @@
 import AppWrapper from "./AppWrapper";
 import Beta from "../Beta";
 import Loading from "../components/Loading";
+import TrendingCommunities from "../components/TrendingCommunities";
 
 const CommunitiesModule = ({ session, loading, data, error }) => {
   return (
@@ -16,7 +17,11 @@ const CommunitiesModule = ({ session, loading, data, error }) => {
           <Loading />
         </AppWrapper>
       )}
-      {session && data && <AppWrapper>ben</AppWrapper>}
+      {session && data && (
+        <AppWrapper>
+          <TrendingCommunities />
+        </AppWrapper>
+      )}
     </>
   );
 };
