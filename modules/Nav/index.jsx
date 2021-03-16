@@ -12,7 +12,7 @@ import {
   faSearch,
   faInfo,
 } from "@fortawesome/free-solid-svg-icons";
-import Feedback from "../../components/Feedback";
+import Feedback from "../../components/Feedback.jsx";
 import { Navbar, Nav, Button } from "react-bootstrap";
 
 const Appbar = () => {

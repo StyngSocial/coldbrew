@@ -9,7 +9,6 @@ const fetcher = (url) => axios.get(url).then((r) => r.data);
 const c = () => {
   const [session, loading] = useSession();
   const { data, error } = useSWR("/api/hive/communities?limit=10", fetcher);
-  if (data) console.log(data);
   return (
     <>
       <Head>

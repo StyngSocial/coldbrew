@@ -5,7 +5,7 @@ import Loading from "../components/Loading";
 const CommunitiesModule = ({ session, loading, data, error }) => {
   return (
     <>
-      {!session && loading && <h1>Loading...</h1>}
+      {!session && loading && <Loading />}
       {!session && (
         <>
           <Beta />

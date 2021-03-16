@@ -1,4 +1,4 @@
-import Background from "../components/Background";
+import Background from "../components/Background.jsx";
 import { useState } from "react";
 import axios from "axios";
 import coldbrew from "../public/logo.png";
@@ -39,7 +39,6 @@ const Beta = () => {
   };
 
   const signUp = () => {
-    console.log("hi");
     const newUser = `New user - ${name}.\n${email}`;
     axios
       .post("/api/transport", {
