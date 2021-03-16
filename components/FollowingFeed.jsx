@@ -1,5 +1,5 @@
 import useFollowingFeed from "../../hooks/useFollowingFeed";
-import Post from "../Post";
+import Post from "./Post";
 import styng from "../../public/posts-tmp/avatar-black.png";
 
 const Feed = () => {
