@@ -1,5 +1,5 @@
 import AppWrapper from "./AppWrapper";
-import Beta from "../Beta";
+import Beta from "./Beta";
 import Loading from "../components/Loading";
 import TrendingCommunities from "../components/TrendingCommunities";
 

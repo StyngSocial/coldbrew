@@ -12,8 +12,6 @@ import {
   Tabs,
   Tab,
 } from "react-bootstrap";
-import { signIn } from "next-auth/client";
-import styles from "./Beta.module.scss";
 
 const Beta = () => {
   const version = "v0.0.9";
