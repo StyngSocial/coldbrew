@@ -20,7 +20,7 @@ const CommunitiesModule = ({ session, loading, data, error }) => {
       )}
       {session && data && (
         <AppWrapper>
-          <h1 className="mt-5">Trending Communities</h1>
+          <h1 className="mt-4">Trending Communities</h1>
           <div className="d-flex flex-row flex-wrap">
             {data.map((community) => {
               index++;

@@ -3,17 +3,19 @@ import Link from "next/link";
 import styles from "./Post.module.scss";
 import { Container, Row, Col } from "react-bootstrap";
 
+import { Observer } from "../../util/constants";
+
 const Post = ({ post }) => {
   const title = post.title.slice(0, 50);
   const date = post.created.slice(0, 9);
   return (
     <Link
-      href={`/post/${post.permlink}?author=${post.author}&observer=benny.blockchain`}
+      href={`/post/${post.permlink}?author=${post.author}&observer=${Observer}`}
       passHref
     >
       <a className={`text-roast ${styles.link}`}>
         <Container fluid className={styles.post}>
-          <Row className="py-2 border-bottom">
+          <Row className="py-3 border-bottom">
             <Col className="col-auto py-1">
               <a href="#">
                 <Image

@@ -1,8 +1,10 @@
 import { Card, Button, Badge } from "react-bootstrap";
+import { Observer } from "../../util/constants";
 import useSWR from "swr";
+
 const CommunityCard = ({ name, category, index }) => {
   const { data, error } = useSWR(
-    `/api/hive/communities/${category}?observer=benny.blockchain`
+    `/api/hive/communities/${category}?observer=${Observer}`
   );
   if (data) console.log(data);
   const avatar_url = `https://images.hive.blog/u/${category}/avatar`;
@@ -36,4 +38,3 @@ const CommunityCard = ({ name, category, index }) => {
 };
 
 export default CommunityCard;
-//https://images.hive.blog/u/benny.blockchain/avatar
