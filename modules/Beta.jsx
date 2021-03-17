@@ -2,6 +2,7 @@ import Background from "../components/Background.jsx";
 import { useState } from "react";
 import axios from "axios";
 import coldbrew from "../public/logo.png";
+import { signIn } from "next-auth/client";
 import {
   Card,
   Form,
@@ -37,6 +38,10 @@ const Beta = () => {
   };
 
   const signUp = () => {
+    if (!name || !email) {
+      alert("Please privde a name and email.");
+      return;
+    }
     const newUser = `New user - ${name}.\n${email}`;
     axios
       .post("/api/transport", {
@@ -71,7 +76,7 @@ const Beta = () => {
                 >
                   Cold Brew
                 </div>
-                <Badge className="m-2 d-inline " variant="primary">
+                <Badge className="m-2 d-inline" variant="primary">
                   {version}
                 </Badge>
               </Card.Title>
@@ -98,7 +103,7 @@ const Beta = () => {
                   size="lg"
                   variant="primary"
                   type="submit"
-                  className="text-roast"
+                  className="text-light"
                 >
                   Sign Up
                 </Button>
@@ -130,31 +135,14 @@ const Beta = () => {
                 monetizing clout.
               </Card.Subtitle>
 
-              <Form className="my-4">
-                <FormControl
-                  className="my-4"
-                  id="username"
-                  placeholder="@username"
-                  value={username}
-                  onChange={handleUsername}
-                />
-
-                <Form.Control
-                  className="my-4"
-                  type="password"
-                  placeholder="•••••••••"
-                  value={password}
-                  onChange={handlePassword}
-                />
-                <Button
-                  size="lg"
-                  variant="primary"
-                  type="submit"
-                  href="/api/auth/signin"
-                >
-                  Login
-                </Button>
-              </Form>
+              <Button
+                size="lg"
+                variant="primary"
+                className="my-5 text-light"
+                onClick={() => signIn("auth0")}
+              >
+                Login
+              </Button>
             </Card.Body>
           </Tab>
         </Tabs>
