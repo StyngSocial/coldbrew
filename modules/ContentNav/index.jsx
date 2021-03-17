@@ -2,10 +2,11 @@ import Link from "next/link";
 import styles from "./ContentNav.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faChartLine,
+  faCode,
+  faCoffee,
+  faFire,
   faHouseUser,
-  faSearch,
-  faUserFriends,
-  faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 
 const ContentNav = () => {
@@ -26,7 +27,7 @@ const ContentNav = () => {
             </a>
           </li>
         </Link>
-        <Link href="/following" passHref>
+        <Link href="/cb" passHref>
           <li className="nav-item">
             <a
               className={`nav-link py-3 rounded-pill ${styles.contentBtn}`}
@@ -34,13 +35,13 @@ const ContentNav = () => {
               href="#"
             >
               <h5 className="d-inline">
-                <FontAwesomeIcon icon={faUserFriends} className="d-inline" />
-                <span className="mx-3">Following</span>
+                <FontAwesomeIcon icon={faCoffee} className="d-inline" />
+                <span className="mx-3">Cold Brew</span>
               </h5>
             </a>
           </li>
         </Link>
-        <Link href="/c" passHref>
+        <Link href="/dev" passHref>
           <li className="nav-item">
             <a
               className={`nav-link py-3 rounded-pill ${styles.contentBtn}`}
@@ -48,13 +49,13 @@ const ContentNav = () => {
               href="#"
             >
               <h5 className="d-inline">
-                <FontAwesomeIcon icon={faUsers} className="d-inline" />
-                <span className="mx-3">Communities</span>
+                <FontAwesomeIcon icon={faCode} className="d-inline" />
+                <span className="mx-3">Dev</span>
               </h5>
             </a>
           </li>
         </Link>
-        <Link href="/explore" passHref>
+        <Link href="/stonks" passHref>
           <li className="nav-item">
             <a
               className={`nav-link py-3 rounded-pill ${styles.contentBtn}`}
@@ -62,8 +63,22 @@ const ContentNav = () => {
               href="#"
             >
               <h5 className="d-inline">
-                <FontAwesomeIcon icon={faSearch} className="d-inline" />
-                <span className="mx-3">Explore</span>
+                <FontAwesomeIcon icon={faChartLine} className="d-inline" />
+                <span className="mx-3">Stonks</span>
+              </h5>
+            </a>
+          </li>
+        </Link>
+        <Link href="/trending" passHref>
+          <li className="nav-item">
+            <a
+              className={`nav-link py-3 rounded-pill ${styles.contentBtn}`}
+              aria-current="page"
+              href="#"
+            >
+              <h5 className="d-inline">
+                <FontAwesomeIcon icon={faFire} className="d-inline" />
+                <span className="mx-3">Trending</span>
               </h5>
             </a>
           </li>
