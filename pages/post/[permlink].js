@@ -5,7 +5,6 @@ import axios from "axios";
 import useSWR from "swr";
 import AppWrapper from "../../modules/AppWrapper";
 import Post from "../../components/Post";
-import Beta from "../../Beta";
 
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 
