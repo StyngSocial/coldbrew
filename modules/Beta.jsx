@@ -17,24 +17,15 @@ import {
 const Beta = () => {
   const version = "v0.0.9";
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const handleName = (e) => {
     e.preventDefault();
     setName(e.target.value);
   };
-  const handleUsername = (e) => {
-    e.preventDefault();
-    setUsername(e.target.value);
-  };
+
   const handleEmail = (e) => {
     e.preventDefault();
     setEmail(e.target.value);
-  };
-  const handlePassword = (e) => {
-    e.preventDefault();
-    setPassword(e.target.value);
   };
 
   const signUp = () => {
@@ -48,6 +39,15 @@ const Beta = () => {
         name: name,
         email: email,
         message: newUser,
+      })
+      .then((resp) => {
+        if (resp.status != 200) {
+          return alert("Didn't work. Try again");
+        } else {
+          alert(
+            "Thank you for signing up! You will receive an email shortly with your account."
+          );
+        }
       })
       .catch(function (error) {
         console.log(error);
@@ -84,7 +84,7 @@ const Beta = () => {
                 Invite only. Sign up to be added.
               </Card.Subtitle>
 
-              <Form className="my-4" onSubmit={signUp}>
+              <Form className="my-4">
                 <Form.Control
                   className="my-4"
                   type="name"
@@ -102,7 +102,7 @@ const Beta = () => {
                 <Button
                   size="lg"
                   variant="primary"
-                  type="submit"
+                  onClick={() => signUp()}
                   className="text-light"
                 >
                   Sign Up
