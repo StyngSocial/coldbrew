@@ -4,20 +4,22 @@ import axios from "axios";
 import useSWR from "swr";
 import FeedModule from "../modules/Feed.module";
 
-import { Observer } from "../util/constants";
+import { LeoFinance, Observer } from "../util/constants";
 
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 
-export default function Home() {
+const stonks = () => {
   const [session, loading] = useSession();
   const { data, error } = useSWR(
-    `/api/hive/rankedposts?sort=created&tag=coldbrew-app&observer=${Observer}`,
+    `/api/hive/rankedposts?sort=trending&tag=${LeoFinance}&observer=${Observer}`,
     fetcher
   );
+  console.log(LeoFinance);
+  if (data) console.log(data);
   return (
     <>
       <Head>
-        <title>plz leave feedback | ?</title>
+        <title>stonks</title>
       </Head>
       <FeedModule
         session={session}
@@ -27,4 +29,6 @@ export default function Home() {
       />
     </>
   );
-}
+};
+
+export default stonks;

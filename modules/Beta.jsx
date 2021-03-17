@@ -1,51 +1,45 @@
-import Background from "../components/Background";
+import Background from "../components/Background.jsx";
 import { useState } from "react";
 import axios from "axios";
 import coldbrew from "../public/logo.png";
-import {
-  Card,
-  Form,
-  Button,
-  InputGroup,
-  FormControl,
-  Badge,
-  Tabs,
-  Tab,
-} from "react-bootstrap";
 import { signIn } from "next-auth/client";
-import styles from "./Beta.module.scss";
+import { Card, Form, Button, Badge, Tabs, Tab } from "react-bootstrap";
 
 const Beta = () => {
   const version = "v0.0.9";
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
   const [name, setName] = useState("");
+
   const handleName = (e) => {
     e.preventDefault();
     setName(e.target.value);
   };
-  const handleUsername = (e) => {
-    e.preventDefault();
-    setUsername(e.target.value);
-  };
+
   const handleEmail = (e) => {
     e.preventDefault();
     setEmail(e.target.value);
   };
-  const handlePassword = (e) => {
-    e.preventDefault();
-    setPassword(e.target.value);
-  };
 
   const signUp = () => {
-    console.log("hi");
+    if (!name || !email) {
+      alert("Please privde a name and email.");
+      return;
+    }
     const newUser = `New user - ${name}.\n${email}`;
     axios
       .post("/api/transport", {
         name: name,
         email: email,
         message: newUser,
+      })
+      .then((resp) => {
+        if (resp.status != 200) {
+          return alert("Didn't work. Try again");
+        } else {
+          alert(
+            "Thank you for signing up! You will receive an email shortly with your account."
+          );
+        }
       })
       .catch(function (error) {
         console.log(error);
@@ -74,7 +68,7 @@ const Beta = () => {
                 >
                   Cold Brew
                 </div>
-                <Badge className="m-2 d-inline " variant="primary">
+                <Badge className="m-2 d-inline" variant="primary">
                   {version}
                 </Badge>
               </Card.Title>
@@ -82,7 +76,7 @@ const Beta = () => {
                 Invite only. Sign up to be added.
               </Card.Subtitle>
 
-              <Form className="my-4" onSubmit={signUp}>
+              <Form className="my-4">
                 <Form.Control
                   className="my-4"
                   type="name"
@@ -100,8 +94,8 @@ const Beta = () => {
                 <Button
                   size="lg"
                   variant="primary"
-                  type="submit"
-                  className="text-roast"
+                  onClick={() => signUp()}
+                  className="text-light"
                 >
                   Sign Up
                 </Button>
@@ -133,31 +127,14 @@ const Beta = () => {
                 monetizing clout.
               </Card.Subtitle>
 
-              <Form className="my-4">
-                <FormControl
-                  className="my-4"
-                  id="username"
-                  placeholder="@username"
-                  value={username}
-                  onChange={handleUsername}
-                />
-
-                <Form.Control
-                  className="my-4"
-                  type="password"
-                  placeholder="•••••••••"
-                  value={password}
-                  onChange={handlePassword}
-                />
-                <Button
-                  size="lg"
-                  variant="primary"
-                  type="submit"
-                  href="/api/auth/signin"
-                >
-                  Login
-                </Button>
-              </Form>
+              <Button
+                size="lg"
+                variant="primary"
+                className="my-5 text-light"
+                onClick={() => signIn("auth0")}
+              >
+                Login
+              </Button>
             </Card.Body>
           </Tab>
         </Tabs>

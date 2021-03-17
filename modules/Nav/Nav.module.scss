@@ -1,0 +1,6 @@
+.mobile {
+  padding: 0 16px 0 0;
+  @media (min-width: 992px) {
+    padding: 0 48px 0 48px;
+  }
+}

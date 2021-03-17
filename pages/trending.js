@@ -2,24 +2,20 @@ import Head from "next/head";
 import { useSession } from "next-auth/client";
 import axios from "axios";
 import useSWR from "swr";
-import FeedModule from "../modules/Feed.module";
-
-import { Observer } from "../util/constants";
+import CommunitiesModule from "../modules/Communities.module";
 
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 
-export default function Home() {
+const trending = () => {
   const [session, loading] = useSession();
-  const { data, error } = useSWR(
-    `/api/hive/rankedposts?sort=created&tag=coldbrew-app&observer=${Observer}`,
-    fetcher
-  );
+  const { data, error } = useSWR("/api/hive/communities?limit=10", fetcher);
   return (
     <>
       <Head>
-        <title>plz leave feedback | ?</title>
+        <title>this shit hot</title>
       </Head>
-      <FeedModule
+
+      <CommunitiesModule
         session={session}
         loading={loading}
         data={data}
@@ -27,4 +23,6 @@ export default function Home() {
       />
     </>
   );
-}
+};
+
+export default trending;

@@ -8,16 +8,16 @@ import { Observer } from "../util/constants";
 
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 
-export default function Home() {
+const dev = () => {
   const [session, loading] = useSession();
   const { data, error } = useSWR(
-    `/api/hive/rankedposts?sort=created&tag=coldbrew-app&observer=${Observer}`,
+    `/api/hive/rankedposts?sort=trending&tag=coldbrew-dev&observer=${Observer}`,
     fetcher
   );
   return (
     <>
       <Head>
-        <title>plz leave feedback | ?</title>
+        <title>dev log</title>
       </Head>
       <FeedModule
         session={session}
@@ -27,4 +27,6 @@ export default function Home() {
       />
     </>
   );
-}
+};
+
+export default dev;

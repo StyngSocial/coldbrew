@@ -20,8 +20,8 @@ export default function AppWrapper({ children }) {
           <Col lg={6} className="p-0 ">
             {children}
           </Col>
-          <Col lg={3} className="d-none d-lg-flex bg-milk">
-            karma
+          <Col lg={3} className="d-none d-lg-flex">
+            <></>
           </Col>
         </Row>
       </Container>

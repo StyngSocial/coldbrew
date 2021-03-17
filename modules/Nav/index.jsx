@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import { signOut } from "next-auth/client";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import styles from "./Nav.module.scss";
 import {
   faHouseUser,
   faUserFriends,
@@ -10,20 +10,31 @@ import {
   faQuestion,
   faSignOutAlt,
   faSearch,
+  faInfo,
 } from "@fortawesome/free-solid-svg-icons";
-import logo from "../../../public/logo.png";
-import Feedback from "../../../components/Feedback";
+import Feedback from "../../components/Feedback.jsx";
 import { Navbar, Nav, Button } from "react-bootstrap";
+import DevNotes from "../../components/DevNotes";
 
 const Appbar = () => {
   const [show, setShow] = useState(false);
+  const [dev, setDev] = useState(false);
+
+  const handleModal = (e) => {
+    e.preventDefault();
+    setShow(!show);
+  };
+  const handleDev = (e) => {
+    e.preventDefault();
+    setDev(!dev);
+  };
 
   return (
     <>
       <Navbar
         fixed="top"
         bg="light"
-        className="border-bottom py-0 px-5 my-0 d-flex justify-content-between"
+        className={`border-bottom my-0 d-flex justify-content-between ${styles.mobile}`}
         style={{
           height: "50px",
         }}
@@ -43,6 +54,12 @@ const Appbar = () => {
         </Link>
 
         <Nav className="d-flex">
+          <Nav.Link
+            className="px-2 m-2 text-center d-flex align-items-center text-roast intro"
+            onClick={() => setDev(true)}
+          >
+            <FontAwesomeIcon icon={faInfo} style={{ fontSize: "1.25rem" }} />
+          </Nav.Link>
           <Nav.Link
             className="px-2 m-2 text-center d-flex align-items-center text-roast"
             onClick={() => setShow(true)}
@@ -109,6 +126,7 @@ const Appbar = () => {
         </Link>
       </Navbar>
       <Feedback show={show} onHide={() => setShow(false)} />
+      <DevNotes show={dev} onHide={() => setDev(false)} />
     </>
   );
 };
