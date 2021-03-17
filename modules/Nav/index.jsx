@@ -14,10 +14,20 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Feedback from "../../components/Feedback.jsx";
 import { Navbar, Nav, Button } from "react-bootstrap";
+import DevNotes from "../../components/DevNotes";
 
 const Appbar = () => {
   const [show, setShow] = useState(false);
-  const [intro, setIntro] = useState(false);
+  const [dev, setDev] = useState(false);
+
+  const handleModal = (e) => {
+    e.preventDefault();
+    setShow(!show);
+  };
+  const handleDev = (e) => {
+    e.preventDefault();
+    setDev(!dev);
+  };
 
   return (
     <>
@@ -46,7 +56,7 @@ const Appbar = () => {
         <Nav className="d-flex">
           <Nav.Link
             className="px-2 m-2 text-center d-flex align-items-center text-roast intro"
-            onClick={() => setIntro(!intro)}
+            onClick={() => setDev(true)}
           >
             <FontAwesomeIcon icon={faInfo} style={{ fontSize: "1.25rem" }} />
           </Nav.Link>
@@ -116,6 +126,7 @@ const Appbar = () => {
         </Link>
       </Navbar>
       <Feedback show={show} onHide={() => setShow(false)} />
+      <DevNotes show={dev} onHide={() => setDev(false)} />
     </>
   );
 };

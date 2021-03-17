@@ -3,21 +3,13 @@ import { useState } from "react";
 import axios from "axios";
 import coldbrew from "../public/logo.png";
 import { signIn } from "next-auth/client";
-import {
-  Card,
-  Form,
-  Button,
-  InputGroup,
-  FormControl,
-  Badge,
-  Tabs,
-  Tab,
-} from "react-bootstrap";
+import { Card, Form, Button, Badge, Tabs, Tab } from "react-bootstrap";
 
 const Beta = () => {
   const version = "v0.0.9";
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+
   const handleName = (e) => {
     e.preventDefault();
     setName(e.target.value);
