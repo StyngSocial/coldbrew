@@ -1,5 +1,4 @@
 import hive from "@hiveio/hive-js";
-import parseMarkdown from "../../../util/parseMarkdown"
 
 export default function handler(req, res) {
   const { sort, account, limit } = req.query;
@@ -11,11 +10,7 @@ export default function handler(req, res) {
   hive.api
     .callAsync("bridge.get_account_posts", params)
     .then((resp) => {
-      resp.map((post) => {
-        const rmMd = parseMarkdown(post.body)
-        post.body = rmMd
-      })
-
+      console.log(resp[0].body);
       res.status(200).send(resp);
     })
     .catch((err) => console.log(err));

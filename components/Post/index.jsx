@@ -1,45 +1,57 @@
 import Image from "next/image";
+import Head from "next/head";
 import Link from "next/link";
 import styles from "./Post.module.scss";
 import { Container, Row, Col } from "react-bootstrap";
 
 import { Observer } from "../../util/constants";
+import useMarkddown from "../../util/useMarkdown";
 
 const Post = ({ post }) => {
-  const title = post.title.slice(0, 50);
-  const date = post.created.slice(0, 9);
+  let title = post.title;
+  let body = useMarkddown(post.body);
+
+  if (title.length > 50) {
+    title = post.title.slice(0, 50) + "...";
+  } else {
+    title = post.title;
+  }
+
+  const date = post.created.slice(0, 10);
   return (
-    <Link
-      href={`/post/${post.permlink}?author=${post.author}&observer=${Observer}`}
-      passHref
-    >
-      <a className={`text-roast ${styles.link}`}>
-        <Container fluid className={styles.post}>
-          <Row className="py-3 border-bottom">
-            <Col className="col-auto py-1">
-              <a href="#">
+    <>
+      <Head>
+        <title>{post.author}</title>
+      </Head>
+      <Link
+        href={`/post/${post.permlink}?author=${post.author}&observer=${Observer}`}
+        passHref
+      >
+        <a className={`text-roast ${styles.link}`}>
+          <Container fluid className={`p-0 m-0 border-bottom ${styles.post}`}>
+            <Row className="pt-3 m-0 align-items-center justify-content-between">
+              <div className="d-flex align-items-center">
                 <Image
                   src={`https://images.hive.blog/u/${post.author}/avatar`}
-                  width={40}
-                  height={40}
-                  className="rounded-circle"
+                  width={30}
+                  height={30}
+                  className="rounded-circle d-inline"
                 />
-              </a>
-            </Col>
-            <Col className="col-10 p-0 " style={{ marginRight: "20px" }}>
-              <p className="m-0 d-inline">
-                <strong>{title + "..."}</strong>
-              </p>
-              <p className="d-inline float-right text-muted">
+                <p className="m-0 px-2 d-inline">
+                  <strong>{title}</strong>
+                </p>
+              </div>
+              <p className="text-muted m-0">
                 &nbsp;@{post.author} · {date}
               </p>
-
-              <p className="m-0 pt-2">{post.body}</p>
-            </Col>
-          </Row>
-        </Container>
-      </a>
-    </Link>
+            </Row>
+            <Row className="pb-3 m-0 border-bottom">
+              <div dangerouslySetInnerHTML={{ __html: body }} />
+            </Row>
+          </Container>
+        </a>
+      </Link>
+    </>
   );
 };
 
