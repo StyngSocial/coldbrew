@@ -10,7 +10,6 @@ export default function handler(req, res) {
   hive.api
     .callAsync("bridge.get_account_posts", params)
     .then((resp) => {
-      console.log(resp[0].body);
       res.status(200).send(resp);
     })
     .catch((err) => console.log(err));

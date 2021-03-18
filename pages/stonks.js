@@ -14,8 +14,6 @@ const stonks = () => {
     `/api/hive/rankedposts?sort=trending&tag=${LeoFinance}&observer=${Observer}`,
     fetcher
   );
-  console.log(LeoFinance);
-  if (data) console.log(data);
   return (
     <>
       <Head>

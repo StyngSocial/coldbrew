@@ -6,7 +6,6 @@ export default function useMarkdown(body) {
   const tokens = marked.lexer(md);
   const html = marked.parser(tokens);
   const clean = sanitizeHtml(html);
-  console.log(clean);
   return clean;
 }
 const post =

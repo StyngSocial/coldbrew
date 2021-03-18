@@ -6,7 +6,6 @@ const CommunityCard = ({ name, category, index }) => {
   const { data, error } = useSWR(
     `/api/hive/communities/${category}?observer=${Observer}`
   );
-  if (data) console.log(data);
   const avatar_url = `https://images.hive.blog/u/${category}/avatar`;
   return (
     <>

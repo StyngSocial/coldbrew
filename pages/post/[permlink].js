@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import useSWR from "swr";
 import AppWrapper from "../../modules/AppWrapper";
-import Post from "../../components/Post";
+import Post from "../../components/Post.jsx";
 
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 
@@ -19,7 +19,7 @@ const post = () => {
   return (
     <>
       <Head>
-        <title>Following | Cold Brew</title>
+        <title>{author}</title>
       </Head>
       {error && <h1>{error}</h1>}
       {!data && <AppWrapper>Loading...</AppWrapper>}
