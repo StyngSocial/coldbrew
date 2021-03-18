@@ -2,39 +2,30 @@ import Link from "next/link";
 import { signOut } from "next-auth/client";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styles from "./Nav.module.scss";
+import styles from "./MainNav.module.scss";
 import {
   faHouseUser,
-  faUserFriends,
-  faUsers,
   faQuestion,
   faSignOutAlt,
-  faSearch,
   faInfo,
+  faCoffee,
+  faCode,
+  faChartLine,
 } from "@fortawesome/free-solid-svg-icons";
 import Feedback from "../../components/Feedback.jsx";
 import { Navbar, Nav, Button } from "react-bootstrap";
 import DevNotes from "../../components/DevNotes";
 
-const Appbar = () => {
+const MainNav = () => {
   const [show, setShow] = useState(false);
   const [dev, setDev] = useState(false);
-
-  const handleModal = (e) => {
-    e.preventDefault();
-    setShow(!show);
-  };
-  const handleDev = (e) => {
-    e.preventDefault();
-    setDev(!dev);
-  };
 
   return (
     <>
       <Navbar
         fixed="top"
         bg="light"
-        className={`border-bottom my-0 d-flex justify-content-between ${styles.mobile}`}
+        className={`border-bottom my-0 d-flex justify-content-between ${styles.mobileTop}`}
         style={{
           height: "50px",
         }}
@@ -84,43 +75,43 @@ const Appbar = () => {
         variant="light"
         bg="light"
         fixed="bottom"
-        className="border-top p-0 d-flex d-lg-none justify-content-between align-items-start"
+        className="border-top p-0 d-flex d-lg-none"
       >
         <Link href="/" passHref>
-          <Nav.Link>
+          <Nav.Link className="w-25 py-3 text-center">
             <FontAwesomeIcon
               icon={faHouseUser}
-              className="w-25 text-roast text-center"
-              style={{ fontSize: "2rem" }}
+              className="text-roast text-center"
+              size="lg"
             />
           </Nav.Link>
         </Link>
 
-        <Link href="/explore" passHref>
-          <Nav.Link>
+        <Link href="/cb" passHref>
+          <Nav.Link className="w-25 py-3 text-center">
             <FontAwesomeIcon
-              icon={faSearch}
-              className="w-25 text-roast text-center"
-              style={{ fontSize: "2rem" }}
+              icon={faCoffee}
+              className="text-roast text-center"
+              size="lg"
             />
           </Nav.Link>
         </Link>
 
-        <Link href="/following" passHref>
-          <Nav.Link>
+        <Link href="/dev" passHref>
+          <Nav.Link className="w-25 py-3 text-center">
             <FontAwesomeIcon
-              icon={faUserFriends}
-              className="w-25 text-roast text-center"
-              style={{ fontSize: "2rem" }}
+              icon={faCode}
+              className="text-roast text-center"
+              size="lg"
             />
           </Nav.Link>
         </Link>
-        <Link href="/c" passHref>
-          <Nav.Link>
+        <Link href="/stonks" passHref>
+          <Nav.Link className="w-25 py-3 text-center">
             <FontAwesomeIcon
-              icon={faUsers}
-              className="w-25 text-roast text-center"
-              style={{ fontSize: "2rem" }}
+              icon={faChartLine}
+              className="text-roast text-center"
+              size="lg"
             />
           </Nav.Link>
         </Link>
@@ -131,4 +122,4 @@ const Appbar = () => {
   );
 };
 
-export default Appbar;
+export default MainNav;

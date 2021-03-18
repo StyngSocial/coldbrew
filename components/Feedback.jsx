@@ -24,7 +24,7 @@ const Feedback = (prop) => {
       });
   };
   return (
-    <Modal show={show} onHide={onHide}>
+    <Modal show={show} onHide={onHide} centered>
       <Modal.Body>
         <h5>Feedback</h5>
         <p className="d-block">

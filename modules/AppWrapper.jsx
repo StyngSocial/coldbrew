@@ -1,6 +1,6 @@
 import { Col, Row, Container } from "react-bootstrap";
 import ContentNav from "./ContentNav";
-import Nav from "./Nav";
+import MainNav from "./MainNav";
 /**
  * Wrapper for the UI of the App. Split in 3 columns. Explore nav on left,
  * feed in center, pormoted/ads on the right.
@@ -12,7 +12,7 @@ export default function AppWrapper({ children }) {
   return (
     <>
       <Container fluid>
-        <Nav />
+        <MainNav />
         <Row className="d-flex mt-5 justify-content-center">
           <Col lg={3} className="px-4">
             <ContentNav />
