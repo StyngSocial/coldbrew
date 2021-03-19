@@ -4,19 +4,18 @@ import axios from "axios";
 import useSWR from "swr";
 import FeedModule from "../modules/Feed.module";
 
-import { Observer } from "../util/constants";
+import { Observer, ColdBrew } from "../util/constants";
 
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 
 export default function Home() {
   const banner = {
     title: "Home",
-    about:
-      "Displays posts from #coldbrew-app. All posts from the Cold Brew app will show up here.",
+    about: "All posts from beta testers using the Cold Brew app.",
   };
   const [session, loading] = useSession();
   const { data, error } = useSWR(
-    `/api/hive/rankedposts?sort=created&tag=coldbrew-app&observer=${Observer}`,
+    `/api/hive/rankedposts?sort=created&tag=${ColdBrew}&observer=${Observer}`,
     fetcher
   );
   return (
