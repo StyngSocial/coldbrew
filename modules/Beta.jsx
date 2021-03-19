@@ -1,4 +1,5 @@
 import Background from "../components/Background.jsx";
+import Head from "next/head";
 import { useState } from "react";
 import axios from "axios";
 import coldbrew from "../public/logo.png";
@@ -46,101 +47,108 @@ const Beta = () => {
       });
   };
   return (
-    <div className="d-flex vh-100 justify-content-center align-items-center text-center">
-      <Card className="bg-light p-0" style={{ width: "350px" }}>
-        <Tabs
-          defaultActiveKey="welcome"
-          id="coldbrew"
-          className="d-flex m-0 nav-pills nav-fill"
-        >
-          <Tab eventKey="welcome" title="Sign Up">
-            <Card.Body>
-              <Card.Img
-                className="mb-2"
-                variant="top"
-                src={coldbrew}
-                style={{ height: "150px", width: "150px" }}
-              />
-              <Card.Title className="m-0">
-                <div
-                  className="h3 d-inline text-roast"
-                  style={{ fontFamily: "Dancing Script" }}
-                >
-                  Cold Brew
-                </div>
-                <Badge className="m-2 d-inline" variant="primary">
-                  {version}
-                </Badge>
-              </Card.Title>
-              <Card.Subtitle className="mt-2 text-muted">
-                Invite only. Sign up to be added.
-              </Card.Subtitle>
-
-              <Form className="my-4">
-                <Form.Control
-                  className="my-4"
-                  type="name"
-                  placeholder="Name"
-                  value={name}
-                  onChange={handleName}
+    <>
+      <Head>
+        <title>Ƀeta | Styng Social</title>
+      </Head>
+      <div className="d-flex vh-100 justify-content-center align-items-center text-center">
+        <Card className="bg-light p-0" style={{ width: "350px" }}>
+          <Tabs
+            defaultActiveKey="welcome"
+            id="coldbrew"
+            className="d-flex m-0 nav-pills nav-fill"
+          >
+            <Tab eventKey="welcome" title="Sign Up">
+              <Card.Body>
+                <img
+                  className="mb-2"
+                  src={coldbrew}
+                  style={{ width: "150px", heigth: "150px" }}
                 />
-                <Form.Control
-                  className="my-4"
-                  type="email"
-                  placeholder="Email"
-                  value={email}
-                  onChange={handleEmail}
-                />
-                <Button
-                  size="lg"
-                  variant="primary"
-                  onClick={() => signUp()}
-                  className="text-light"
-                >
-                  Sign Up
-                </Button>
-              </Form>
-            </Card.Body>
-          </Tab>
-          <Tab eventKey="login" title="Log In">
-            <Card.Body>
-              <Card.Img
-                className="mb-2"
-                variant="top"
-                src={coldbrew}
-                style={{ height: "150px", width: "150px" }}
-              />
-              <Card.Title className="m-0">
                 <Card.Title className="m-0">
                   <div
-                    className="h3 d-inline"
+                    className="h3 d-inline text-roast"
                     style={{ fontFamily: "Dancing Script" }}
                   >
                     Cold Brew
                   </div>
-                  <Badge className="m-2 d-inline text-roast" variant="primary">
+                  <Badge className="m-2 d-inline" variant="primary">
                     {version}
                   </Badge>
                 </Card.Title>
-              </Card.Title>
-              <Card.Subtitle className="mt-1 text-muted">
-                monetizing clout.
-              </Card.Subtitle>
+                <Card.Subtitle className="mt-2 text-muted">
+                  Invite only. Sign up to be added.
+                </Card.Subtitle>
 
-              <Button
-                size="lg"
-                variant="primary"
-                className="my-5 text-light"
-                onClick={() => signIn("auth0")}
-              >
-                Login
-              </Button>
-            </Card.Body>
-          </Tab>
-        </Tabs>
-      </Card>
-      <Background />
-    </div>
+                <Form className="my-4">
+                  <Form.Control
+                    className="my-4"
+                    type="name"
+                    placeholder="Name"
+                    value={name}
+                    onChange={handleName}
+                  />
+                  <Form.Control
+                    className="my-4"
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={handleEmail}
+                  />
+                  <Button
+                    size="lg"
+                    variant="primary"
+                    onClick={() => signUp()}
+                    className="text-light"
+                  >
+                    Sign Up
+                  </Button>
+                </Form>
+              </Card.Body>
+            </Tab>
+            <Tab eventKey="login" title="Log In">
+              <Card.Body>
+                <Card.Img
+                  className="mb-2"
+                  variant="top"
+                  src={coldbrew}
+                  style={{ height: "150px", width: "150px" }}
+                />
+                <Card.Title className="m-0">
+                  <Card.Title className="m-0">
+                    <div
+                      className="h3 d-inline"
+                      style={{ fontFamily: "Dancing Script" }}
+                    >
+                      Cold Brew
+                    </div>
+                    <Badge
+                      className="m-2 d-inline text-roast"
+                      variant="primary"
+                    >
+                      {version}
+                    </Badge>
+                  </Card.Title>
+                </Card.Title>
+                <Card.Subtitle className="mt-1 text-muted">
+                  monetizing clout.
+                </Card.Subtitle>
+
+                <Button
+                  size="lg"
+                  variant="primary"
+                  className="my-5 text-light"
+                  onClick={() => signIn("auth0")}
+                >
+                  Login
+                </Button>
+              </Card.Body>
+            </Tab>
+          </Tabs>
+        </Card>
+        <Background />
+      </div>
+    </>
   );
 };
 //

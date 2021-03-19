@@ -27,6 +27,7 @@ const Post = ({ post }) => {
               width={30}
               height={30}
               className="rounded-circle d-inline"
+              alt="User Avatar"
             />
             {data && (
               <p className="my-0" style={{ paddingLeft: "10px" }}>
