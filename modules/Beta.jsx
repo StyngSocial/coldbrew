@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useState } from "react";
 import axios from "axios";
 import coldbrew from "../public/logo.png";
+import styles from "../styles/Beta.module.scss";
 import { signIn } from "next-auth/client";
 import { Card, Form, Button, Badge, Tabs, Tab } from "react-bootstrap";
 
@@ -10,6 +11,7 @@ const Beta = () => {
   const version = "v0.0.9";
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [signedUp, setSignedUp] = useState(false);
 
   const handleName = (e) => {
     e.preventDefault();
@@ -37,9 +39,7 @@ const Beta = () => {
         if (resp.status != 200) {
           return alert("Didn't work. Try again");
         } else {
-          alert(
-            "Thank you for signing up! You will receive an email shortly with your account."
-          );
+          setSignedUp(true);
         }
       })
       .catch(function (error) {
@@ -76,34 +76,73 @@ const Beta = () => {
                     {version}
                   </Badge>
                 </Card.Title>
-                <Card.Subtitle className="mt-2 text-muted">
-                  Invite only. Sign up to be added.
-                </Card.Subtitle>
-
-                <Form className="my-4">
-                  <Form.Control
-                    className="my-4"
-                    type="name"
-                    placeholder="Name"
-                    value={name}
-                    onChange={handleName}
-                  />
-                  <Form.Control
-                    className="my-4"
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={handleEmail}
-                  />
-                  <Button
-                    size="lg"
-                    variant="primary"
-                    onClick={() => signUp()}
-                    className="text-light"
-                  >
-                    Sign Up
-                  </Button>
-                </Form>
+                {signedUp && (
+                  <>
+                    <svg
+                      className={`${styles.checkmark}`}
+                      version="1.1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 130.2 130.2"
+                    >
+                      <circle
+                        className={`${styles.path} ${styles.circle}`}
+                        fill="none"
+                        stroke="#73AF55"
+                        stroke-width="6"
+                        stroke-miterlimit="10"
+                        cx="65.1"
+                        cy="65.1"
+                        r="62.1"
+                      />
+                      <polyline
+                        className={`${styles.path} ${styles.check}`}
+                        fill="none"
+                        stroke="#73AF55"
+                        stroke-width="6"
+                        stroke-linecap="round"
+                        stroke-miterlimit="10"
+                        points="100.2,40.2 51.5,88.8 29.8,67.5 "
+                      />
+                    </svg>
+                    <p className="success text-muted pt-3">
+                      Thanks for signing up for the Styng Social Beta!
+                      <br />
+                      You will receive an email with an account in a couple
+                      days.
+                    </p>
+                  </>
+                )}
+                {!signedUp && (
+                  <>
+                    <Card.Subtitle className="mt-2 text-muted">
+                      Invite only. Sign up to be added.
+                    </Card.Subtitle>
+                    <Form className="my-4">
+                      <Form.Control
+                        className="my-4"
+                        type="name"
+                        placeholder="Name"
+                        value={name}
+                        onChange={handleName}
+                      />
+                      <Form.Control
+                        className="my-4"
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={handleEmail}
+                      />
+                      <Button
+                        size="lg"
+                        variant="primary"
+                        onClick={() => signUp()}
+                        className="text-light"
+                      >
+                        Sign Up
+                      </Button>
+                    </Form>
+                  </>
+                )}
               </Card.Body>
             </Tab>
             <Tab eventKey="login" title="Log In">
