@@ -9,6 +9,11 @@ import { Observer } from "../util/constants";
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 
 export default function Home() {
+  const banner = {
+    title: "Home",
+    about:
+      "Displays posts from #coldbrew-app. All posts from the Cold Brew app will show up here.",
+  };
   const [session, loading] = useSession();
   const { data, error } = useSWR(
     `/api/hive/rankedposts?sort=created&tag=coldbrew-app&observer=${Observer}`,
@@ -23,6 +28,7 @@ export default function Home() {
         session={session}
         loading={loading}
         data={data}
+        banner={banner}
         error={error}
       />
     </>

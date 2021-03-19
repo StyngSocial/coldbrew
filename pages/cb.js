@@ -9,6 +9,10 @@ import { ColdBrewAcc } from "../util/constants";
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 
 const coldbrew = () => {
+  const banner = {
+    title: "Cold Brew",
+    about: "All posts from the Cold Brew account.",
+  };
   const [session, loading] = useSession();
   const { data, error } = useSWR(
     `api/hive/following?sort=posts&account=${ColdBrewAcc}&limit=10`,
@@ -23,6 +27,7 @@ const coldbrew = () => {
         session={session}
         loading={loading}
         data={data}
+        banner={banner}
         error={error}
       />
     </>
