@@ -31,6 +31,7 @@ const PostIntro = ({ post }) => {
                 width={35}
                 height={35}
                 className="rounded-circle"
+                alt="User Avatar"
               />
               {data && (
                 <p className="my-0" style={{ paddingLeft: "10px" }}>

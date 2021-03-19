@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>plz leave feedback | ?</title>
+        <title>plz leave feedback (click {"->"} ?)</title>
       </Head>
       <FeedModule
         session={session}

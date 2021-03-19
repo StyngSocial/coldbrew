@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Card, Button, Badge } from "react-bootstrap";
 import { Observer } from "../../util/constants";
 import useSWR from "swr";
@@ -16,11 +17,12 @@ const CommunityCard = ({ name, category, index }) => {
           style={{ width: "300px" }}
         >
           <Card.Body className="border-light d-flex flex-column align-items-center">
-            <img
+            <Image
               className="text-center rounded-circle"
+              width={100}
+              height={100}
               src={avatar_url}
-              alt={`${name} avatar`}
-              style={{ width: "100px", height: "100px" }}
+              alt="Community Avater"
             />
             <Card.Title className="py-3 m-0 d-inline">
               <Badge className="m-2 d-inline" variant="primary">

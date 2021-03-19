@@ -4,6 +4,18 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <link rel="manifest" href="/manifest.json" />
+          <meta name="theme-color" content="#f8f9fa" />
+
+          <link rel="apple-touch-icon" href="/coldbrew-144x144.png" />
+          <link rel="apple-touch-startup-icon" href="/coldbrew-144x144.png" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="#f8f9fa"
+          />
+          <meta name="apple-mobile-web-app-title" content="Cold Brew" />
+
           <link rel="icon" href="/favicon.ico" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
