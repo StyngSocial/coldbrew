@@ -78,7 +78,7 @@ const MainNav = () => {
         className="border-top p-0 d-flex d-lg-none"
       >
         <Link href="/" passHref>
-          <Nav.Link className="w-25 py-3 text-center">
+          <Nav.Link className={`w-25 py-3 text-center ${styles.contentBtn}`}>
             <FontAwesomeIcon
               icon={faHouseUser}
               className="text-roast text-center"
@@ -88,7 +88,7 @@ const MainNav = () => {
         </Link>
 
         <Link href="/cb" passHref>
-          <Nav.Link className="w-25 py-3 text-center">
+          <Nav.Link className={`w-25 py-3 text-center ${styles.contentBtn}`}>
             <FontAwesomeIcon
               icon={faCoffee}
               className="text-roast text-center"
@@ -98,7 +98,7 @@ const MainNav = () => {
         </Link>
 
         <Link href="/dev" passHref>
-          <Nav.Link className="w-25 py-3 text-center">
+          <Nav.Link className={`w-25 py-3 text-center ${styles.contentBtn}`}>
             <FontAwesomeIcon
               icon={faCode}
               className="text-roast text-center"
@@ -107,7 +107,7 @@ const MainNav = () => {
           </Nav.Link>
         </Link>
         <Link href="/stonks" passHref>
-          <Nav.Link className="w-25 py-3 text-center">
+          <Nav.Link className={`w-25 py-3 text-center ${styles.contentBtn}`}>
             <FontAwesomeIcon
               icon={faChartLine}
               className="text-roast text-center"

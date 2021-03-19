@@ -24,8 +24,8 @@ const PostIntro = ({ post }) => {
         passHref
       >
         <a className={`text-roast ${styles.link}`}>
-          <Container fluid className={`p-0 m-0 border-bottom ${styles.post}`}>
-            <Row className="pt-3 m-0 align-items-center">
+          <Container fluid className={`py-3 m-0 border-bottom ${styles.post}`}>
+            <Row className="m-0 align-items-center">
               <Image
                 src={`https://images.hive.blog/u/${post.author}/avatar`}
                 width={35}
@@ -35,14 +35,15 @@ const PostIntro = ({ post }) => {
               {data && (
                 <p className="my-0" style={{ paddingLeft: "10px" }}>
                   <strong>{data.metadata.profile.name}</strong>
+                  <div className="text-muted d-inline">
+                    &nbsp;@{post.author}
+                  </div>
                 </p>
               )}
-              <p className="text-muted m-0">
-                &nbsp;@{post.author} · {date}
-              </p>
+              <p className="text-muted m-0 d-none d-md-flex">&nbsp;· {date}</p>
             </Row>
             <Row className="m-0">
-              <p className="m-0">
+              <p className="m-0 pt-2">
                 <strong>{post.title}</strong>
               </p>
             </Row>

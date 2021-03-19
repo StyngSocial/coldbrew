@@ -2,12 +2,7 @@
   color: #1b1209;
 }
 
-.contentBtn:hover {
-  color: #1b1209;
-  background-color: rgba(80, 200, 120, 0.1);
-}
-
-.contentBtn:focus {
+.contentBtn:active {
   color: #50c878;
   background-color: none;
 }
