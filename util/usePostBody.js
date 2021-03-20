@@ -21,9 +21,7 @@ const usePostBody = (postBody) => {
   };
 
   const brewBody = () => {
-    console.log(body);
     const brew = body.replaceAll(postMarkdownRegEx, "");
-    console.log(brew);
     setBrew(brew);
   };
   useEffect(() => {

@@ -3,9 +3,9 @@ import Head from "next/head";
 import { useState } from "react";
 import axios from "axios";
 import coldbrew from "../public/logo.png";
-import styles from "../styles/Beta.module.scss";
 import { signIn } from "next-auth/client";
 import { version } from "../package.json";
+import SendConfirmation from "../components/SendConfirmation";
 import { Card, Form, Button, Badge, Tabs, Tab } from "react-bootstrap";
 
 const Beta = () => {
@@ -77,40 +77,10 @@ const Beta = () => {
                   </Badge>
                 </Card.Title>
                 {signedUp && (
-                  <>
-                    <svg
-                      className={`${styles.checkmark}`}
-                      version="1.1"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 130.2 130.2"
-                    >
-                      <circle
-                        className={`${styles.path} ${styles.circle}`}
-                        fill="none"
-                        stroke="#73AF55"
-                        stroke-width="6"
-                        stroke-miterlimit="10"
-                        cx="65.1"
-                        cy="65.1"
-                        r="62.1"
-                      />
-                      <polyline
-                        className={`${styles.path} ${styles.check}`}
-                        fill="none"
-                        stroke="#73AF55"
-                        stroke-width="6"
-                        stroke-linecap="round"
-                        stroke-miterlimit="10"
-                        points="100.2,40.2 51.5,88.8 29.8,67.5 "
-                      />
-                    </svg>
-                    <p className="success text-muted pt-3">
-                      Thanks for signing up for the Styng Social Beta!
-                      <br />
-                      You will receive an email with an account in a couple
-                      days.
-                    </p>
-                  </>
+                  <SendConfirmation
+                    message="Thanks for signing up for the Styng Social alpha release! You will
+        receive an email with an account soon."
+                  />
                 )}
                 {!signedUp && (
                   <>

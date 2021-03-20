@@ -13,7 +13,7 @@ import {
   faChartLine,
 } from "@fortawesome/free-solid-svg-icons";
 import Feedback from "../../components/Feedback.jsx";
-import { Navbar, Nav, Button } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import DevNotes from "../../components/DevNotes";
 
 const MainNav = () => {

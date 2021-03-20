@@ -3,7 +3,7 @@ import { version } from "../package.json";
 
 const DevNotes = ({ show, onHide }) => {
   return (
-    <Modal show={show} onHide={onHide} centered className="bg-greenlight">
+    <Modal show={show} onHide={onHide} centered>
       <div className="row m-0 p-0 justify-content-center align-items-center">
         <h3
           className="m-0 mb-1 mt-2 pt-1 text-align-center"
