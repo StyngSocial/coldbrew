@@ -16,7 +16,7 @@ const dev = () => {
   };
   const [session, loading] = useSession();
   const { data, error } = useSWR(
-    `/api/hive/rankedposts?sort=trending&tag=coldbrew-dev&observer=${Observer}`,
+    `/api/hive/rankedposts?sort=created&tag=coldbrew-dev&observer=${Observer}`,
     fetcher
   );
   return (
