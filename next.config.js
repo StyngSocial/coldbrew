@@ -1,6 +1,6 @@
 const withImages = require("next-images");
 module.exports = withImages({
-    images: {
-        domains: ['images.hive.blog'],
-    }
+  images: {
+    domains: ["images.hive.blog", "images.ecency.com"],
+  },
 });

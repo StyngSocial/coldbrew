@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
@@ -6,17 +7,18 @@ import styles from "./PostIntro.module.scss";
 import { Container, Row, Col } from "react-bootstrap";
 
 import { Observer } from "../../util/constants";
+import usePostBody from "../../util/usePostBody.js";
 
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 
 const PostIntro = ({ post }) => {
+  const date = post.created.slice(0, 10);
+  const { brew, imageUrl } = usePostBody(post.body);
   const { data, error } = useSWR(
     `api/hive/profile?account=${post.author}&observer=hiveio`,
     fetcher
   );
 
-  const body = post.body.slice(0, 776);
-  const date = post.created.slice(0, 10);
   return (
     <>
       <Link
@@ -43,14 +45,24 @@ const PostIntro = ({ post }) => {
               )}
               <p className="text-muted m-0 d-none d-md-flex">&nbsp;· {date}</p>
             </Row>
-            <Row className="m-0">
-              <p className="m-0 pt-2">
-                <strong>{post.title}</strong>
-              </p>
-            </Row>
-            <p className="mw-100" style={{ overflow: "hidden" }}>
-              {body}
+
+            <p className="m-0 pt-2">
+              <strong>{post.title}</strong>
             </p>
+
+            <p className="mw-100" style={{ overflow: "hidden" }}>
+              {brew}
+            </p>
+            <Row className="m-0 p-0 justify-content-center">
+              {imageUrl && (
+                <Image
+                  className="rounded"
+                  src={imageUrl}
+                  width={125}
+                  height={150}
+                />
+              )}
+            </Row>
           </Container>
         </a>
       </Link>
