@@ -3,7 +3,7 @@ import axios from "axios";
 
 const FeedBanner = ({ title, about }) => {
   return (
-    <Container fluid className="py-2 bg-greenlight">
+    <Container fluid className="py-2 bg-greenlight border-bottom">
       <h3 className="">{title}</h3>
       <p className="">{about}</p>
     </Container>

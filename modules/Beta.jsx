@@ -49,7 +49,7 @@ const Beta = () => {
   return (
     <>
       <Head>
-        <title>Ƀeta | Styng Social</title>
+        <title>Cold Brew by Styng Social</title>
       </Head>
       <div className="d-flex vh-100 justify-content-center align-items-center text-center">
         <Card className="bg-light p-0" style={{ width: "350px" }}>
@@ -78,8 +78,8 @@ const Beta = () => {
                 </Card.Title>
                 {signedUp && (
                   <SendConfirmation
-                    message="Thanks for signing up for the Styng Social alpha release! You will
-        receive an email with an account soon."
+                    message="You have signed up for the Styng Social alpha release! You will
+        receive an email when your account is ready."
                   />
                 )}
                 {!signedUp && (

@@ -13,7 +13,7 @@ const CommunityCard = ({ name, category, index }) => {
       {error && <h1>Error</h1>}
       {data && (
         <Card
-          className="border-light d-flex justify-content-center bg-greenlight m-3"
+          className="border-secondary d-flex justify-content-center bg-greenlight m-3"
           style={{ width: "300px" }}
         >
           <Card.Body className="border-light d-flex flex-column align-items-center">

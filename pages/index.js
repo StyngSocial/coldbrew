@@ -11,7 +11,7 @@ const fetcher = (url) => axios.get(url).then((r) => r.data);
 export default function Home() {
   const banner = {
     title: "Home",
-    about: "All posts from beta testers using the Cold Brew app.",
+    about: "All posts from the lucky few using the Cold Brew app.",
   };
   const [session, loading] = useSession();
   const { data, error } = useSWR(
@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>plz leave feedback (click {"->"} ?)</title>
+        <title>Cold Brew | monetizing clout.</title>
       </Head>
       <FeedModule
         session={session}

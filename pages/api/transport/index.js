@@ -6,7 +6,7 @@ export default function handler(req, res) {
   var mail = {
     from: process.env.EMAIL_USER,
     to: process.env.EMAIL_BEN,
-    subject: "New feedback message from Beta",
+    subject: "New feedback message from Cold Brew",
     text: feedback,
   };
   const transport = {

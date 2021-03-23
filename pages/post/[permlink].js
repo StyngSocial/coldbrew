@@ -5,6 +5,7 @@ import axios from "axios";
 import useSWR from "swr";
 import AppWrapper from "../../modules/AppWrapper";
 import Post from "../../components/Post.jsx";
+import Loading from "../../components/Loading";
 
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 
@@ -22,7 +23,11 @@ const post = () => {
         <title>{author}</title>
       </Head>
       {error && <h1>{error}</h1>}
-      {!data && <AppWrapper>Loading...</AppWrapper>}
+      {!data && (
+        <AppWrapper>
+          <Loading />
+        </AppWrapper>
+      )}
       {data && (
         <AppWrapper>
           <Post post={data} />
