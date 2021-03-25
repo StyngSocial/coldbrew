@@ -75,7 +75,7 @@ const MainNav = () => {
         variant="light"
         bg="light"
         fixed="bottom"
-        className="border-top p-0 d-flex d-lg-none"
+        className="border-top p-0 pb-2 d-flex d-lg-none"
       >
         <Link href="/" passHref>
           <Nav.Link className={`w-25 py-3 text-center ${styles.contentBtn}`}>
