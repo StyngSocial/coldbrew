@@ -43,9 +43,14 @@ const PostIntro = ({ post }) => {
           <strong>{post.title}</strong>
         </p>
 
-        <p className="m-0 mb-2 mw-100" style={{ overflow: "hidden" }}>
-          {brew}
-        </p>
+        {brew.map((pint) => {
+          return (
+            <p className="m-0 mb-2 mw-100" style={{ overflow: "hidden" }}>
+              {pint}
+            </p>
+          );
+        })}
+
         <Row className="m-0 p-0 pb-2 justify-content-center">
           {imageUrl && (
             <Image
