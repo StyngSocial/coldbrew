@@ -1,23 +1,23 @@
 import Image from "next/image";
-import Link from "next/link";
+import { useState } from "react";
 import axios from "axios";
 import useSWR from "swr";
-import styles from "./PostIntro.module.scss";
-import { Container, Row, Col } from "react-bootstrap";
+import styles from "./ColdBrewPost.module.scss";
+import { Container, Row, Modal } from "react-bootstrap";
 
-import { Observer } from "../../util/constants";
 import usePostBody from "../../util/usePostBody.js";
-import Engagement from "../Engagement/";
+import Engagement from "../Engagement";
 
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 
-const PostIntro = ({ post }) => {
+const ColdBrewPost = ({ post }) => {
   const date = post.created.slice(0, 10);
-  const { brew, imageUrl } = usePostBody(post.body);
+  const { brew, images } = usePostBody(post.body);
   const { data, error } = useSWR(
     `api/hive/profile?account=${post.author}&observer=hiveio`,
     fetcher
   );
+  if (images) console.log(images[0]);
 
   return (
     <>
@@ -44,20 +44,26 @@ const PostIntro = ({ post }) => {
         </p>
 
         {brew.map((pint) => {
+          let key = pint.slice(0, 3);
+
           return (
-            <p className="m-0 mb-2 mw-100" style={{ overflow: "hidden" }}>
+            <p
+              key={key}
+              className="m-0 mb-2 mw-100"
+              style={{ overflow: "hidden" }}
+            >
               {pint}
             </p>
           );
         })}
 
         <Row className="m-0 p-0 pb-2 justify-content-center">
-          {imageUrl && (
-            <Image
-              className="rounded"
-              src={imageUrl}
-              width={125}
-              height={150}
+          {images && (
+            <img
+              src={images[0]}
+              className={`img-fluid rounded d-inline`}
+              style={{ height: "200px" }}
+              alt="User Avatar"
             />
           )}
         </Row>
@@ -71,4 +77,4 @@ const PostIntro = ({ post }) => {
   );
 };
 
-export default PostIntro;
+export default ColdBrewPost;
