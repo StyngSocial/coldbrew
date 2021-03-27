@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
 
+/**
+ * TODO This needs cleaned 🤢
+ * @param {Object} postBody
+ * @returns Formatted body
+ */
+
 const usePostBody = (postBody) => {
   const [images, setImages] = useState();
   const [brew, setBrew] = useState([]);
@@ -24,7 +30,9 @@ const usePostBody = (postBody) => {
 
   const brewBody = () => {
     const clean = shortenedBody.replaceAll(postMarkdownRegEx, "");
-    const brew = clean.split("\n");
+
+    const splitLines = clean.split("\n");
+    const brew = splitLines.filter((line) => line !== "");
 
     setBrew(brew);
   };

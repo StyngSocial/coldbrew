@@ -4,7 +4,13 @@ const Feed = ({ posts }) => {
   return (
     <>
       {posts.map((post) => {
-        return <ColdBrewPost key={post.post_id} post={post} />;
+        return (
+          <ColdBrewPost
+            key={post.post_id}
+            post={post}
+            permlink={post.permlink}
+          />
+        );
       })}
     </>
   );

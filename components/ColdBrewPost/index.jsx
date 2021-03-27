@@ -1,23 +1,32 @@
 import Image from "next/image";
-import { useState } from "react";
+import Link from "next/link";
+import { useCallback, useState } from "react";
 import axios from "axios";
 import useSWR from "swr";
 import styles from "./ColdBrewPost.module.scss";
-import { Container, Row, Modal } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
+import { Controlled as ControlledZoom } from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
+import TimeAgo from "react-timeago";
 
 import usePostBody from "../../util/usePostBody.js";
 import Engagement from "../Engagement";
+import { Observer } from "../../util/constants";
 
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 
-const ColdBrewPost = ({ post }) => {
+const ColdBrewPost = ({ post, permlink }) => {
+  const [isZoomed, setIsZoomed] = useState(false);
   const date = post.created.slice(0, 10);
   const { brew, images } = usePostBody(post.body);
   const { data, error } = useSWR(
-    `api/hive/profile?account=${post.author}&observer=hiveio`,
+    `/api/hive/profile?account=${post.author}&observer=${Observer}`,
     fetcher
   );
-  if (images) console.log(images[0]);
+  let key = 0;
+  const handleZoomChange = useCallback((shouldZoom) => {
+    setIsZoomed(shouldZoom);
+  }, []);
 
   return (
     <>
@@ -31,25 +40,35 @@ const ColdBrewPost = ({ post }) => {
             alt="User Avatar"
           />
           {data && (
-            <p className="my-0" style={{ paddingLeft: "10px" }}>
-              <strong>{data.metadata.profile.name}</strong>
-              <div className="text-muted d-inline">&nbsp;@{post.author}</div>
-            </p>
+            <div className="my-0" style={{ paddingLeft: "10px" }}>
+              <Link href={`/${post.author}`} passHref>
+                <a>
+                  <strong className="text-roast">
+                    {data.metadata.profile.name}
+                  </strong>
+                </a>
+              </Link>
+              <div className="text-muted d-none d-md-inline">
+                &nbsp;@{post.author}
+              </div>
+              &nbsp;·&nbsp;
+              <TimeAgo className="text-muted m-0 d-inline" date={date} />
+            </div>
           )}
-          <p className="text-muted m-0 d-none d-md-flex">&nbsp;· {date}</p>
         </Row>
 
-        <p className="m-0 pt-2">
-          <strong>{post.title}</strong>
-        </p>
+        <Link href={`/${post.author}/${permlink}`} passHref>
+          <a>
+            <strong className="m-0 pt-2 text-roast">{post.title}</strong>
+          </a>
+        </Link>
 
         {brew.map((pint) => {
-          let key = pint.slice(0, 3);
-
+          key++;
           return (
             <p
               key={key}
-              className="m-0 mb-2 mw-100"
+              className="m-0 mb-3 mw-100"
               style={{ overflow: "hidden" }}
             >
               {pint}
@@ -59,12 +78,22 @@ const ColdBrewPost = ({ post }) => {
 
         <Row className="m-0 p-0 pb-2 justify-content-center">
           {images && (
-            <img
-              src={images[0]}
-              className={`img-fluid rounded d-inline`}
-              style={{ height: "200px" }}
-              alt="User Avatar"
-            />
+            <>
+              <ControlledZoom
+                isZoomed={isZoomed}
+                onZoomChange={handleZoomChange}
+                zoomMargin={15}
+                closeText="Close image"
+                openText="Open image"
+              >
+                <img
+                  alt={post.author + " Brew Image"}
+                  src={images[0]}
+                  className={`img-fluid rounded d-inline`}
+                  style={{ height: "200px" }}
+                />
+              </ControlledZoom>
+            </>
           )}
         </Row>
         <Engagement
