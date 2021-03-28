@@ -17,7 +17,6 @@ const fetcher = (url) => axios.get(url).then((r) => r.data);
 
 const ColdBrewPost = ({ post, permlink }) => {
   const [isZoomed, setIsZoomed] = useState(false);
-  const date = post.created.slice(0, 10);
   const { brew, images } = usePostBody(post.body);
   const { data, error } = useSWR(
     `/api/hive/profile?account=${post.author}&observer=${Observer}`,
@@ -52,7 +51,10 @@ const ColdBrewPost = ({ post, permlink }) => {
                 &nbsp;@{post.author}
               </div>
               &nbsp;·&nbsp;
-              <TimeAgo className="text-muted m-0 d-inline" date={date} />
+              <TimeAgo
+                className="text-muted m-0 d-inline"
+                date={post.created}
+              />
             </div>
           )}
         </Row>
