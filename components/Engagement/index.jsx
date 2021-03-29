@@ -7,9 +7,11 @@ import {
   faRocket,
 } from "@fortawesome/free-solid-svg-icons";
 import LikeBtn from "../animations/LikeBtn";
+import CommentBtn from "../animations/CommentBtn";
 const Engagement = ({ votes, payout, comments, reblogs }) => {
   const usdPayout = parseFloat(payout).toFixed(2);
   const [liked, setLiked] = useState(false);
+  const [commented, setCommented] = useState(false);
   let voted = liked ? votes + 1 : votes;
   return (
     <Container className="p-0 bg-light" fluid>
@@ -24,15 +26,18 @@ const Engagement = ({ votes, payout, comments, reblogs }) => {
             >
               <LikeBtn clicked={liked} />
             </a>
-            <span className="px-2">{voted}</span>
+            <span style={{ paddingLeft: "5px" }}>{voted}</span>
           </span>
           <span className="px-2">
-            <FontAwesomeIcon
-              icon={faComment}
-              className="text-roast"
-              style={{ marginRight: "10px" }}
-            />
-            <span>{comments}</span>
+            <a
+              onClick={() => {
+                votes++;
+                setCommented(!commented);
+              }}
+            >
+              <CommentBtn commented={commented} />
+            </a>
+            <span style={{ paddingLeft: "5px" }}>{comments}</span>
           </span>
         </Col>
         <Col className="p-0 d-flex align-items-center justify-content-end">
@@ -42,7 +47,7 @@ const Engagement = ({ votes, payout, comments, reblogs }) => {
               className="text-primary"
               style={{ marginRight: "10px" }}
             />
-            <span className="">${usdPayout}</span>
+            <span>${usdPayout}</span>
           </span>
         </Col>
       </Row>

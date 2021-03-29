@@ -101,7 +101,7 @@ const ColdBrewPost = ({ post, permlink }) => {
         <Engagement
           votes={post.active_votes.length}
           comments={post.children}
-          payouts={post.payout}
+          payout={post.pending_payout_value}
         />
       </Container>
     </>
