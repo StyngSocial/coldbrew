@@ -7,8 +7,8 @@ class MyDocument extends Document {
           <link rel="manifest" href="/manifest.json" />
           <meta name="theme-color" content="#f8f9fa" />
 
-          <link rel="apple-touch-icon" href="/coldbrew-144x144.png" />
-          <link rel="apple-touch-startup-icon" href="/coldbrew-144x144.png" />
+          <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+          <link rel="apple-touch-startup-icon" href="/safari-pinned-tab.png" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta
             name="apple-mobile-web-app-status-bar-style"
