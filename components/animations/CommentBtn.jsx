@@ -15,7 +15,7 @@ const CommentBtn = ({ commented }) => {
         transform="translate(-87.9725 -46.5693)"
         fill="none"
         stroke="#50c878"
-        strokeMiterLimit="10"
+        strokeMiterlimit="10"
         strokeWidth="75px"
       />
       <path

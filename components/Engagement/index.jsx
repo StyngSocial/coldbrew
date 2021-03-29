@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMoneyBillWaveAlt } from "@fortawesome/free-solid-svg-icons";
+import { Container, Row, Col, Badge } from "react-bootstrap";
 import LikeBtn from "../animations/LikeBtn";
 import CommentBtn from "../animations/CommentBtn";
-import Payout from "../Payout";
+
 const Engagement = ({ votes, payout, comments, reblogs }) => {
   const usdPayout = parseFloat(payout).toFixed(2);
   const [liked, setLiked] = useState(false);
@@ -42,7 +40,13 @@ const Engagement = ({ votes, payout, comments, reblogs }) => {
           </span>
         </Col>
         <Col className="p-0 d-flex align-items-center justify-content-end">
-          <Payout payout={usdPayout} />
+          <Badge
+            variant="primary"
+            className="text-greenlight"
+            style={{ fontSize: "1rem" }}
+          >
+            {`Ƀ ${usdPayout}`}
+          </Badge>
         </Col>
       </Row>
     </Container>

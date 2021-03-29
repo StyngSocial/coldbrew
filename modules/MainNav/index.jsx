@@ -5,18 +5,19 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./MainNav.module.scss";
 import {
-  faHouseUser,
   faQuestion,
   faSignOutAlt,
   faInfo,
-  faCoffee,
-  faCode,
-  faChartLine,
 } from "@fortawesome/free-solid-svg-icons";
 import Feedback from "../../components/Feedback.jsx";
 import { Navbar, Nav } from "react-bootstrap";
 import DevNotes from "../../components/DevNotes";
 import logo from "../../public/brew.png";
+
+import HomeButton from "../../components/icons/HomeButton";
+import ColdbrewButton from "../../components/icons/ColdbrewButton";
+import DevButton from "../../components/icons/DevButton";
+import ChartButton from "../../components/icons/ChartButton";
 
 const MainNav = () => {
   const [show, setShow] = useState(false);
@@ -93,40 +94,24 @@ const MainNav = () => {
       >
         <Link href="/" passHref>
           <Nav.Link className={`w-25 py-3 text-center ${styles.contentBtn}`}>
-            <FontAwesomeIcon
-              icon={faHouseUser}
-              className="text-primary text-center"
-              size="lg"
-            />
+            <HomeButton active={false} />
           </Nav.Link>
         </Link>
 
         <Link href="/cb" passHref>
           <Nav.Link className={`w-25 py-3 text-center ${styles.contentBtn}`}>
-            <FontAwesomeIcon
-              icon={faCoffee}
-              className="text-primary text-center"
-              size="lg"
-            />
+            <ColdbrewButton active={false} />
           </Nav.Link>
         </Link>
 
         <Link href="/dev" passHref>
           <Nav.Link className={`w-25 py-3 text-center ${styles.contentBtn}`}>
-            <FontAwesomeIcon
-              icon={faCode}
-              className="text-primary text-center"
-              size="lg"
-            />
+            <DevButton active={false} />
           </Nav.Link>
         </Link>
         <Link href="/stonks" passHref>
           <Nav.Link className={`w-25 py-3 text-center ${styles.contentBtn}`}>
-            <FontAwesomeIcon
-              icon={faChartLine}
-              className="text-primary text-center"
-              size="lg"
-            />
+            <ChartButton active={false} />
           </Nav.Link>
         </Link>
       </Navbar>
