@@ -1,0 +1,28 @@
+.fill {
+  animation-name: fillAction;
+  animation-iteration-count: 1;
+  animation-timing-function: cubic-bezier(0.5, 0.8, 0.6, 0.9);
+  animation-duration: 4s;
+}
+.waveShape {
+  animation-name: waveAction;
+  animation-iteration-count: 10;
+  animation-timing-function: linear;
+  animation-duration: 0.5s;
+}
+@keyframes fillAction {
+  0% {
+    transform: translate(0, 150px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+@keyframes waveAction {
+  0% {
+    transform: translate(-150px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}

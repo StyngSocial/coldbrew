@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { signOut } from "next-auth/client";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,6 +16,7 @@ import {
 import Feedback from "../../components/Feedback.jsx";
 import { Navbar, Nav } from "react-bootstrap";
 import DevNotes from "../../components/DevNotes";
+import logo from "../../public/brew.png";
 
 const MainNav = () => {
   const [show, setShow] = useState(false);
@@ -32,7 +34,7 @@ const MainNav = () => {
       >
         <Link href="/" passHref>
           <Nav.Link
-            className="d-flex text-roast pt-1"
+            className="text-roast pt-1 d-none d-md-flex"
             style={{
               fontFamily: "Dancing Script",
               fontWeight: "700",
@@ -41,6 +43,18 @@ const MainNav = () => {
             }}
           >
             Cold Brew
+          </Nav.Link>
+        </Link>
+        <Link href="/" passHref>
+          <Nav.Link
+            className="text-roast py-1 px-3 d-flex d-md-none"
+            style={{
+              fontFamily: "Dancing Script",
+              fontWeight: "700",
+              fontSize: "2rem",
+            }}
+          >
+            <Image src={logo} height={35} width={35} alt="Cold Brew logo" />
           </Nav.Link>
         </Link>
 
@@ -81,7 +95,7 @@ const MainNav = () => {
           <Nav.Link className={`w-25 py-3 text-center ${styles.contentBtn}`}>
             <FontAwesomeIcon
               icon={faHouseUser}
-              className="text-roast text-center"
+              className="text-primary text-center"
               size="lg"
             />
           </Nav.Link>
@@ -91,7 +105,7 @@ const MainNav = () => {
           <Nav.Link className={`w-25 py-3 text-center ${styles.contentBtn}`}>
             <FontAwesomeIcon
               icon={faCoffee}
-              className="text-roast text-center"
+              className="text-primary text-center"
               size="lg"
             />
           </Nav.Link>
@@ -101,7 +115,7 @@ const MainNav = () => {
           <Nav.Link className={`w-25 py-3 text-center ${styles.contentBtn}`}>
             <FontAwesomeIcon
               icon={faCode}
-              className="text-roast text-center"
+              className="text-primary text-center"
               size="lg"
             />
           </Nav.Link>
@@ -110,7 +124,7 @@ const MainNav = () => {
           <Nav.Link className={`w-25 py-3 text-center ${styles.contentBtn}`}>
             <FontAwesomeIcon
               icon={faChartLine}
-              className="text-roast text-center"
+              className="text-primary text-center"
               size="lg"
             />
           </Nav.Link>

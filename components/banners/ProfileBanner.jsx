@@ -35,7 +35,7 @@ const FeedBanner = ({ username }) => {
             <strong className="">{data.metadata.profile.name}</strong>
 
             <span className="d-block text-muted" style={{ fontSize: ".75rem" }}>
-              {data.name}
+              @{data.name}
             </span>
             <p className="m-0">{data.metadata.profile.about}</p>
             <span className="" style={{ fontSize: ".75rem" }}>
