@@ -70,7 +70,7 @@ const ColdBrewPost = ({ post, permlink }) => {
           return (
             <p
               key={key}
-              className="m-0 mb-3 mw-100"
+              className="m-0 mb-2 mw-100"
               style={{ overflow: "hidden" }}
             >
               {pint}
@@ -78,9 +78,9 @@ const ColdBrewPost = ({ post, permlink }) => {
           );
         })}
 
-        <Row className="m-0 p-0 pb-2 justify-content-center">
-          {images && (
-            <>
+        {images && (
+          <>
+            <Row className="m-0 p-0 pb-2 justify-content-center">
               <ControlledZoom
                 isZoomed={isZoomed}
                 onZoomChange={handleZoomChange}
@@ -95,9 +95,9 @@ const ColdBrewPost = ({ post, permlink }) => {
                   style={{ height: "200px" }}
                 />
               </ControlledZoom>
-            </>
-          )}
-        </Row>
+            </Row>
+          </>
+        )}
         <Engagement
           votes={post.active_votes.length}
           comments={post.children}
