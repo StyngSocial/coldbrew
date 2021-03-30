@@ -3,7 +3,7 @@ import { useSession } from "next-auth/client";
 import { Modal, Button, InputGroup, FormControl } from "react-bootstrap";
 import axios from "axios";
 
-import SendConformation from "../components/SendConfirmation";
+import SendConformation from "../components/animations/SendConfirmation";
 
 const Feedback = (prop) => {
   let { show, onHide } = prop;

@@ -1,24 +1,24 @@
+import { Controlled as ControlledZoom } from "react-medium-image-zoom";
+import { Container, Row } from "react-bootstrap";
+import { useCallback, useState } from "react";
+import styles from "./ColdBrewPost.module.scss";
+import "react-medium-image-zoom/dist/styles.css";
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useState } from "react";
 import axios from "axios";
 import useSWR from "swr";
-import styles from "./ColdBrewPost.module.scss";
-import { Container, Row } from "react-bootstrap";
-import { Controlled as ControlledZoom } from "react-medium-image-zoom";
-import "react-medium-image-zoom/dist/styles.css";
 import TimeAgo from "react-timeago";
 
+import { Observer } from "../../util/constants";
 import usePostBody from "../../util/usePostBody.js";
 import Engagement from "../Engagement";
-import { Observer } from "../../util/constants";
-
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 
-const ColdBrewPost = ({ post, permlink }) => {
+const ColdBrewPost = ({ post }) => {
+  console.log(post);
   const [isZoomed, setIsZoomed] = useState(false);
   const { brew, images } = usePostBody(post.body);
-  const { data, error } = useSWR(
+  const { data } = useSWR(
     `/api/hive/profile?account=${post.author}&observer=${Observer}`,
     fetcher
   );
@@ -59,7 +59,7 @@ const ColdBrewPost = ({ post, permlink }) => {
           )}
         </Row>
 
-        <Link href={`/${post.author}/${permlink}`} passHref>
+        <Link href={`/${post.author}/${post.permlink}`} passHref>
           <a>
             <strong className="m-0 pt-2 text-roast">{post.title}</strong>
           </a>

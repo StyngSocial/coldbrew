@@ -5,7 +5,7 @@ import axios from "axios";
 import coldbrew from "../public/logo.png";
 import { signIn } from "next-auth/client";
 import { version } from "../package.json";
-import SendConfirmation from "../components/SendConfirmation";
+import SendConfirmation from "../components/animations/SendConfirmation";
 import { Card, Form, Button, Badge, Tabs, Tab } from "react-bootstrap";
 
 const Beta = () => {
