@@ -7,10 +7,17 @@ export default function handler(req, res) {
     tag,
     observer,
   };
-  hive.api
-    .callAsync("bridge.get_ranked_posts", params)
-    .then((resp) => {
-      res.status(200).send(resp);
-    })
-    .catch((resp) => res.json({ error: resp }));
+  return new Promise((resolve, reject) => {
+    hive.api
+      .callAsync("bridge.get_ranked_posts", params)
+      .then((resp) => {
+        res.status(200).send(resp);
+        resolve();
+      })
+      .catch((err) => {
+        res.json(err);
+        res.status(405).end();
+        return resolve();
+      });
+  });
 }

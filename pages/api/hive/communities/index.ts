@@ -12,18 +12,21 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const params = {
     limit,
   };
-  hive.api
-    .callAsync("bridge.list_pop_communities", params)
-    .then((resp: Array<any>) => {
-      const popCommunities: PopCommunitiesRes = [];
-      resp.map((hivePopCommunities) => {
-        const comObj: PopCommunity = {
-          category: hivePopCommunities[0],
-          name: hivePopCommunities[1],
-        };
-        popCommunities.push(comObj);
-      });
-      res.status(200).send(popCommunities);
-    })
-    .catch((err: Error) => res.status(500).json(err));
+  return new Promise((resolve, reject) => {
+    hive.api
+      .callAsync("bridge.list_pop_communities", params)
+      .then((resp: Array<any>) => {
+        const popCommunities: PopCommunitiesRes = [];
+        resp.map((hivePopCommunities) => {
+          const comObj: PopCommunity = {
+            category: hivePopCommunities[0],
+            name: hivePopCommunities[1],
+          };
+          popCommunities.push(comObj);
+        });
+        res.status(200).send(popCommunities);
+        resolve;
+      })
+      .catch((err: Error) => res.status(500).json(err));
+  });
 }

@@ -7,12 +7,15 @@ export default function handler(req, res) {
     account,
     limit,
   };
-  hive.api
-    .callAsync("bridge.get_account_posts", params)
-    .then((resp) => {
-      res.status(200).send(resp);
-    })
-    .catch((err) => console.log(err));
+  return new Promise((resolve, reject) => {
+    hive.api
+      .callAsync("bridge.get_account_posts", params)
+      .then((resp) => {
+        res.status(200).send(resp);
+        resolve;
+      })
+      .catch((err) => console.log(err));
+  });
 }
 /**
  * @param {*} sort Supported values
