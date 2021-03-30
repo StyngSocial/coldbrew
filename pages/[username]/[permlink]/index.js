@@ -2,7 +2,7 @@ import Head from "next/head";
 import useSWR from "swr";
 import axios from "axios";
 import { useRouter } from "next/router";
-import ColdBrewPost from "../../../components/ColdBrewPost";
+import ColdBrewPost from "../../../components/ColdBrewPost/";
 import AppWrapper from "../../../modules/AppWrapper";
 
 import { Observer } from "../../../util/constants";

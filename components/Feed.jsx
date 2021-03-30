@@ -1,16 +1,10 @@
-import ColdBrewPost from "./ColdBrewPost/";
+import ColdBrewPost from "./ColdBrewPost";
 
 const Feed = ({ posts }) => {
   return (
     <>
       {posts.map((post) => {
-        return (
-          <ColdBrewPost
-            key={post.post_id}
-            post={post}
-            permlink={post.permlink}
-          />
-        );
+        return <ColdBrewPost key={post.post_id} post={post} />;
       })}
     </>
   );

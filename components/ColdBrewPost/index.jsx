@@ -1,62 +1,46 @@
 import { Controlled as ControlledZoom } from "react-medium-image-zoom";
-import { Container, Row } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { useCallback, useState } from "react";
-import styles from "./ColdBrewPost.module.scss";
 import "react-medium-image-zoom/dist/styles.css";
-import Image from "next/image";
 import Link from "next/link";
-import axios from "axios";
-import useSWR from "swr";
 import TimeAgo from "react-timeago";
 
-import { Observer } from "../../util/constants";
 import usePostBody from "../../util/usePostBody.js";
 import Engagement from "../Engagement";
-const fetcher = (url) => axios.get(url).then((r) => r.data);
 
 const ColdBrewPost = ({ post }) => {
-  console.log(post);
   const [isZoomed, setIsZoomed] = useState(false);
   const { brew, images } = usePostBody(post.body);
-  const { data } = useSWR(
-    `/api/hive/profile?account=${post.author}&observer=${Observer}`,
-    fetcher
-  );
   let key = 0;
   const handleZoomChange = useCallback((shouldZoom) => {
     setIsZoomed(shouldZoom);
   }, []);
-
   return (
     <>
-      <Container fluid className={`pt-3 pb-2 m-0 border-bottom ${styles.post}`}>
+      <Container fluid className="pt-3 pb-2 m-0 border-bottom">
         <Row className="m-0 align-items-center">
-          <Image
-            src={`https://images.hive.blog/u/${post.author}/avatar`}
-            width={35}
-            height={35}
-            className="rounded-circle"
-            alt="User Avatar"
-          />
-          {data && (
-            <div className="my-0" style={{ paddingLeft: "10px" }}>
-              <Link href={`/${post.author}`} passHref>
-                <a>
-                  <strong className="text-roast">
-                    {data.metadata.profile.name}
-                  </strong>
-                </a>
-              </Link>
-              <div className="text-muted d-none d-md-inline">
-                &nbsp;@{post.author}
-              </div>
-              &nbsp;·&nbsp;
-              <TimeAgo
-                className="text-muted m-0 d-inline"
-                date={post.created}
-              />
-            </div>
-          )}
+          <Col xs="auto" className="px-0">
+            <img
+              src={`https://images.hive.blog/u/${post.author}/avatar`}
+              style={{ width: "35px" }}
+              height="35px"
+              className="p-0 rounded-circle"
+              alt="User"
+            />
+          </Col>
+          <Col
+            className="px-2"
+            style={({ paddingLeft: "5px" }, { fontSize: ".85rem" })}
+          >
+            <Link href={`/${post.author}`} passHref>
+              <a>
+                <strong className="text-roast d-inline">@{post.author}</strong>
+              </a>
+            </Link>
+            &nbsp;·&nbsp;
+            <TimeAgo className="text-muted d-inline" date={post.created} />
+            <br />
+          </Col>
         </Row>
 
         <Link href={`/${post.author}/${post.permlink}`} passHref>
