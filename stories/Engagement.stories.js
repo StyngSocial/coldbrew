@@ -10,4 +10,4 @@ export default {
 const Template = (args) => <Engagement {...args} />;
 
 export const EngagementBar = Template.bind({});
-EngagementBar.args = { votes: "100", payout: "$100", comments: 3, reblogs: 6 };
+EngagementBar.args = { votes: 101, payout: 100.0, comments: 3, reblogs: 6 };
