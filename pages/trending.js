@@ -11,7 +11,6 @@ const trending = () => {
     title: "Trending",
     about: "Top Cold Brew Posts",
   };
-  const [session, loading] = useSession();
   const { data, error } = useSWR(
     `/api/hive/rankedposts?sort=hot&tag=${ColdBrew}&observer=${Observer}`,
     fetcher
@@ -22,13 +21,7 @@ const trending = () => {
         <title>this shit hot</title>
       </Head>
 
-      <FeedModule
-        session={true}
-        loading={loading}
-        data={data}
-        banner={banner}
-        error={error}
-      />
+      {data && <FeedModule data={data} banner={banner} error={error} />}
     </>
   );
 };

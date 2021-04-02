@@ -13,7 +13,6 @@ const dev = () => {
     about:
       "Updates on bug fixes, new features, and release notes from the Cold Brew developer team.",
   };
-  const [session, loading] = useSession();
   const { data, error } = useSWR(
     `/api/hive/rankedposts?sort=created&tag=coldbrew-dev&observer=${Observer}`,
     fetcher
@@ -23,13 +22,7 @@ const dev = () => {
       <Head>
         <title>dev log</title>
       </Head>
-      <FeedModule
-        session={true}
-        loading={loading}
-        data={data}
-        banner={banner}
-        error={error}
-      />
+      {data && <FeedModule data={data} banner={banner} error={error} />}
     </>
   );
 };

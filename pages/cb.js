@@ -12,7 +12,6 @@ const coldbrew = () => {
     title: "Cold Brew",
     about: "All posts from the Cold Brew account.",
   };
-  const [session, loading] = useSession();
   const { data, error } = useSWR(
     `api/hive/following?sort=posts&account=${ColdBrewAcc}&limit=10`,
     fetcher
@@ -22,13 +21,7 @@ const coldbrew = () => {
       <Head>
         <title>grab a coffee, stay a while</title>
       </Head>
-      <FeedModule
-        session={true}
-        loading={loading}
-        data={data}
-        banner={banner}
-        error={error}
-      />
+      {data && <FeedModule data={data} banner={banner} error={error} />}
     </>
   );
 };

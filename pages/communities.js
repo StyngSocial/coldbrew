@@ -7,7 +7,6 @@ import { Observer, ColdBrew } from "../util/constants.ts";
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 
 const communities = () => {
-  const [session, loading] = useSession();
   const { data, error } = useSWR(
     `/api/hive/rankedposts?sort=created&tag=${ColdBrew}&observer=${Observer}`,
     fetcher
@@ -18,7 +17,7 @@ const communities = () => {
         <title>this shit hot</title>
       </Head>
 
-      <FeedModule session={true} loading={loading} data={data} error={error} />
+      {data && <FeedModule data={data} banner={banner} error={error} />}
     </>
   );
 };

@@ -7,7 +7,6 @@ import SendConformation from "../components/animations/SendConfirmation";
 const Feedback = (prop) => {
   let { show, onHide } = prop;
   const [sent, setSent] = useState(false);
-  const [session] = useSession();
   const [feedback, setFeedback] = useState("");
 
   const handleFeedback = (e) => {
