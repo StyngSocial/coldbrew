@@ -3,36 +3,30 @@ import { useSession } from "next-auth/client";
 import axios from "axios";
 import useSWR from "swr";
 import FeedModule from "../modules/Feed.module";
-
-import { LeoFinance, Observer } from "../util/constants";
+import { Observer, ColdBrew } from "../util/constants.ts";
 
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 
-const stonks = () => {
-  const banner = {
-    title: "Stonks",
-    about:
-      "Curated posts from LeoFinance. A community on HIVE that post about stocks and crypto.",
-  };
+const communities = () => {
   const [session, loading] = useSession();
   const { data, error } = useSWR(
-    `/api/hive/rankedposts?sort=trending&tag=${LeoFinance}&observer=${Observer}`,
+    `/api/hive/rankedposts?sort=created&tag=${ColdBrew}&observer=${Observer}`,
     fetcher
   );
   return (
     <>
       <Head>
-        <title>stonks</title>
+        <title>this shit hot</title>
       </Head>
+
       <FeedModule
         session={session}
         loading={loading}
         data={data}
-        banner={banner}
         error={error}
       />
     </>
   );
 };
 
-export default stonks;
+export default communities;

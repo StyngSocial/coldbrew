@@ -55,7 +55,7 @@ const ContentNav = () => {
             </a>
           </li>
         </Link>
-        <Link href="/stonks" passHref>
+        <Link href="/trending" passHref>
           <li className="nav-item">
             <a
               className={`nav-link py-3 rounded-pill ${styles.contentBtn}`}
@@ -69,7 +69,7 @@ const ContentNav = () => {
             </a>
           </li>
         </Link>
-        <Link href="/trending" passHref>
+        <Link href="/communities" passHref>
           <li className="nav-item">
             <a
               className={`nav-link py-3 rounded-pill ${styles.contentBtn}`}

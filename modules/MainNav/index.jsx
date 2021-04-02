@@ -109,7 +109,7 @@ const MainNav = () => {
             <DevButton active={false} />
           </Nav.Link>
         </Link>
-        <Link href="/stonks" passHref>
+        <Link href="/trending" passHref>
           <Nav.Link className={`w-25 py-3 text-center ${styles.contentBtn}`}>
             <ChartButton active={false} />
           </Nav.Link>
