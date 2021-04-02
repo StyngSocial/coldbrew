@@ -1,4 +1,4 @@
-import { HivesignerContext } from "../components/hivesigner/useHivesigner";
+import HivesignerContext from "../components/hivesigner/HivesignerContext";
 import hivesigner from "hivesigner";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/global.scss";
@@ -7,7 +7,7 @@ import "../styles/custom.scss";
 function MyApp({ Component, pageProps }) {
   const client = new hivesigner.Client({
     app: "cold.brew",
-    callbackURL: "http://localhost:3000/work",
+    callbackURL: "http://localhost:3000/",
     scope: ["vote", "comment"],
   });
   return (

@@ -1,12 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./MainNav.module.scss";
 import {
   faQuestion,
   faSignOutAlt,
   faInfo,
+  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import Feedback from "../../components/Feedback.jsx";
 import { Navbar, Nav } from "react-bootstrap";
@@ -17,11 +18,18 @@ import HomeButton from "../../components/icons/HomeButton";
 import ColdbrewButton from "../../components/icons/ColdbrewButton";
 import DevButton from "../../components/icons/DevButton";
 import ChartButton from "../../components/icons/ChartButton";
+import Post from "../../components/hivesigner/Post";
+
+import HivesignerContext from "../../components/hivesigner/HivesignerContext";
 
 const MainNav = () => {
   const [show, setShow] = useState(false);
   const [dev, setDev] = useState(false);
-
+  const [post, setPost] = useState(false);
+  const auth = useContext(HivesignerContext);
+  const login = () => {
+    auth.client.login({ username: "benny.blockchain" });
+  };
   return (
     <>
       <Navbar
@@ -76,7 +84,7 @@ const MainNav = () => {
           </Nav.Link>
           <Nav.Link
             className="px-2 my-2 text-center d-flex align-items-center text-primary"
-            onClick={() => signOut()}
+            onClick={() => login()}
           >
             <FontAwesomeIcon
               icon={faSignOutAlt}
@@ -92,30 +100,39 @@ const MainNav = () => {
         className="border-top p-0 pb-2 d-flex d-lg-none"
       >
         <Link href="/" passHref>
-          <Nav.Link className={`w-25 py-3 text-center ${styles.contentBtn}`}>
+          <Nav.Link className={`w-25 py-3 text-center `}>
             <HomeButton active={false} />
           </Nav.Link>
         </Link>
 
+        <Link href="/dev" passHref>
+          <Nav.Link className={`w-25 py-3 text-center`}>
+            <DevButton active={false} />
+          </Nav.Link>
+        </Link>
+
+        <Nav.Link
+          className={`w-25 py-3 text-center`}
+          onClick={() => setPost(true)}
+        >
+          <FontAwesomeIcon icon={faPlus} size="lg" />
+        </Nav.Link>
+
         <Link href="/cb" passHref>
-          <Nav.Link className={`w-25 py-3 text-center ${styles.contentBtn}`}>
+          <Nav.Link className={`w-25 py-3 text-center`}>
             <ColdbrewButton active={false} />
           </Nav.Link>
         </Link>
 
-        <Link href="/dev" passHref>
-          <Nav.Link className={`w-25 py-3 text-center ${styles.contentBtn}`}>
-            <DevButton active={false} />
-          </Nav.Link>
-        </Link>
         <Link href="/trending" passHref>
-          <Nav.Link className={`w-25 py-3 text-center ${styles.contentBtn}`}>
+          <Nav.Link className={`w-25 py-3 text-center`}>
             <ChartButton active={false} />
           </Nav.Link>
         </Link>
       </Navbar>
       <Feedback show={show} onHide={() => setShow(false)} />
       <DevNotes show={dev} onHide={() => setDev(false)} />
+      <Post show={post} onHide={() => setPost(false)} />
     </>
   );
 };

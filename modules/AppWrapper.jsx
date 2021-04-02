@@ -1,4 +1,4 @@
-import { Col, Row, Container } from "react-bootstrap";
+import { Col, Row, Container, Button } from "react-bootstrap";
 import ContentNav from "./ContentNav";
 import MainNav from "./MainNav";
 /**
@@ -17,7 +17,7 @@ export default function AppWrapper({ children }) {
           <Col lg={3} className="px-4">
             <ContentNav />
           </Col>
-          <Col lg={5} className="p-0 pb-5 mb-2">
+          <Col lg={5} className="p-0 pb-5 mb-4">
             {children}
           </Col>
           <Col lg={3} className="d-none d-lg-flex">
