@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { signOut } from "next-auth/client";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./MainNav.module.scss";

@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { useSession } from "next-auth/client";
 import axios from "axios";
 import useSWR from "swr";
 import FeedModule from "../modules/Feed.module";
@@ -24,7 +23,7 @@ const trending = () => {
       </Head>
 
       <FeedModule
-        session={session}
+        session={true}
         loading={loading}
         data={data}
         banner={banner}

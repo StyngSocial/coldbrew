@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { useSession } from "next-auth/client";
 import axios from "axios";
 import useSWR from "swr";
 import FeedModule from "../modules/Feed.module";
@@ -19,12 +18,7 @@ const communities = () => {
         <title>this shit hot</title>
       </Head>
 
-      <FeedModule
-        session={session}
-        loading={loading}
-        data={data}
-        error={error}
-      />
+      <FeedModule session={true} loading={loading} data={data} error={error} />
     </>
   );
 };
