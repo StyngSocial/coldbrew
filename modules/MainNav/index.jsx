@@ -30,9 +30,14 @@ const MainNav = () => {
   const [post, setPost] = useState(false);
   const router = useRouter();
   const auth = useContext(HivesignerContext);
-  if (localStorage.getItem("sc_token")) {
-    const token = localStorage.getItem("sc_token");
-  }
+
+  const token = localStorage.getItem("sc_token")
+    ? localStorage.getItem("sc_token")
+    : "";
+  const author =
+    token !== ""
+      ? JSON.parse(Buffer.from(token, "base64").toString("ascii"))
+      : "";
   const login = () => {
     auth.client.login({ username: "benny.blockchain" });
   };
@@ -41,10 +46,6 @@ const MainNav = () => {
     localStorage.removeItem("sc_token");
     router.push("/");
   };
-
-  const author = token
-    ? JSON.parse(Buffer.from(token, "base64").toString("ascii"))
-    : "";
 
   return (
     <>
