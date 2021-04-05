@@ -14,16 +14,11 @@ export default function Home() {
 
   useEffect(() => {
     let params = new URL(location).searchParams;
-    const token =
-      params.get("access_token") || localStorage.getItem("cb_token");
-
+    const token = params.get("access_token");
+    console.log("Pre token", auth.client);
     if (token) {
       auth.client.setAccessToken(token);
-      console.log("Set token", auth.client);
-      auth.client.me(function (err, result) {
-        localStorage.setItem("cb_token", token);
-        console.log(err, result);
-      });
+      localStorage.setItem("cb_token", token);
     } else {
       console.log("something happened or first load");
     }

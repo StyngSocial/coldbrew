@@ -7,7 +7,7 @@ import "../styles/custom.scss";
 function MyApp({ Component, pageProps }) {
   const client = new hivesigner.Client({
     app: "cold.brew",
-    callbackURL: "http://localhost:3000/",
+    callbackURL: "https://coldbrew.live/",
     scope: ["vote", "comment"],
   });
   return (
