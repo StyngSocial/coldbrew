@@ -1,7 +1,3 @@
-import hivesigner from "hivesigner";
-import { useContext } from "react";
-import HivesignerContext from "./HivesignerContext";
-
 const coldbrew_meta: Object = {
   tags: [],
   app: "Cold Brew",
