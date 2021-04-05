@@ -1,16 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./MainNav.module.scss";
-import {
-  faQuestion,
-  faSignOutAlt,
-  faInfo,
-  faPlus,
-  faFire,
-} from "@fortawesome/free-solid-svg-icons";
+import { faQuestion, faInfo, faPlus } from "@fortawesome/free-solid-svg-icons";
 import Feedback from "../../components/Feedback.jsx";
 import { Navbar, Nav, Button, OverlayTrigger, Popover } from "react-bootstrap";
 import DevNotes from "../../components/DevNotes";
@@ -28,23 +22,27 @@ const MainNav = () => {
   const [show, setShow] = useState(false);
   const [dev, setDev] = useState(false);
   const [post, setPost] = useState(false);
+  const [token, setToken] = useState();
+  const [author, setAuthor] = useState();
   const router = useRouter();
   const auth = useContext(HivesignerContext);
+  useEffect(() => {
+    const access_token = localStorage.getItem("sc_token");
+    setToken(access_token);
+    if (access_token) {
+      setAuthor(
+        JSON.parse(Buffer.from(access_token, "base64").toString("ascii"))
+      );
+    }
+  }, []);
 
-  const token = localStorage.getItem("sc_token")
-    ? localStorage.getItem("sc_token")
-    : "";
-  const author =
-    token !== ""
-      ? JSON.parse(Buffer.from(token, "base64").toString("ascii"))
-      : "";
   const login = () => {
     auth.client.login({ username: "benny.blockchain" });
   };
   const signout = () => {
     auth.client.removeAccessToken();
     localStorage.removeItem("sc_token");
-    router.push("/");
+    router.push("/dev");
   };
 
   return (
