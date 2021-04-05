@@ -55,21 +55,8 @@ const ContentNav = () => {
             </a>
           </li>
         </Link>
+
         <Link href="/trending" passHref>
-          <li className="nav-item">
-            <a
-              className={`nav-link py-3 rounded-pill ${styles.contentBtn}`}
-              aria-current="page"
-              href="#"
-            >
-              <h5 className="d-inline">
-                <FontAwesomeIcon icon={faChartLine} className="d-inline" />
-                <span className="mx-3">Stonks</span>
-              </h5>
-            </a>
-          </li>
-        </Link>
-        <Link href="/communities" passHref>
           <li className="nav-item">
             <a
               className={`nav-link py-3 rounded-pill ${styles.contentBtn}`}

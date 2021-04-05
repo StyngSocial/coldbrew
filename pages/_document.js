@@ -6,7 +6,10 @@ class MyDocument extends Document {
         <Head>
           <link rel="manifest" href="/manifest.json" />
           <meta name="theme-color" content="#f8f9fa" />
-
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          />
           <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
           <link rel="apple-touch-startup-icon" href="/safari-pinned-tab.png" />
           <meta name="apple-mobile-web-app-capable" content="yes" />

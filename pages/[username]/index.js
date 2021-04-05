@@ -21,7 +21,7 @@ export default function User() {
         <title>Cold Brew | monetizing clout.</title>
       </Head>
       {username && (
-        <FeedModule session={true} loading={false} data={data} error={error}>
+        <FeedModule data={data} error={error}>
           <ProfileBanner username={username} />
         </FeedModule>
       )}

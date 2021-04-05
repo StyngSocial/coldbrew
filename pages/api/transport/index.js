@@ -1,13 +1,12 @@
 import nodemailer from "nodemailer";
 
 export default function handler(req, res) {
-  const { name, email, message } = req.body;
-  const feedback = `${message}\n${name} (${email})`;
+  const { message } = req.body;
   var mail = {
     from: process.env.EMAIL_USER,
     to: process.env.EMAIL_BEN,
     subject: "New feedback message from Cold Brew",
-    text: feedback,
+    text: message,
   };
   const transport = {
     host: "mail.privateemail.com",

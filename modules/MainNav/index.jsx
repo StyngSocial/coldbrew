@@ -132,7 +132,7 @@ const MainNav = () => {
               className="px-2 my-2 text-center d-flex align-items-center text-primary"
               onClick={() => login()}
             >
-              <Button size="sm" variant="primary">
+              <Button size="sm" variant="primary" className="text-light">
                 Log in
               </Button>
             </Nav.Link>
