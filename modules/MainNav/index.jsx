@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./MainNav.module.scss";
@@ -11,7 +12,7 @@ import {
   faFire,
 } from "@fortawesome/free-solid-svg-icons";
 import Feedback from "../../components/Feedback.jsx";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, Button, OverlayTrigger, Popover } from "react-bootstrap";
 import DevNotes from "../../components/DevNotes";
 import logo from "../../public/brew.png";
 
@@ -27,14 +28,22 @@ const MainNav = () => {
   const [show, setShow] = useState(false);
   const [dev, setDev] = useState(false);
   const [post, setPost] = useState(false);
+  const router = useRouter();
   const auth = useContext(HivesignerContext);
+  const token = localStorage.getItem("sc_token");
   const login = () => {
     auth.client.login({ username: "benny.blockchain" });
   };
   const signout = () => {
     auth.client.removeAccessToken();
     localStorage.removeItem("sc_token");
+    router.push("/");
   };
+
+  const author = token
+    ? JSON.parse(Buffer.from(token, "base64").toString("ascii"))
+    : "";
+
   return (
     <>
       <Navbar
@@ -87,21 +96,47 @@ const MainNav = () => {
               style={{ fontSize: "1.25rem" }}
             />
           </Nav.Link>
-          <Nav.Link
-            className="px-2 my-2 text-center d-flex align-items-center text-primary"
-            onClick={() => login()}
-          >
-            <FontAwesomeIcon
-              icon={faSignOutAlt}
-              style={{ fontSize: "1.25rem" }}
-            />
-          </Nav.Link>
-          <Nav.Link
-            className="px-2 my-2 text-center d-flex align-items-center text-primary"
-            onClick={() => signout()}
-          >
-            <FontAwesomeIcon icon={faFire} style={{ fontSize: "1.25rem" }} />
-          </Nav.Link>
+          {token && (
+            <Nav.Link className="px-2 my-2 text-center d-flex align-items-center text-primary">
+              <OverlayTrigger
+                trigger="click"
+                placement="bottom"
+                overlay={
+                  <Popover>
+                    <Popover.Title as="p">Come back again! 👋</Popover.Title>
+                    <Popover.Content className="text-center">
+                      <Button
+                        size="sm"
+                        variant="creamer"
+                        className="text-greenlight"
+                        onClick={() => signout()}
+                      >
+                        Sign out
+                      </Button>
+                    </Popover.Content>
+                  </Popover>
+                }
+              >
+                <Image
+                  src={`https://images.hive.blog/u/${author.authors[0]}/avatar`}
+                  alt="Profile photo"
+                  className="rounded-circle"
+                  height={35}
+                  width={35}
+                />
+              </OverlayTrigger>
+            </Nav.Link>
+          )}
+          {!token && (
+            <Nav.Link
+              className="px-2 my-2 text-center d-flex align-items-center text-primary"
+              onClick={() => login()}
+            >
+              <Button size="sm" variant="primary">
+                Log in
+              </Button>
+            </Nav.Link>
+          )}
         </Nav>
       </Navbar>
       <Navbar
