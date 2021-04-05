@@ -11,11 +11,8 @@ export const comment = (
   title: String,
   body: String
 ) => {
-  const token = localStorage.getItem("cb_token");
-  console.log("In broadcast auth obj", auth);
-  console.log("Token", token);
+  const token = localStorage.getItem("sc_token");
   let author = JSON.parse(Buffer.from(token, "base64").toString("ascii"));
-  console.log("Author", author);
   let date = new Date();
   let perm_link = `cb-${date.getFullYear()}${date.getHours()}${date.getMinutes()}${date.getSeconds()}`;
   auth.client.comment(
@@ -27,12 +24,10 @@ export const comment = (
     body,
     coldbrew_meta,
     (result, err) => {
-      console.log("Result", result);
-      console.log("Error", err);
       if (result) {
-        alert("nope");
+        alert(JSON.stringify(result));
       } else if (err.result.id) {
-        alert("content submitted");
+        alert(JSON.stringify(err));
       }
     }
   );

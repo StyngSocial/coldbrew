@@ -6,7 +6,6 @@ import { comment } from "./broadcast";
 
 const Post = ({ show, onHide }) => {
   const auth = useContext(HivesignerContext);
-  console.log(auth);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const router = useRouter();
@@ -23,11 +22,13 @@ const Post = ({ show, onHide }) => {
   const post = () => {
     let params = new URL(location).searchParams;
     const token =
-      params.get("access_token") || localStorage.getItem("cb_token");
+      params.get("access_token") || localStorage.getItem("sc_token");
+    auth.client.setAccessToken(token);
     if (!token) {
       const url = auth.client.getLoginURL();
       router.push(url);
     } else {
+      console.log("Calling comment", auth);
       comment(auth, "", "hive-152197", title, body);
     }
   };

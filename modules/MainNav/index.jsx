@@ -8,6 +8,7 @@ import {
   faSignOutAlt,
   faInfo,
   faPlus,
+  faFire,
 } from "@fortawesome/free-solid-svg-icons";
 import Feedback from "../../components/Feedback.jsx";
 import { Navbar, Nav } from "react-bootstrap";
@@ -29,6 +30,10 @@ const MainNav = () => {
   const auth = useContext(HivesignerContext);
   const login = () => {
     auth.client.login({ username: "benny.blockchain" });
+  };
+  const signout = () => {
+    auth.client.removeAccessToken();
+    localStorage.removeItem("sc_token");
   };
   return (
     <>
@@ -90,6 +95,12 @@ const MainNav = () => {
               icon={faSignOutAlt}
               style={{ fontSize: "1.25rem" }}
             />
+          </Nav.Link>
+          <Nav.Link
+            className="px-2 my-2 text-center d-flex align-items-center text-primary"
+            onClick={() => signout()}
+          >
+            <FontAwesomeIcon icon={faFire} style={{ fontSize: "1.25rem" }} />
           </Nav.Link>
         </Nav>
       </Navbar>

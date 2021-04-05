@@ -3,24 +3,17 @@ import { useEffect, useContext } from "react";
 import axios from "axios";
 import useSWR from "swr";
 import FeedModule from "../modules/Feed.module";
-import HivesignerContext from "../components/hivesigner/HivesignerContext";
 
 import { Observer, ColdBrew } from "../util/constants";
 
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 
 export default function Home() {
-  const auth = useContext(HivesignerContext);
-
   useEffect(() => {
     let params = new URL(location).searchParams;
     const token = params.get("access_token");
-    console.log("Pre token", auth.client);
     if (token) {
-      auth.client.setAccessToken(token);
-      localStorage.setItem("cb_token", token);
-    } else {
-      console.log("something happened or first load");
+      localStorage.setItem("sc_token", token);
     }
   }, []);
   const banner = {
