@@ -30,7 +30,9 @@ const MainNav = () => {
   const [post, setPost] = useState(false);
   const router = useRouter();
   const auth = useContext(HivesignerContext);
-  const token = localStorage.getItem("sc_token");
+  if (localStorage.getItem("sc_token")) {
+    const token = localStorage.getItem("sc_token");
+  }
   const login = () => {
     auth.client.login({ username: "benny.blockchain" });
   };
