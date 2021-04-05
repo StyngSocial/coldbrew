@@ -8,9 +8,11 @@
 - Circular API fixed
 - Endless feed out of my control rn
 - Posting!
+- Sign in/out nav bar update picture
+- Manifest Icons
+- Pull to refresh
 
 #### TODO
 
 - Dev log for version
-- Sign in/out icon
-- Manifest
+- Date not formatted

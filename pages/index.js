@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useEffect, useContext } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import useSWR from "swr";
 import FeedModule from "../modules/Feed.module";
@@ -30,6 +30,7 @@ export default function Home() {
       <Head>
         <title>Cold Brew | monetizing clout.</title>
       </Head>
+
       {data && <FeedModule data={data} banner={banner} error={error} />}
     </>
   );
