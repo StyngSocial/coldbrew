@@ -11,8 +11,8 @@ export default function handler(req, res) {
     hive.api
       .callAsync("bridge.get_discussion", params)
       .then((resp) => {
-        const post = Object.values(resp);
-        res.status(200).send(post[0]);
+        const posts = Object.values(resp);
+        res.status(200).send(posts);
         resolve;
       })
       .catch((err) => res.send(err));

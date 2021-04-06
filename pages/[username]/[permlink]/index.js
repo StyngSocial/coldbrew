@@ -3,6 +3,7 @@ import useSWR from "swr";
 import axios from "axios";
 import { useRouter } from "next/router";
 import ColdBrewPost from "../../../components/ColdBrewPost/";
+import ColdBrewComment from "../../../components/ColdBrewComment.jsx";
 import AppWrapper from "../../../modules/AppWrapper";
 
 import { Observer } from "../../../util/constants";
@@ -17,20 +18,26 @@ export default function User() {
     `/api/hive/post?author=${username}&permlink=${permlink}&observer=${Observer}`,
     fetcher
   );
+  if (data) console.log(data);
+  let index = 0;
   return (
     <>
       <Head>
         <title>Cold Brew | monetizing clout.</title>
       </Head>
       <AppWrapper>
-        {data && (
-          <ColdBrewPost
-            key={data.post_id}
-            post={data}
-            permlink={data.permlink}
-          />
-        )}
+        {data &&
+          data.map((post) => {
+            if (index !== 0) {
+              index++;
+              return <ColdBrewComment key={post.post_id} post={post} />;
+            } else {
+              index++;
+              return <ColdBrewPost key={post.post_id} post={post} />;
+            }
+          })}
       </AppWrapper>
     </>
   );
 }
+//  <ColdBrewPost key={data[0].post_id} post={data[0].post} />
