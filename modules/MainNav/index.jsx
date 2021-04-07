@@ -4,7 +4,12 @@ import { useRouter } from "next/router";
 import { useState, useContext, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./MainNav.module.scss";
-import { faQuestion, faInfo, faPlus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faQuestion,
+  faInfo,
+  faPlus,
+  faUsers,
+} from "@fortawesome/free-solid-svg-icons";
 import Feedback from "../../components/Feedback.jsx";
 import { Navbar, Nav, Button, OverlayTrigger, Popover } from "react-bootstrap";
 import DevNotes from "../../components/DevNotes";
@@ -171,9 +176,9 @@ const MainNav = () => {
           </Nav.Link>
         </Link>
 
-        <Link href="/trending" passHref>
+        <Link href="/cb-users" passHref>
           <Nav.Link className={`w-25 py-3 text-center`}>
-            <ChartButton active={false} />
+            <FontAwesomeIcon icon={faUsers} size="lg" />
           </Nav.Link>
         </Link>
       </Navbar>
