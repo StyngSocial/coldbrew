@@ -25,8 +25,8 @@ const ColdBrewComment = ({ post }) => {
         style={{ paddingLeft: "25px" }}
       >
         <div
-          className="position-absolute h-100 bg-creamer"
-          style={{ width: "2px" }}
+          className="position-absolute h-100 bg-secondary"
+          style={{ width: "1px" }}
         ></div>
         <Container className="pt-3">
           <Row className="m-0 align-items-center">
