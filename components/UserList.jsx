@@ -23,7 +23,7 @@ const UserList = ({ username }) => {
   return (
     <>
       {user && (
-        <Link href={`/${username}`}>
+        <Link href={`/beta/${username}`}>
           <ListGroup.Item>
             <Row className="align-items-center px-2">
               <Image
