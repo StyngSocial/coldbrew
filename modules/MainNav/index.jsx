@@ -47,7 +47,7 @@ const MainNav = () => {
   const signout = () => {
     auth.client.removeAccessToken();
     localStorage.removeItem("sc_token");
-    router.push("/dev");
+    router.push("/beta/dev");
   };
 
   return (
@@ -88,13 +88,13 @@ const MainNav = () => {
 
         <Nav className="d-flex">
           <Nav.Link
-            className="px-2 m-2 text-center d-flex align-items-center text-roast intro"
+            className="px-3 my-2 text-center d-flex align-items-center text-roast intro"
             onClick={() => setDev(true)}
           >
             <FontAwesomeIcon icon={faInfo} style={{ fontSize: "1.25rem" }} />
           </Nav.Link>
           <Nav.Link
-            className="px-2 m-2 text-center d-flex align-items-center text-roast"
+            className="px-3 my-2  text-center d-flex align-items-center text-roast"
             onClick={() => setShow(true)}
           >
             <FontAwesomeIcon
@@ -138,7 +138,11 @@ const MainNav = () => {
               className="px-2 my-2 text-center d-flex align-items-center text-primary"
               onClick={() => login()}
             >
-              <Button size="sm" variant="primary" className="text-light">
+              <Button
+                size="sm"
+                variant="primary"
+                className="text-light rounded-pill"
+              >
                 Log in
               </Button>
             </Nav.Link>
