@@ -4,9 +4,12 @@ import { useCallback, useState } from "react";
 import "react-medium-image-zoom/dist/styles.css";
 import Link from "next/link";
 import TimeAgo from "react-timeago";
-
 import usePostBody from "../../util/usePostBody.js";
 import Engagement from "../Engagement";
+
+/**
+ * TODO: If a user is not signed in, localStorage is not defined and returns and errir
+ */
 
 const ColdBrewPost = ({ post }) => {
   const [isZoomed, setIsZoomed] = useState(false);
@@ -15,6 +18,11 @@ const ColdBrewPost = ({ post }) => {
   const handleZoomChange = useCallback((shouldZoom) => {
     setIsZoomed(shouldZoom);
   }, []);
+
+  let token = localStorage.getItem("sc_token");
+  let voter = JSON.parse(Buffer.from(token, "base64").toString("ascii"));
+  let voted = post.active_votes.some((vote) => vote.voter === voter.authors[0]);
+
   return (
     <>
       <Container fluid className="pt-3 pb-2 m-0 border-bottom">
@@ -83,6 +91,9 @@ const ColdBrewPost = ({ post }) => {
           </>
         )}
         <Engagement
+          voted={voted}
+          author={post.author}
+          permlink={post.permlink}
           votes={post.active_votes.length}
           comments={post.children}
           payout={post.pending_payout_value}

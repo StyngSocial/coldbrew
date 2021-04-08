@@ -1,13 +1,50 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useRouter } from "next/router";
 import { Container, Row, Col, Badge } from "react-bootstrap";
 import LikeBtn from "../animations/LikeBtn";
 import CommentBtn from "../animations/CommentBtn";
-
-const Engagement = ({ votes, payout, comments, reblogs }) => {
+import { vote } from "../../components/hivesigner/broadcast";
+import HivesignerContext from "../hivesigner/HivesignerContext";
+const Engagement = ({
+  voted,
+  author,
+  permlink,
+  votes,
+  payout,
+  comments,
+  reblogs,
+}) => {
+  console.log(voted);
   const usdPayout = parseFloat(payout).toFixed(2);
-  const [liked, setLiked] = useState(false);
+  const auth = useContext(HivesignerContext);
+  const router = useRouter();
+  const [liked, setLiked] = useState(voted);
   const [commented, setCommented] = useState(false);
-  let voted = liked ? votes + 1 : votes;
+
+  const likePost = () => {
+    if (voted) {
+      alert("Already liked post");
+      return;
+    }
+    let params = new URL(location).searchParams;
+    const token =
+      params.get("access_token") || localStorage.getItem("sc_token");
+    auth.client.setAccessToken(token);
+    if (!token) {
+      const url = auth.client.getLoginURL();
+      router.push(url);
+    } else {
+      vote(auth, author, permlink, 10000, (result) => {
+        if (!result) {
+          setLiked(false);
+          alert("Could not vote. Sorry.");
+          return;
+        }
+        votes++;
+        console.log(votes);
+      });
+    }
+  };
   return (
     <Container className="p-0 bg-light" fluid>
       <Row className="m-0 pt-1">
@@ -15,20 +52,19 @@ const Engagement = ({ votes, payout, comments, reblogs }) => {
           <span className="px-2">
             <a
               onClick={() => {
-                votes++;
+                likePost();
                 setLiked(true);
               }}
             >
               <LikeBtn clicked={liked} />
             </a>
             <span className="text-muted" style={{ paddingLeft: "5px" }}>
-              {voted}
+              {votes}
             </span>
           </span>
           <span className="px-2">
             <a
               onClick={() => {
-                votes++;
                 setCommented(!commented);
               }}
             >

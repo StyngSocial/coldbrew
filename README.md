@@ -2,6 +2,17 @@
 
 ![Cold Brew Logo]("./public/logo.png)
 
+#### TODO
+
+- Dev log for version
+- Date not formatted
+
+## Store
+
+- Client
+  - Set access token and persist
+- Active User
+
 #### v0.0.17
 
 - Stocks replaced w/ Cold Brew trending
@@ -12,7 +23,7 @@
 - Manifest Icons
 - Pull to refresh
 
-#### TODO
+#### v0.0.18
 
-- Dev log for version
-- Date not formatted
+- Cold Brew users page replaces trending
+- Comment threads on post page
