@@ -33,6 +33,7 @@ const Engagement = ({
     if (!auth.activeUser) {
       let loginUrl = auth.client.getLoginURL();
       router.push(loginUrl);
+      return;
     }
     auth.client.vote(auth.activeUser, author, permlink, 1000, (err, result) => {
       setLiked(true);

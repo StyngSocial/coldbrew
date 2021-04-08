@@ -27,7 +27,7 @@ const useHivesigner = () => {
   if (!client) {
     let initClient = new hivesigner.Client({
       app: "cold.brew",
-      callbackURL: "http://localhost:3000/beta/home",
+      callbackURL: "http://192.168.1.104:3000/beta/home",
       scope: ["vote", "comment"],
       accessToken: "ben",
     });

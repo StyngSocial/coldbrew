@@ -27,3 +27,8 @@
 
 - Cold Brew users page replaces trending
 - Comment threads on post page
+- Liking posts
+  - Also displays liked post for users
+- Better auth persistance
+- Beta home moved so may have to redownload app
+- Replies
