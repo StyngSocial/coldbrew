@@ -2,13 +2,14 @@ import AppWrapper from "./AppWrapper";
 import Feed from "../components/Feed.jsx";
 import Loading from "../components/Loading";
 import FeedBanner from "../components/banners/FeedBanner";
-const FeedModule = ({ data, banner, error, children }) => {
+const FeedModule = ({ data, banner, loading, error, children }) => {
   return (
     <>
       <AppWrapper>
         {banner && <FeedBanner title={banner.title} about={banner.about} />}
         {children}
-        <Feed posts={data} />
+        {loading && <Loading />}
+        {!loading && <Feed posts={data} />}
       </AppWrapper>
     </>
   );

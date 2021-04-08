@@ -21,7 +21,7 @@ const trending = () => {
         <title>this shit hot</title>
       </Head>
 
-      {data && <FeedModule data={data} banner={banner} error={error} />}
+      <FeedModule data={data} loading={!data} banner={banner} error={error} />
     </>
   );
 };

@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import ColdBrewPost from "../../../../components/ColdBrewPost/";
 import ColdBrewComment from "../../../../components/ColdBrewComment";
 import AppWrapper from "../../../../modules/AppWrapper";
-
+import Loading from "../../../../components/Loading";
 import { Observer } from "../../../../util/constants";
 
 const fetcher = (url) => axios.get(url).then((r) => r.data);

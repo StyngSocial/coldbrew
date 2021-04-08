@@ -4,7 +4,7 @@ import axios from "axios";
 import useSWR from "swr";
 import FeedModule from "../../modules/Feed.module";
 import { useRouter } from "next/router";
-
+import Loading from "../../components/Loading";
 import { Observer, ColdBrew } from "../../util/constants";
 
 const fetcher = (url) => axios.get(url).then((r) => r.data);
@@ -38,8 +38,7 @@ export default function Home() {
       <Head>
         <title>Cold Brew | monetizing clout.</title>
       </Head>
-
-      {data && <FeedModule data={data} banner={banner} error={error} />}
+      <FeedModule data={data} loading={!data} banner={banner} error={error} />
     </>
   );
 }

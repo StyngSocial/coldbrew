@@ -2,7 +2,7 @@ import Head from "next/head";
 import axios from "axios";
 import useSWR from "swr";
 import FeedModule from "../../modules/Feed.module";
-
+import Loading from "../../components/Loading";
 import { ColdBrewAcc } from "../../util/constants.ts";
 
 const fetcher = (url) => axios.get(url).then((r) => r.data);
@@ -21,7 +21,7 @@ const coldbrew = () => {
       <Head>
         <title>grab a coffee, stay a while</title>
       </Head>
-      {data && <FeedModule data={data} banner={banner} error={error} />}
+      <FeedModule data={data} loading={!data} banner={banner} error={error} />
     </>
   );
 };

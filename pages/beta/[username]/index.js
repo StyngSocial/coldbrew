@@ -4,7 +4,7 @@ import useSWR from "swr";
 import axios from "axios";
 import ProfileBanner from "../../../components/banners/ProfileBanner";
 import FeedModule from "../../../modules/Feed.module.jsx";
-
+import Loading from "../../../components/Loading";
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 
 export default function User() {
@@ -19,6 +19,7 @@ export default function User() {
       <Head>
         <title>Cold Brew | monetizing clout.</title>
       </Head>
+
       {data && (
         <FeedModule data={data} error={error}>
           <ProfileBanner username={username} />

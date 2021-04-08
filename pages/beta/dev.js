@@ -2,7 +2,7 @@ import Head from "next/head";
 import axios from "axios";
 import useSWR from "swr";
 import FeedModule from "../../modules/Feed.module";
-
+import Loading from "../../components/Loading";
 import { Observer } from "../../util/constants";
 
 const fetcher = (url) => axios.get(url).then((r) => r.data);
@@ -22,7 +22,7 @@ const dev = () => {
       <Head>
         <title>dev log</title>
       </Head>
-      {data && <FeedModule data={data} banner={banner} error={error} />}
+      <FeedModule data={data} loading={!data} banner={banner} error={error} />
     </>
   );
 };
