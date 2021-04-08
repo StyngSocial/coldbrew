@@ -1,5 +1,4 @@
 import AppWrapper from "./AppWrapper";
-import Beta from "./Beta";
 import Loading from "../components/Loading";
 import CommunityCard from "../components/CommunityCard";
 

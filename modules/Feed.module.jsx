@@ -1,5 +1,4 @@
 import AppWrapper from "./AppWrapper";
-import Beta from "./Beta";
 import Feed from "../components/Feed.jsx";
 import Loading from "../components/Loading";
 import FeedBanner from "../components/banners/FeedBanner";
