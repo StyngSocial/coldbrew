@@ -1,16 +1,14 @@
-import { Controlled as ControlledZoom } from "react-medium-image-zoom";
-import HivesignerContext from "../hivesigner/HivesignerContext";
-import { Container, Row, Col } from "react-bootstrap";
-import { useCallback, useState, useContext } from "react";
-import "react-medium-image-zoom/dist/styles.css";
 import Link from "next/link";
+
+import { useCallback, useState, useContext } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import { Controlled as ControlledZoom } from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 import TimeAgo from "react-timeago";
+
+import HivesignerContext from "../hivesigner/HivesignerContext";
 import usePostBody from "../../util/usePostBody.js";
 import Engagement from "../Engagement";
-
-/**
- * TODO: If a user is not signed in, localStorage is not defined and returns and errir
- */
 
 const ColdBrewPost = ({ post }) => {
   const auth = useContext(HivesignerContext);
@@ -28,13 +26,17 @@ const ColdBrewPost = ({ post }) => {
       <Container fluid className="pt-3 pb-2 m-0 border-bottom">
         <Row className="m-0 align-items-center">
           <Col xs="auto" className="px-0">
-            <img
-              src={`https://images.hive.blog/u/${post.author}/avatar`}
-              style={{ width: "35px" }}
-              height="35px"
-              className="p-0 rounded-circle"
-              alt="User"
-            />
+            <Link href={`${post.author}`} passHref>
+              <a>
+                <img
+                  src={`https://images.hive.blog/u/${post.author}/avatar`}
+                  style={{ width: "35px" }}
+                  height="35px"
+                  className="p-0 rounded-circle"
+                  alt="User"
+                />
+              </a>
+            </Link>
           </Col>
           <Col
             className="px-2"
@@ -52,23 +54,23 @@ const ColdBrewPost = ({ post }) => {
         </Row>
 
         <Link href={`${post.author}/${post.permlink}`} passHref>
-          <a>
+          <a className="text-roast text-decoration-none">
             <strong className="m-0 pt-2 text-roast">{post.title}</strong>
+
+            {brew.map((pint) => {
+              key++;
+              return (
+                <p
+                  key={key}
+                  className="m-0 mb-2 mw-100"
+                  style={{ overflow: "hidden" }}
+                >
+                  {pint}
+                </p>
+              );
+            })}
           </a>
         </Link>
-
-        {brew.map((pint) => {
-          key++;
-          return (
-            <p
-              key={key}
-              className="m-0 mb-2 mw-100"
-              style={{ overflow: "hidden" }}
-            >
-              {pint}
-            </p>
-          );
-        })}
 
         {images && (
           <>

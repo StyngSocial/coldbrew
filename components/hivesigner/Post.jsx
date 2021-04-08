@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import Loading from "../Loading";
 import SendConfirmation from "../animations/SendConfirmation";
 
-const Post = ({ show, onHide }) => {
+const Post = ({ show, onHide, parent_author, parent_permlink, header }) => {
   const auth = useContext(HivesignerContext);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -15,15 +15,15 @@ const Post = ({ show, onHide }) => {
 
   const post = () => {
     let coldbrew_meta = {
-      tags: ["coldbrew-dev"],
+      tags: [""],
       app: "Cold Brew",
       format: "UTF-8",
     };
     let date = new Date();
     let perm_link = `cb-${date.getFullYear()}${date.getHours()}${date.getMinutes()}${date.getSeconds()}`;
     auth.client.comment(
-      "",
-      "hive-152197",
+      parent_author,
+      parent_permlink,
       auth.activeUser,
       perm_link,
       title,
@@ -52,21 +52,23 @@ const Post = ({ show, onHide }) => {
   return (
     <Modal show={show} onHide={onHide} centered>
       <Modal.Header closeButton>
-        <Modal.Title>Ƀrew</Modal.Title>
+        <h5 className="m-0">{header}</h5>
       </Modal.Header>
       <Modal.Body style={{ height: "350px" }}>
         {loading && <Loading />}
         {posted && <SendConfirmation message="Ƀrew posted!" />}
         {!posted && !loading && (
           <>
-            <FormControl
-              placeholder="Title"
-              aria-label="Post Title"
-              aria-describedby="Post Title"
-              className="mb-2"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
+            {parent_permlink === "hive-152197" && (
+              <FormControl
+                placeholder="Title"
+                aria-label="Post Title"
+                aria-describedby="Post Title"
+                className="mb-2"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            )}
 
             <FormControl
               as="textarea"

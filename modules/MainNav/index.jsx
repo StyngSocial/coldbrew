@@ -188,7 +188,13 @@ const MainNav = () => {
       </Navbar>
       <Feedback show={show} onHide={() => setShow(false)} />
       <DevNotes show={dev} onHide={() => setDev(false)} />
-      <Post show={post} onHide={() => setPost(false)} />
+      <Post
+        show={post}
+        onHide={() => setPost(false)}
+        parent_author=""
+        parent_permlink="hive-152197"
+        header="Post a Brew"
+      />
     </>
   );
 };
