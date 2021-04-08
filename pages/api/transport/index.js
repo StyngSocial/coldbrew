@@ -1,12 +1,13 @@
 import nodemailer from "nodemailer";
 
 export default function handler(req, res) {
-  const { message } = req.body;
+  const { message, user } = req.body;
+  let feedback = `User: ${user}\n\nMessage: ${message}`;
   var mail = {
     from: process.env.EMAIL_USER,
     to: process.env.EMAIL_BEN,
     subject: "New feedback message from Cold Brew",
-    text: message,
+    text: feedback,
   };
   const transport = {
     host: "mail.privateemail.com",
@@ -19,17 +20,22 @@ export default function handler(req, res) {
   const transporter = nodemailer.createTransport(transport);
   const verify = () => {
     transporter.verify((error, success) => {
-      if (error) console.log(`Error connecting to mail service: ${error}`);
+      if (error)
+        return console.log(`Error connecting to mail service: ${error}`);
     });
+    return;
   };
 
-  try {
-    verify();
+  verify();
+
+  return new Promise((resolve, reject) => {
     transporter.sendMail(mail, (err, data) => {
-      if (err) return res.status(500).json({ data: err });
-      return res.status(200).json({ data: data, mail: mail });
+      if (err) {
+        res.status(400).json(err);
+        reject();
+      }
+      res.status(200).json({ data: data, mail: mail });
+      resolve();
     });
-  } catch (err) {
-    return res.status(400).json(err);
-  }
+  });
 }
