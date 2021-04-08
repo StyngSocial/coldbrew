@@ -1,50 +1,50 @@
-import Background from "../components/Background.jsx";
+import Background from "../../components/Background.jsx";
 import Head from "next/head";
 import { useState } from "react";
 import axios from "axios";
-import coldbrew from "../public/logo.png";
-import { version } from "../package.json";
-import SendConfirmation from "../components/animations/SendConfirmation";
+import coldbrew from "../../public/logo.png";
+import { version } from "../../package.json";
+import SendConfirmation from "../../components/animations/SendConfirmation";
 import { Card, Form, Button, Badge, Tabs, Tab } from "react-bootstrap";
 
 const Beta = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [signedUp, setSignedUp] = useState(false);
+  // const [signedUp, setSignedUp] = useState(false);
 
-  const handleName = (e) => {
-    e.preventDefault();
-    setName(e.target.value);
-  };
+  // const handleName = (e) => {
+  //   e.preventDefault();
+  //   setName(e.target.value);
+  // };
 
-  const handleEmail = (e) => {
-    e.preventDefault();
-    setEmail(e.target.value);
-  };
+  // const handleEmail = (e) => {
+  //   e.preventDefault();
+  //   setEmail(e.target.value);
+  // };
 
-  const signUp = () => {
-    if (!name || !email) {
-      alert("Please privde a name and email.");
-      return;
-    }
-    const newUser = `New user - ${name}.\n${email}`;
-    axios
-      .post("/api/transport", {
-        name: name,
-        email: email,
-        message: newUser,
-      })
-      .then((resp) => {
-        if (resp.status != 200) {
-          return alert("Didn't work. Try again");
-        } else {
-          setSignedUp(true);
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
+  // const signUp = () => {
+  //   if (!name || !email) {
+  //     alert("Please privde a name and email.");
+  //     return;
+  //   }
+  //   const newUser = `New user - ${name}.\n${email}`;
+  //   axios
+  //     .post("/api/transport", {
+  //       name: name,
+  //       email: email,
+  //       message: newUser,
+  //     })
+  //     .then((resp) => {
+  //       if (resp.status != 200) {
+  //         return alert("Didn't work. Try again");
+  //       } else {
+  //         setSignedUp(true);
+  //       }
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // };
   return (
     <>
       <Head>
@@ -143,7 +143,7 @@ const Beta = () => {
               size="lg"
               variant="primary"
               className="mt-5 text-light"
-              onClick={() => signIn("auth0")}
+              href="/beta/home"
             >
               Login
             </Button>

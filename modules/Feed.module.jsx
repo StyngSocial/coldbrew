@@ -6,7 +6,7 @@ const FeedModule = ({ data, banner, error, children }) => {
   return (
     <>
       <AppWrapper>
-        <FeedBanner title={banner.title} about={banner.about} />
+        {banner && <FeedBanner title={banner.title} about={banner.about} />}
         {children}
         <Feed posts={data} />
       </AppWrapper>

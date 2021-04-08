@@ -13,7 +13,7 @@ const ContentNav = () => {
   return (
     <>
       <nav className="nav nav-pills position-fixed flex-column mt-4 px-3 d-none d-lg-flex">
-        <Link href="/" passHref>
+        <Link href="/home" passHref>
           <li className="nav-item">
             <a
               className={`nav-link py-3 rounded-pill ${styles.contentBtn}`}

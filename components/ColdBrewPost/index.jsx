@@ -19,9 +19,9 @@ const ColdBrewPost = ({ post }) => {
     setIsZoomed(shouldZoom);
   }, []);
 
-  let token = localStorage.getItem("sc_token");
-  let voter = JSON.parse(Buffer.from(token, "base64").toString("ascii"));
-  let voted = post.active_votes.some((vote) => vote.voter === voter.authors[0]);
+  // let token = localStorage.getItem("sc_token");
+  // let voter = JSON.parse(Buffer.from(token, "base64").toString("ascii"));
+  // let voted = post.active_votes.some((vote) => vote.voter === voter.authors[0]);
 
   return (
     <>
@@ -40,7 +40,7 @@ const ColdBrewPost = ({ post }) => {
             className="px-2"
             style={({ paddingLeft: "5px" }, { fontSize: ".85rem" })}
           >
-            <Link href={`/${post.author}`} passHref>
+            <Link href={`${post.author}`} passHref>
               <a>
                 <strong className="text-roast d-inline">@{post.author}</strong>
               </a>
@@ -51,7 +51,7 @@ const ColdBrewPost = ({ post }) => {
           </Col>
         </Row>
 
-        <Link href={`/${post.author}/${post.permlink}`} passHref>
+        <Link href={`${post.author}/${post.permlink}`} passHref>
           <a>
             <strong className="m-0 pt-2 text-roast">{post.title}</strong>
           </a>
@@ -91,7 +91,7 @@ const ColdBrewPost = ({ post }) => {
           </>
         )}
         <Engagement
-          voted={voted}
+          // voted={voted}
           author={post.author}
           permlink={post.permlink}
           votes={post.active_votes.length}

@@ -60,7 +60,7 @@ const MainNav = () => {
           height: "50px",
         }}
       >
-        <Link href="/" passHref>
+        <Link href="/beta/home" passHref>
           <Nav.Link
             className="text-roast pt-1 d-none d-md-flex"
             style={{
@@ -73,7 +73,7 @@ const MainNav = () => {
             Cold Brew
           </Nav.Link>
         </Link>
-        <Link href="/" passHref>
+        <Link href="/beta" passHref>
           <Nav.Link
             className="text-roast py-1 px-3 d-flex d-md-none"
             style={{
@@ -151,13 +151,13 @@ const MainNav = () => {
         fixed="bottom"
         className="border-top p-0 pb-2 d-flex d-lg-none"
       >
-        <Link href="/" passHref>
+        <Link href="/beta/home" passHref>
           <Nav.Link className={`w-25 py-3 text-center `}>
             <HomeButton active={false} />
           </Nav.Link>
         </Link>
 
-        <Link href="/dev" passHref>
+        <Link href="/beta/dev" passHref>
           <Nav.Link className={`w-25 py-3 text-center`}>
             <DevButton active={false} />
           </Nav.Link>
@@ -170,13 +170,13 @@ const MainNav = () => {
           <FontAwesomeIcon icon={faPlus} size="lg" />
         </Nav.Link>
 
-        <Link href="/cb" passHref>
+        <Link href="/beta/cb" passHref>
           <Nav.Link className={`w-25 py-3 text-center`}>
             <ColdbrewButton active={false} />
           </Nav.Link>
         </Link>
 
-        <Link href="/cb-users" passHref>
+        <Link href="/beta/cb-users" passHref>
           <Nav.Link className={`w-25 py-3 text-center`}>
             <FontAwesomeIcon icon={faUsers} size="lg" />
           </Nav.Link>

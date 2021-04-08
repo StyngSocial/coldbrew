@@ -1,9 +1,9 @@
 import Head from "next/head";
 import axios from "axios";
 import useSWR from "swr";
-import FeedModule from "../modules/Feed.module";
+import FeedModule from "../../modules/Feed.module";
 
-import { Observer } from "../util/constants";
+import { Observer } from "../../util/constants";
 
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 

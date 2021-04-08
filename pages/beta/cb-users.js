@@ -1,15 +1,15 @@
 import useSWR from "swr";
 import axios from "axios";
-import AppWrapper from "../modules/AppWrapper";
-import FeedBanner from "../components/banners/FeedBanner";
-import UserList from "../components/UserList";
+import AppWrapper from "../../modules/AppWrapper";
+import FeedBanner from "../../components/banners/FeedBanner";
+import UserList from "../../components/UserList";
 import ListGroup from "react-bootstrap/ListGroup";
 
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 
 export default function users() {
   const { data, error } = useSWR(
-    "api/hive/subscribers?community=hive-152197",
+    "/api/hive/subscribers?community=hive-152197",
     fetcher
   );
 
