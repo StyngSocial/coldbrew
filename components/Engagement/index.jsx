@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import { Container, Row, Col, Badge } from "react-bootstrap";
 import LikeBtn from "../animations/LikeBtn";
 import CommentBtn from "../animations/CommentBtn";
-import { vote } from "../../components/hivesigner/broadcast";
 import HivesignerContext from "../hivesigner/HivesignerContext";
+
 const Engagement = ({
   voted,
   author,
@@ -14,37 +14,33 @@ const Engagement = ({
   comments,
   reblogs,
 }) => {
-  console.log(voted);
-  const usdPayout = parseFloat(payout).toFixed(2);
   const auth = useContext(HivesignerContext);
+  const usdPayout = parseFloat(payout).toFixed(2);
   const router = useRouter();
   const [liked, setLiked] = useState(voted);
+  const [likes, setLikes] = useState(votes);
   const [commented, setCommented] = useState(false);
 
   const likePost = () => {
     if (voted) {
-      alert("Already liked post");
+      alert("You have already liked this Ƀrew");
       return;
     }
-    let params = new URL(location).searchParams;
-    const token =
-      params.get("access_token") || localStorage.getItem("sc_token");
-    auth.client.setAccessToken(token);
-    if (!token) {
-      const url = auth.client.getLoginURL();
-      router.push(url);
-    } else {
-      vote(auth, author, permlink, 10000, (result) => {
-        if (!result) {
-          setLiked(false);
-          alert("Could not vote. Sorry.");
-          return;
-        }
-        votes++;
-        console.log(votes);
-      });
+    if (!auth.activeUser) {
+      let loginUrl = auth.client.getLoginURL();
+      router.push(loginUrl);
     }
+    auth.client.vote(auth.activeUser, author, permlink, 1000, (err, result) => {
+      setLiked(true);
+      if (result) {
+        let liked = likes + 1;
+        setLikes(liked);
+      } else if (err) {
+        alert(err.error_description);
+      }
+    });
   };
+
   return (
     <Container className="p-0 bg-light" fluid>
       <Row className="m-0 pt-1">
@@ -53,13 +49,12 @@ const Engagement = ({
             <a
               onClick={() => {
                 likePost();
-                setLiked(true);
               }}
             >
               <LikeBtn clicked={liked} />
             </a>
             <span className="text-muted" style={{ paddingLeft: "5px" }}>
-              {votes}
+              {likes}
             </span>
           </span>
           <span className="px-2">

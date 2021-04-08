@@ -1,6 +1,7 @@
 import { Controlled as ControlledZoom } from "react-medium-image-zoom";
+import HivesignerContext from "../hivesigner/HivesignerContext";
 import { Container, Row, Col } from "react-bootstrap";
-import { useCallback, useState } from "react";
+import { useCallback, useState, useContext } from "react";
 import "react-medium-image-zoom/dist/styles.css";
 import Link from "next/link";
 import TimeAgo from "react-timeago";
@@ -12,6 +13,7 @@ import Engagement from "../Engagement";
  */
 
 const ColdBrewPost = ({ post }) => {
+  const auth = useContext(HivesignerContext);
   const [isZoomed, setIsZoomed] = useState(false);
   const { brew, images } = usePostBody(post.body);
   let key = 0;
@@ -19,9 +21,7 @@ const ColdBrewPost = ({ post }) => {
     setIsZoomed(shouldZoom);
   }, []);
 
-  // let token = localStorage.getItem("sc_token");
-  // let voter = JSON.parse(Buffer.from(token, "base64").toString("ascii"));
-  // let voted = post.active_votes.some((vote) => vote.voter === voter.authors[0]);
+  let voted = post.active_votes.some((vote) => vote.voter === auth.activeUser);
 
   return (
     <>
@@ -91,7 +91,7 @@ const ColdBrewPost = ({ post }) => {
           </>
         )}
         <Engagement
-          // voted={voted}
+          voted={voted}
           author={post.author}
           permlink={post.permlink}
           votes={post.active_votes.length}
