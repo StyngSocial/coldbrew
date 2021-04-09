@@ -51,7 +51,7 @@ const MainNav = () => {
           height: "50px",
         }}
       >
-        <Link href="/beta/home" passHref>
+        <Link href="/beta" passHref>
           <Nav.Link
             className="text-roast pt-1 d-none d-md-flex"
             style={{
@@ -146,7 +146,7 @@ const MainNav = () => {
         fixed="bottom"
         className="border-top p-0 pb-2 d-flex d-lg-none"
       >
-        <Link href="/beta/home" passHref>
+        <Link href="/beta" passHref>
           <Nav.Link className={`w-25 py-3 text-center`}>
             <FontAwesomeIcon
               icon={faHouseUser}

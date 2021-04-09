@@ -26,7 +26,7 @@ const ColdBrewPost = ({ post }) => {
       <Container fluid className="pt-3 pb-2 m-0 border-bottom">
         <Row className="m-0 align-items-center">
           <Col xs="auto" className="px-0">
-            <Link href={`${post.author}`} passHref>
+            <Link href={`/beta/${post.author}`} passHref>
               <a>
                 <img
                   src={`https://images.hive.blog/u/${post.author}/avatar`}
@@ -42,7 +42,7 @@ const ColdBrewPost = ({ post }) => {
             className="px-2"
             style={({ paddingLeft: "5px" }, { fontSize: ".85rem" })}
           >
-            <Link href={`${post.author}`} passHref>
+            <Link href={`/beta/${post.author}`} passHref>
               <a>
                 <strong className="text-roast d-inline">@{post.author}</strong>
               </a>
@@ -53,7 +53,7 @@ const ColdBrewPost = ({ post }) => {
           </Col>
         </Row>
 
-        <Link href={`${post.author}/${post.permlink}`} passHref>
+        <Link href={`/beta/${post.author}/${post.permlink}`} passHref>
           <a className="text-roast text-decoration-none">
             <strong className="m-0 pt-2 text-roast">{post.title}</strong>
 

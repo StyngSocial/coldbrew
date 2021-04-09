@@ -13,10 +13,13 @@ const fetcher = (url) => axios.get(url).then((r) => r.data);
 export default function User() {
   const router = useRouter();
   const { username, permlink } = router.query;
+
   const { data, error } = useSWR(
     `/api/hive/post?author=${username}&permlink=${permlink}&observer=${Observer}`,
     fetcher
   );
+  if (data) console.log(data);
+  if (error) console.log(error);
   let index = 0;
   return (
     <>

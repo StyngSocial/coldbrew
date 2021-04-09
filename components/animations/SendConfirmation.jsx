@@ -12,7 +12,7 @@ const SendConfirmation = ({ message }) => {
         <circle
           className={`${styles.path} ${styles.circle}`}
           fill="none"
-          stroke="#73AF55"
+          stroke="#50c878"
           strokeWidth="6"
           strokeMiterlimit="10"
           cx="65.1"
@@ -22,7 +22,7 @@ const SendConfirmation = ({ message }) => {
         <polyline
           className={`${styles.path} ${styles.check}`}
           fill="none"
-          stroke="#73AF55"
+          stroke="#50c878"
           strokeWidth="6"
           strokeLinecap="round"
           strokeMiterlimit="10"

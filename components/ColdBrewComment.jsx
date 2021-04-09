@@ -42,7 +42,7 @@ const ColdBrewComment = ({ post }) => {
               className="px-2"
               style={({ paddingLeft: "5px" }, { fontSize: ".85rem" })}
             >
-              <Link href={`/${post.author}`} passHref>
+              <Link href={`/beta/${post.author}`} passHref>
                 <a>
                   <strong className="text-roast d-inline">
                     @{post.author}
@@ -55,7 +55,7 @@ const ColdBrewComment = ({ post }) => {
             </Col>
           </Row>
 
-          <Link href={`/${post.author}/${post.permlink}`} passHref>
+          <Link href={`/beta/${post.author}/${post.permlink}`} passHref>
             <a>
               <strong
                 className="m-0 pt-2 text-muted"

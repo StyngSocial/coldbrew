@@ -1,7 +1,6 @@
 import { Modal, Button, FormControl } from "react-bootstrap";
 import { useState, useContext } from "react";
 import HivesignerContext from "../../components/hivesigner/HivesignerContext";
-import { useRouter } from "next/router";
 import Loading from "../Loading";
 import SendConfirmation from "../animations/SendConfirmation";
 
@@ -11,7 +10,6 @@ const Post = ({ show, onHide, parent_author, parent_permlink, header }) => {
   const [body, setBody] = useState("");
   const [loading, setLoading] = useState(false);
   const [posted, setPosted] = useState(false);
-  const router = useRouter();
 
   const post = () => {
     let coldbrew_meta = {
