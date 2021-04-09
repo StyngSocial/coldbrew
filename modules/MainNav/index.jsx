@@ -78,12 +78,12 @@ const MainNav = () => {
         </Link>
 
         <Nav className="d-flex">
-          <Nav.Link
+          {/* <Nav.Link
             className="px-3 my-2 text-center d-flex align-items-center text-roast intro"
             onClick={() => setDev(true)}
           >
             <FontAwesomeIcon icon={faInfo} style={{ fontSize: "1.25rem" }} />
-          </Nav.Link>
+          </Nav.Link> */}
           <Nav.Link
             className="px-3 my-2  text-center d-flex align-items-center text-roast"
             onClick={() => setShow(true)}
