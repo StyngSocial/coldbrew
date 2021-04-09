@@ -9,16 +9,18 @@ import {
   faInfo,
   faPlus,
   faUsers,
+  faCode,
+  faHouseUser,
 } from "@fortawesome/free-solid-svg-icons";
 import Feedback from "../../components/Feedback.jsx";
 import { Navbar, Nav, Button, OverlayTrigger, Popover } from "react-bootstrap";
 import DevNotes from "../../components/DevNotes";
 import logo from "../../public/brew.png";
 
-import HomeButton from "../../components/icons/HomeButton";
-import ColdbrewButton from "../../components/icons/ColdbrewButton";
-import DevButton from "../../components/icons/DevButton";
-import ChartButton from "../../components/icons/ChartButton";
+// import HomeButton from "../../components/icons/HomeButton";
+// import ColdbrewButton from "../../components/icons/ColdbrewButton";
+// import DevButton from "../../components/icons/DevButton";
+// import ChartButton from "../../components/icons/ChartButton";
 import Post from "../../components/hivesigner/Post";
 
 import HivesignerContext from "../../components/hivesigner/HivesignerContext";
@@ -145,14 +147,17 @@ const MainNav = () => {
         className="border-top p-0 pb-2 d-flex d-lg-none"
       >
         <Link href="/beta/home" passHref>
-          <Nav.Link className={`w-25 py-3 text-center `}>
-            <HomeButton active={false} />
+          <Nav.Link className={`w-25 py-3 text-center`}>
+            <FontAwesomeIcon
+              icon={faHouseUser}
+              style={{ fontSize: "1.5rem" }}
+            />
           </Nav.Link>
         </Link>
 
         <Link href="/beta/dev" passHref>
           <Nav.Link className={`w-25 py-3 text-center`}>
-            <DevButton active={false} />
+            <FontAwesomeIcon icon={faCode} style={{ fontSize: "1.5rem" }} />
           </Nav.Link>
         </Link>
 
@@ -160,18 +165,18 @@ const MainNav = () => {
           className={`w-25 py-3 text-center`}
           onClick={() => setPost(true)}
         >
-          <FontAwesomeIcon icon={faPlus} size="lg" />
+          <FontAwesomeIcon icon={faPlus} style={{ fontSize: "1.5rem" }} />
         </Nav.Link>
 
         <Link href="/beta/cb" passHref>
           <Nav.Link className={`w-25 py-3 text-center`}>
-            <ColdbrewButton active={false} />
+            <FontAwesomeIcon icon={faQuestion} style={{ fontSize: "1.5rem" }} />
           </Nav.Link>
         </Link>
 
         <Link href="/beta/cb-users" passHref>
           <Nav.Link className={`w-25 py-3 text-center`}>
-            <FontAwesomeIcon icon={faUsers} size="lg" />
+            <FontAwesomeIcon icon={faUsers} style={{ fontSize: "1.5rem" }} />
           </Nav.Link>
         </Link>
       </Navbar>

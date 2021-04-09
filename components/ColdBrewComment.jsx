@@ -9,7 +9,6 @@ import usePostBody from "../util/usePostBody.js";
 import Engagement from "./Engagement";
 
 const ColdBrewComment = ({ post }) => {
-  console.log(post);
   const [isZoomed, setIsZoomed] = useState(false);
   const { brew, images } = usePostBody(post.body);
   let key = 0;

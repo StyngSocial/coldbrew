@@ -1,5 +1,6 @@
 import { ListGroup, Row, Col } from "react-bootstrap";
-import hive from "@hiveio/hive-js";
+import useSWR from "swr";
+import axios from "axios";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -8,21 +9,22 @@ import { Observer } from "../util/constants";
 /**
  * TODO: Reputation & Follow Buttons
  */
+const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 const UserList = ({ username }) => {
+  const { data, error } = useSWR(
+    `/api/hive/profile?account=${username}&observer=hiveio`,
+    fetcher
+  );
   const [user, setUser] = useState();
   const params = {
     account: username,
     observer: Observer,
   };
-  useEffect(() => {
-    hive.api.callAsync("bridge.get_profile", params).then((response) => {
-      setUser(response);
-    });
-  }, []);
+
   return (
     <>
-      {user && (
+      {data && (
         <Link href={`/beta/${username}`}>
           <ListGroup.Item>
             <Row className="align-items-center px-2">
@@ -35,15 +37,20 @@ const UserList = ({ username }) => {
               />
               <Col className="px-3">
                 <Row className="align-items-center m-0">
-                  <h4 className="m-0">{user.metadata.profile.name}</h4>
-                  <p className="m-0 px-2 text-muted">@{username}</p>
+                  <h6 className="m-0">{data.metadata.profile.name}</h6>
+                  <p
+                    className="m-0 px-2 text-muted"
+                    style={{ fontSize: ".75rem" }}
+                  >
+                    @{username}
+                  </p>
                 </Row>
                 <Row className="m-0">
                   <p className="m-0">
-                    <strong>{user.stats.followers}</strong> Followers
+                    <strong>{data.stats.followers}</strong> Followers
                   </p>
                   <p className="m-0 px-2">
-                    <strong>{user.stats.following}</strong> Following
+                    <strong>{data.stats.following}</strong> Following
                   </p>
                 </Row>
               </Col>
