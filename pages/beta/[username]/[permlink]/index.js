@@ -17,7 +17,6 @@ export default function User() {
     `/api/hive/post?author=${username}&permlink=${permlink}&observer=${Observer}`,
     fetcher
   );
-  if (data) console.log(data);
   let index = 0;
   return (
     <>

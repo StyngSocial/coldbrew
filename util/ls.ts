@@ -18,9 +18,8 @@ export const set = (k: string, v: any): void => {
   if (typeof window === "undefined") {
     return;
   }
-
   const key = `${PREFIX}_${k}`;
-  localStorage.setItem(key, JSON.stringify(v));
+  localStorage.setItem(key, v);
 };
 
 export const remove = (k: string): void => {

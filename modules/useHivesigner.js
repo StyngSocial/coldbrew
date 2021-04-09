@@ -5,37 +5,34 @@ import * as ls from "../util/ls";
 
 const useHivesigner = () => {
   const router = useRouter();
-  const [accessToken, setAccessToken] = useState(null);
   const [client, setClient] = useState(null);
   const [activeUser, setActiveUser] = useState(null);
 
-  useEffect(() => {
-    const token = ls.get("token") || router.query.access_token;
-    if (!token) {
-      setAccessToken("");
-    } else {
-      setAccessToken(token);
-      const user = JSON.parse(Buffer.from(token, "base64").toString("ascii"));
-      setActiveUser(user.authors[0]);
-    }
-  }, []);
-
-  if (router.query.access_token) {
-    router.push("/beta/home");
-  }
-
   if (!client) {
+    console.log("new client");
     let initClient = new hivesigner.Client({
       app: "cold.brew",
-      callbackURL: "http://192.168.1.104:3000/beta/home",
+      callbackURL: "http://localhost:3000/beta/home",
       scope: ["vote", "comment"],
-      accessToken: "ben",
+      accessToken: "",
     });
     setClient(initClient);
   }
 
-  if (accessToken) {
-    client.setAccessToken(accessToken);
+  if (client && router.query.access_token && !activeUser) {
+    let token = router.query.access_token;
+    if (token) {
+      client.setAccessToken(token);
+      ls.set("token", token);
+      const user = JSON.parse(Buffer.from(token, "base64").toString("ascii"));
+      setActiveUser(user.authors[0]);
+    }
+    router.push("/beta/home");
+  }
+
+  if (client && !ls.get("token") && activeUser) {
+    setActiveUser(null);
+    client.removeAccessToken();
   }
 
   return { client, activeUser };

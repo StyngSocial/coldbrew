@@ -27,26 +27,15 @@ const MainNav = () => {
   const [show, setShow] = useState(false);
   const [dev, setDev] = useState(false);
   const [post, setPost] = useState(false);
-  const [token, setToken] = useState();
-  const [author, setAuthor] = useState();
   const router = useRouter();
   const auth = useContext(HivesignerContext);
-  useEffect(() => {
-    const access_token = localStorage.getItem("sc_token");
-    setToken(access_token);
-    if (access_token) {
-      setAuthor(
-        JSON.parse(Buffer.from(access_token, "base64").toString("ascii"))
-      );
-    }
-  }, []);
 
   const login = () => {
-    auth.client.login({ username: "benny.blockchain" });
+    auth.client.login({ username: "" });
   };
   const signout = () => {
-    auth.client.removeAccessToken();
     localStorage.removeItem("sc_token");
+    auth.client.removeAccessToken();
     router.push("/beta/dev");
   };
 
@@ -102,7 +91,7 @@ const MainNav = () => {
               style={{ fontSize: "1.25rem" }}
             />
           </Nav.Link>
-          {token && (
+          {auth.activeUser && (
             <Nav.Link className="px-2 my-2 text-center d-flex align-items-center text-primary">
               <OverlayTrigger
                 trigger="click"
@@ -124,7 +113,7 @@ const MainNav = () => {
                 }
               >
                 <Image
-                  src={`https://images.hive.blog/u/${author.authors[0]}/avatar`}
+                  src={`https://images.hive.blog/u/${auth.activeUser}/avatar`}
                   alt="Profile photo"
                   className="rounded-circle"
                   height={35}
@@ -133,7 +122,7 @@ const MainNav = () => {
               </OverlayTrigger>
             </Nav.Link>
           )}
-          {!token && (
+          {!auth.activeUser && (
             <Nav.Link
               className="px-2 my-2 text-center d-flex align-items-center text-primary"
               onClick={() => login()}
@@ -193,7 +182,7 @@ const MainNav = () => {
         onHide={() => setPost(false)}
         parent_author=""
         parent_permlink="hive-152197"
-        header="Post a Brew"
+        header="Post a Ƀrew"
       />
     </>
   );
