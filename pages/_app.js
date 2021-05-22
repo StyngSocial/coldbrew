@@ -1,5 +1,5 @@
-import HivesignerContext from "../components/hivesigner/HivesignerContext";
-import useHivesigner from "../modules/useHivesigner";
+import HivesignerContext from "../common/components/hivesigner/HivesignerContext";
+import useHivesigner from "../common/modules/useHivesigner";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/global.scss";
 import "../styles/custom.scss";

@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap";
-import logo from "../../public/logo.png";
+import logo from "../../../public/logo.png";
 import axios from "axios";
 import useSWR from "swr";
 

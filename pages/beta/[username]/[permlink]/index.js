@@ -2,11 +2,10 @@ import Head from "next/head";
 import useSWR from "swr";
 import axios from "axios";
 import { useRouter } from "next/router";
-import ColdBrewPost from "../../../../components/ColdBrewPost/";
-import ColdBrewComment from "../../../../components/ColdBrewComment";
-import AppWrapper from "../../../../modules/AppWrapper";
-import Loading from "../../../../components/Loading";
-import { Observer } from "../../../../util/constants";
+import ColdBrewPost from "../../../../common/components/ColdBrewPost/";
+import ColdBrewComment from "../../../../common/components/ColdBrewComment";
+import AppWrapper from "../../../../common/modules/AppWrapper";
+import { Observer } from "../../../../common/util/constants";
 
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 
@@ -18,8 +17,7 @@ export default function User() {
     `/api/hive/post?author=${username}&permlink=${permlink}&observer=${Observer}`,
     fetcher
   );
-  if (data) console.log(data);
-  if (error) console.log(error);
+
   let index = 0;
   return (
     <>

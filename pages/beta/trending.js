@@ -1,8 +1,8 @@
 import Head from "next/head";
 import axios from "axios";
 import useSWR from "swr";
-import FeedModule from "../../modules/Feed.module";
-import { Observer, ColdBrew } from "../../util/constants.ts";
+import FeedModule from "../../common/modules/Feed.module";
+import { Observer, ColdBrew } from "../../common/util/constants.ts";
 
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 

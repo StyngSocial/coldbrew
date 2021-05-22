@@ -7,7 +7,7 @@ import "react-medium-image-zoom/dist/styles.css";
 import TimeAgo from "react-timeago";
 
 import HivesignerContext from "../hivesigner/HivesignerContext";
-import usePostBody from "../../util/usePostBody.js";
+import usePostBody from "../../util/usePostBody";
 import Engagement from "../Engagement";
 
 const ColdBrewPost = ({ post }) => {

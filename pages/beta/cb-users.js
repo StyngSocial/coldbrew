@@ -1,10 +1,10 @@
 import useSWR from "swr";
 import axios from "axios";
-import AppWrapper from "../../modules/AppWrapper";
-import FeedBanner from "../../components/banners/FeedBanner";
-import UserList from "../../components/UserList";
+import AppWrapper from "../../common/modules/AppWrapper";
+import FeedBanner from "../../common/components/banners/FeedBanner";
+import UserList from "../../common/components/UserList";
 import ListGroup from "react-bootstrap/ListGroup";
-import Loading from "../../components/Loading";
+import Loading from "../../common/components/Loading";
 
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 

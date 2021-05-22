@@ -1,5 +1,5 @@
 import { Modal, Badge } from "react-bootstrap";
-import { version } from "../package.json";
+import { version } from "../../package.json";
 
 const DevNotes = ({ show, onHide }) => {
   return (

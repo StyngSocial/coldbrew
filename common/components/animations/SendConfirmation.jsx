@@ -1,4 +1,4 @@
-import styles from "../../styles/SendConfirmation.module.scss";
+import styles from "./SendConfirmation.module.scss";
 
 const SendConfirmation = ({ message }) => {
   return (

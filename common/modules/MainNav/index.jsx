@@ -1,12 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./MainNav.module.scss";
 import {
   faQuestion,
-  faInfo,
   faPlus,
   faUsers,
   faCode,
@@ -15,7 +14,7 @@ import {
 import Feedback from "../../components/Feedback.jsx";
 import { Navbar, Nav, Button, OverlayTrigger, Popover } from "react-bootstrap";
 import DevNotes from "../../components/DevNotes";
-import logo from "../../public/brew.png";
+import logo from "../../../public/brew.png";
 
 // import HomeButton from "../../components/icons/HomeButton";
 // import ColdbrewButton from "../../components/icons/ColdbrewButton";

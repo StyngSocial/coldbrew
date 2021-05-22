@@ -1,5 +1,5 @@
 import hivesigner from "hivesigner";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import * as ls from "../util/ls";
 

@@ -1,11 +1,8 @@
 import Head from "next/head";
-import { useEffect } from "react";
 import axios from "axios";
 import useSWR from "swr";
-import FeedModule from "../../modules/Feed.module";
-import { useRouter } from "next/router";
-import Loading from "../../components/Loading";
-import { Observer, ColdBrew } from "../../util/constants";
+import FeedModule from "../../common/modules/Feed.module";
+import { Observer, ColdBrew } from "../../common/util/constants";
 
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 

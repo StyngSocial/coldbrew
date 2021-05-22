@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import logo from "../../public/logo.png";
-import AppWrapper from "../../modules/AppWrapper";
+import AppWrapper from "../../common/modules/AppWrapper";
 
 const coldbrew = () => {
   return (
