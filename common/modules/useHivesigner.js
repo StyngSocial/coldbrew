@@ -12,7 +12,7 @@ const useHivesigner = () => {
     let token = ls.get("token");
     let refreshClient = new hivesigner.Client({
       app: "cold.brew",
-      callbackURL: "http://localhost:3000/beta",
+      callbackURL: "http://coldbrew.live/beta",
       scope: ["vote", "comment"],
       accessToken: token,
     });
@@ -22,7 +22,7 @@ const useHivesigner = () => {
   if (!client) {
     let initClient = new hivesigner.Client({
       app: "cold.brew",
-      callbackURL: "http://localhost:3000/beta",
+      callbackURL: "http://coldbrew.live/beta",
       scope: ["vote", "comment"],
       accessToken: "",
     });
