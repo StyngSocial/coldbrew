@@ -1,8 +1,8 @@
 import HivesignerContext from "../common/components/hivesigner/HivesignerContext";
 import useHivesigner from "../common/modules/useHivesigner";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../styles/global.scss";
-import "../styles/custom.scss";
+import "../common/styles/global.scss";
+import "../common/styles/custom.scss";
 
 function MyApp({ Component, pageProps }) {
   const { client, activeUser } = useHivesigner();
