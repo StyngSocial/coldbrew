@@ -1,9 +1,9 @@
 CHANGELOG.md
 /.archive
-/pages/work.js
+
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 config/
-hooks/
+
 # dependencies
 /node_modules
 /.pnp
