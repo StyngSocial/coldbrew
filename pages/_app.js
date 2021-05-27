@@ -1,17 +1,17 @@
-import HivesignerContext from "../common/components/hivesigner/HivesignerContext";
-import useHivesigner from "../common/modules/useHivesigner";
+import { useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../common/styles/global.scss";
 import "../common/styles/custom.scss";
+import HivesignerContextProvider, {
+  HivesignerContext,
+} from "../common/hooks/useAuth";
 
 function MyApp({ Component, pageProps }) {
-  const { client, activeUser } = useHivesigner();
+  const auth = useContext(HivesignerContext);
   return (
-    <HivesignerContext.Provider
-      value={{ client: client, activeUser: activeUser }}
-    >
+    <HivesignerContextProvider value={auth}>
       <Component {...pageProps} />
-    </HivesignerContext.Provider>
+    </HivesignerContextProvider>
   );
 }
 

@@ -1,6 +1,6 @@
 // https://github.com/ecency/ecency-vision/blob/master/src/common/util/local-storage.ts
 
-const PREFIX = "sc";
+const PREFIX = "cb";
 
 export const get = (k: string, def: any = null): any => {
   if (typeof window === "undefined") {

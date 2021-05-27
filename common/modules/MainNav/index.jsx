@@ -1,6 +1,9 @@
+// import HomeButton from "../../components/icons/HomeButton";
+// import ColdbrewButton from "../../components/icons/ColdbrewButton";
+// import DevButton from "../../components/icons/DevButton";
+// import ChartButton from "../../components/icons/ChartButton";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import { useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./MainNav.module.scss";
@@ -15,31 +18,14 @@ import Feedback from "../../components/Feedback.jsx";
 import { Navbar, Nav, Button, OverlayTrigger, Popover } from "react-bootstrap";
 import DevNotes from "../../components/DevNotes";
 import logo from "../../../public/brew.png";
-
-// import HomeButton from "../../components/icons/HomeButton";
-// import ColdbrewButton from "../../components/icons/ColdbrewButton";
-// import DevButton from "../../components/icons/DevButton";
-// import ChartButton from "../../components/icons/ChartButton";
+import { HivesignerContext, login, logout } from "../../hooks/useAuth";
 import Post from "../../components/hivesigner/Post";
-
-import HivesignerContext from "../../components/hivesigner/HivesignerContext";
 
 const MainNav = () => {
   const [show, setShow] = useState(false);
   const [dev, setDev] = useState(false);
   const [post, setPost] = useState(false);
-  const router = useRouter();
   const auth = useContext(HivesignerContext);
-
-  const login = () => {
-    auth.client.login({ username: "" });
-  };
-  const signout = () => {
-    localStorage.removeItem("sc_token");
-    auth.client.removeAccessToken();
-    router.push("/beta/dev");
-  };
-
   return (
     <>
       <Navbar
@@ -105,7 +91,7 @@ const MainNav = () => {
                         size="sm"
                         variant="creamer"
                         className="text-greenlight"
-                        onClick={() => signout()}
+                        onClick={() => logout(auth.client)}
                       >
                         Sign out
                       </Button>
@@ -114,7 +100,7 @@ const MainNav = () => {
                 }
               >
                 <Image
-                  src={`https://images.hive.blog/u/${auth.activeUser}/avatar`}
+                  src={auth.activeUser.user_metadata.profile.profile_image}
                   alt="Profile photo"
                   className="rounded-circle"
                   height={35}
@@ -126,7 +112,7 @@ const MainNav = () => {
           {!auth.activeUser && (
             <Nav.Link
               className="px-2 my-2 text-center d-flex align-items-center text-primary"
-              onClick={() => login()}
+              onClick={() => login(auth.client)}
             >
               <Button
                 size="sm"
