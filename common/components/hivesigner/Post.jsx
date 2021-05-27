@@ -1,6 +1,6 @@
 import { Modal, Button, FormControl } from "react-bootstrap";
 import { useState, useContext } from "react";
-import HivesignerContext from "../../components/hivesigner/HivesignerContext";
+import { HivesignerContext } from "../../hooks/useAuth";
 import Loading from "../Loading";
 import SendConfirmation from "../animations/SendConfirmation";
 
@@ -22,7 +22,7 @@ const Post = ({ show, onHide, parent_author, parent_permlink, header }) => {
     auth.client.comment(
       parent_author,
       parent_permlink,
-      auth.activeUser,
+      auth.activeUser.user,
       perm_link,
       title,
       body,
@@ -42,6 +42,7 @@ const Post = ({ show, onHide, parent_author, parent_permlink, header }) => {
           if (err.error_description.includes("HIVE_MIN_ROOT_COMMENT")) {
             return alert("You can only post every five minutes.");
           }
+          console.log(err);
           return alert("Cannot post right now.");
         }
       }

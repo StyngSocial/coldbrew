@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { Modal, Button, InputGroup, FormControl } from "react-bootstrap";
 import axios from "axios";
-import HivesignerContext from "./hivesigner/HivesignerContext";
+import HivesignerContext from "../hooks/useAuth";
 import SendConformation from "../components/animations/SendConfirmation";
 
 const Feedback = (prop) => {
@@ -18,7 +18,7 @@ const Feedback = (prop) => {
   const sendFeedback = () => {
     axios
       .post("/api/transport", {
-        user: auth.activeUser,
+        user: auth.activeUser.user,
         message: feedback,
       })
       .catch((err) => {

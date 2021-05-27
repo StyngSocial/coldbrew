@@ -6,7 +6,7 @@ import { Controlled as ControlledZoom } from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import TimeAgo from "react-timeago";
 
-import HivesignerContext from "../hivesigner/HivesignerContext";
+import { HivesignerContext } from "../../hooks/useAuth";
 import usePostBody from "../../util/usePostBody";
 import Engagement from "../Engagement";
 
@@ -19,7 +19,9 @@ const ColdBrewPost = ({ post }) => {
     setIsZoomed(shouldZoom);
   }, []);
 
-  let voted = post.active_votes.some((vote) => vote.voter === auth.activeUser);
+  let voted = post.active_votes.some(
+    (vote) => vote.voter === auth.activeUser.user
+  );
 
   return (
     <>

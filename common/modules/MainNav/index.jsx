@@ -26,6 +26,7 @@ const MainNav = () => {
   const [dev, setDev] = useState(false);
   const [post, setPost] = useState(false);
   const auth = useContext(HivesignerContext);
+
   return (
     <>
       <Navbar

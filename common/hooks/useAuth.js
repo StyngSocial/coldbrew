@@ -18,9 +18,9 @@ import { url } from "../util/constants";
 export const HivesignerContext = createContext();
 
 // Init client on app load
-const client = new hivesigner.Client({
+const hsClient = new hivesigner.Client({
   app: "cold.brew",
-  callbackURL: url + "/test",
+  callbackURL: url + "/beta",
   scope: ["vote", "comment"],
 });
 
@@ -34,11 +34,11 @@ export default function HivesignerContextProvider({ children }) {
   const router = useRouter();
   const token = router.query.access_token;
   const lsToken = ls.get("token");
+  const [client, setClient] = useState(hsClient);
   const [activeUser, setActiveUser] = useState();
 
   useEffect(() => {
     if (token) {
-      console.log("Called new token", token);
       ls.set("token", token);
       router.push("/beta");
     }
@@ -48,9 +48,6 @@ export default function HivesignerContextProvider({ children }) {
         if (err) alert("No active user");
         setActiveUser(result);
       });
-    }
-    if (!lsToken) {
-      setActiveUser(undefined);
     }
   }, [token, lsToken]);
 

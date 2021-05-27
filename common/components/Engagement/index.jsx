@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { Container, Row, Col, Badge } from "react-bootstrap";
 import LikeBtn from "../animations/LikeBtn";
 import CommentBtn from "../animations/CommentBtn";
-import HivesignerContext from "../hivesigner/HivesignerContext";
+import { HivesignerContext } from "../../hooks/useAuth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply } from "@fortawesome/free-solid-svg-icons";
 import Post from "../hivesigner/Post";
@@ -30,20 +30,26 @@ const Engagement = ({
       alert("You have already liked this Ƀrew");
       return;
     }
-    if (!auth.activeUser) {
+    if (!auth.activeUser.user) {
       let loginUrl = auth.client.getLoginURL();
       router.push(loginUrl);
       return;
     }
-    auth.client.vote(auth.activeUser, author, permlink, 1000, (err, result) => {
-      setLiked(true);
-      if (result) {
-        let liked = likes + 1;
-        setLikes(liked);
-      } else if (err) {
-        alert(err.error_description);
+    auth.client.vote(
+      auth.activeUser.user,
+      author,
+      permlink,
+      1000,
+      (err, result) => {
+        setLiked(true);
+        if (result) {
+          let liked = likes + 1;
+          setLikes(liked);
+        } else if (err) {
+          alert(err.error_description);
+        }
       }
-    });
+    );
   };
 
   const reply = () => {
@@ -57,7 +63,7 @@ const Engagement = ({
     auth.client.comment(
       author,
       "hive-152197",
-      auth.activeUser,
+      auth.activeUser.user,
       perm_link,
       title,
       body,
@@ -82,7 +88,7 @@ const Engagement = ({
       }
     );
   };
-  const userPost = auth.activeUser === author ? "d-none" : "";
+  const userPost = auth.activeUser.user === author ? "d-none" : "";
   return (
     <>
       <Container className="p-0 bg-light" fluid>
