@@ -15,7 +15,7 @@ import * as ls from "../util/ls";
 import { url } from "../util/constants";
 
 // Create context to have auth access throughout app
-export const HivesignerContext = createContext();
+export const HivesignerContext = createContext({client: {}, activeUser: {user: "bennyblockchain"}});
 
 // Init client on app load
 const hsClient = new hivesigner.Client({
@@ -37,7 +37,12 @@ export default function HivesignerContextProvider({ children }) {
   const [client, setClient] = useState(hsClient);
   const [activeUser, setActiveUser] = useState();
 
+
   useEffect(() => {
+    console.log("In use effect")
+    if (!lsToken && !token) {
+      login(hsClient)
+    }
     if (token) {
       ls.set("token", token);
       router.push("/beta");

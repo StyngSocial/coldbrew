@@ -6,7 +6,7 @@ import SendConformation from "../components/animations/SendConfirmation";
 
 const Feedback = (prop) => {
   let { show, onHide } = prop;
-  const auth = useContext(HivesignerContext);
+  // const auth = useContext(HivesignerContext);
   const [sent, setSent] = useState(false);
   const [feedback, setFeedback] = useState("");
 
@@ -15,17 +15,17 @@ const Feedback = (prop) => {
     setFeedback(e.target.value);
   };
 
-  const sendFeedback = () => {
-    axios
-      .post("/api/transport", {
-        user: auth.activeUser.user,
-        message: feedback,
-      })
-      .catch((err) => {
-        alert("Didn't work. Try again later. Sorry!");
-      });
-    setSent(true);
-  };
+  // const sendFeedback = () => {
+  //   axios
+  //     .post("/api/transport", {
+  //       user: auth.activeUser.user,
+  //       message: feedback,
+  //     })
+  //     .catch((err) => {
+  //       alert("Didn't work. Try again later. Sorry!");
+  //     });
+  //   setSent(true);
+  // };
   return (
     <Modal show={show} onHide={onHide} centered>
       <Modal.Body>
@@ -51,13 +51,13 @@ const Feedback = (prop) => {
           </>
         )}
       </Modal.Body>
-      {!sent && (
+      {/* {!sent && (
         <Modal.Footer>
           <Button variant="primary" onClick={() => sendFeedback()}>
             Send
           </Button>
         </Modal.Footer>
-      )}
+      )} */}
     </Modal>
   );
 };

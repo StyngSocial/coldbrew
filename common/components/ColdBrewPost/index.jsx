@@ -11,7 +11,7 @@ import usePostBody from "../../util/usePostBody";
 import Engagement from "../Engagement";
 
 const ColdBrewPost = ({ post }) => {
-  const auth = useContext(HivesignerContext);
+  // const auth = useContext(HivesignerContext);
   const [isZoomed, setIsZoomed] = useState(false);
   const { brew, images } = usePostBody(post.body);
   let key = 0;
@@ -19,9 +19,9 @@ const ColdBrewPost = ({ post }) => {
     setIsZoomed(shouldZoom);
   }, []);
 
-  let voted = post.active_votes.some(
-    (vote) => vote.voter === auth.activeUser.user
-  );
+  // let voted = post.active_votes.some(
+  //   (vote) => vote.voter === auth.activeUser.user
+  // );
 
   return (
     <>
@@ -94,14 +94,14 @@ const ColdBrewPost = ({ post }) => {
             </Row>
           </>
         )}
-        <Engagement
+        {/* <Engagement
           voted={voted}
           author={post.author}
           permlink={post.permlink}
           votes={post.active_votes.length}
           comments={post.children}
           payout={post.pending_payout_value}
-        />
+        /> */}
       </Container>
     </>
   );

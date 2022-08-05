@@ -1,13 +1,13 @@
-import Link from "next/link";
-import { useState, useContext } from "react";
-import { useRouter } from "next/router";
-import { Container, Row, Col, Badge } from "react-bootstrap";
-import LikeBtn from "../animations/LikeBtn";
-import CommentBtn from "../animations/CommentBtn";
-import { HivesignerContext } from "../../hooks/useAuth";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faReply } from "@fortawesome/free-solid-svg-icons";
-import Post from "../hivesigner/Post";
+import Link from 'next/link'
+import { useState, useContext } from 'react'
+import { useRouter } from 'next/router'
+import { Container, Row, Col, Badge } from 'react-bootstrap'
+import LikeBtn from '../animations/LikeBtn'
+import CommentBtn from '../animations/CommentBtn'
+import { HivesignerContext } from '../../hooks/useAuth'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faReply } from '@fortawesome/free-solid-svg-icons'
+import Post from '../hivesigner/Post'
 
 const Engagement = ({
   voted,
@@ -18,22 +18,23 @@ const Engagement = ({
   comments,
   reblogs,
 }) => {
-  const auth = useContext(HivesignerContext);
-  const usdPayout = parseFloat(payout).toFixed(2);
-  const router = useRouter();
-  const [liked, setLiked] = useState(voted);
-  const [likes, setLikes] = useState(votes);
-  const [show, showReply] = useState(false);
+  // const auth = useContext(HivesignerContext)
+  // console.log(auth)
+  const usdPayout = parseFloat(payout).toFixed(2)
+  const router = useRouter()
+  const [liked, setLiked] = useState(voted)
+  const [likes, setLikes] = useState(votes)
+  const [show, showReply] = useState(false)
 
   const likePost = () => {
     if (voted) {
-      alert("You have already liked this Ƀrew");
-      return;
+      alert('You have already liked this Ƀrew')
+      return
     }
     if (!auth.activeUser.user) {
-      let loginUrl = auth.client.getLoginURL();
-      router.push(loginUrl);
-      return;
+      let loginUrl = auth.client.getLoginURL()
+      router.push(loginUrl)
+      return
     }
     auth.client.vote(
       auth.activeUser.user,
@@ -41,28 +42,28 @@ const Engagement = ({
       permlink,
       1000,
       (err, result) => {
-        setLiked(true);
+        setLiked(true)
         if (result) {
-          let liked = likes + 1;
-          setLikes(liked);
+          let liked = likes + 1
+          setLikes(liked)
         } else if (err) {
-          alert(err.error_description);
+          alert(err.error_description)
         }
-      }
-    );
-  };
+      },
+    )
+  }
 
   const reply = () => {
     let coldbrew_meta = {
-      tags: ["coldbrew-dev"],
-      app: "Cold Brew",
-      format: "UTF-8",
-    };
-    let date = new Date();
-    let perm_link = `cb-${date.getFullYear()}${date.getHours()}${date.getMinutes()}${date.getSeconds()}`;
+      tags: ['coldbrew-dev'],
+      app: 'Cold Brew',
+      format: 'UTF-8',
+    }
+    let date = new Date()
+    let perm_link = `cb-${date.getFullYear()}${date.getHours()}${date.getMinutes()}${date.getSeconds()}`
     auth.client.comment(
       author,
-      "hive-152197",
+      'hive-152197',
       auth.activeUser.user,
       perm_link,
       title,
@@ -70,25 +71,25 @@ const Engagement = ({
       coldbrew_meta,
       (err, result) => {
         if (result) {
-          setLoading(false);
-          setPosted(true);
-          setTitle("");
-          setBody("");
+          setLoading(false)
+          setPosted(true)
+          setTitle('')
+          setBody('')
           setTimeout(() => {
-            setPosted(false);
-          }, 5000);
-          return;
+            setPosted(false)
+          }, 5000)
+          return
         } else {
-          setLoading(false);
-          if (err.error_description.includes("HIVE_MIN_ROOT_COMMENT")) {
-            return alert("You can only post every five minutes.");
+          setLoading(false)
+          if (err.error_description.includes('HIVE_MIN_ROOT_COMMENT')) {
+            return alert('You can only post every five minutes.')
           }
-          return alert("Cannot post right now.");
+          return alert('Cannot post right now.')
         }
-      }
-    );
-  };
-  const userPost = auth.activeUser.user === author ? "d-none" : "";
+      },
+    )
+  }
+  const userPost = auth.activeUser.user === author ? 'd-none' : ''
   return (
     <>
       <Container className="p-0 bg-light" fluid>
@@ -97,7 +98,7 @@ const Engagement = ({
             <span className={`px-2 text-creamer ${userPost}`}>
               <a
                 onClick={() => {
-                  showReply(true);
+                  showReply(true)
                 }}
               >
                 <FontAwesomeIcon icon={faReply} />
@@ -106,12 +107,12 @@ const Engagement = ({
             <span className="px-2">
               <a
                 onClick={() => {
-                  likePost();
+                  likePost()
                 }}
               >
                 <LikeBtn clicked={liked} />
               </a>
-              <span className="text-muted" style={{ paddingLeft: "5px" }}>
+              <span className="text-muted" style={{ paddingLeft: '5px' }}>
                 {likes}
               </span>
             </span>
@@ -121,7 +122,7 @@ const Engagement = ({
                   <CommentBtn commented={false} />
                 </a>
               </Link>
-              <span className="text-muted" style={{ paddingLeft: "5px" }}>
+              <span className="text-muted" style={{ paddingLeft: '5px' }}>
                 {comments}
               </span>
             </span>
@@ -130,7 +131,7 @@ const Engagement = ({
             <Badge
               variant="primary"
               className="text-greenlight"
-              style={{ fontSize: "1rem" }}
+              style={{ fontSize: '1rem' }}
             >
               {`Ƀ ${usdPayout}`}
             </Badge>
@@ -145,7 +146,7 @@ const Engagement = ({
         header={`Replying to, @${author}`}
       />
     </>
-  );
-};
+  )
+}
 
-export default Engagement;
+export default Engagement

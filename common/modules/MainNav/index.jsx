@@ -25,7 +25,7 @@ const MainNav = () => {
   const [show, setShow] = useState(false);
   const [dev, setDev] = useState(false);
   const [post, setPost] = useState(false);
-  const auth = useContext(HivesignerContext);
+  // const auth = useContext(HivesignerContext);
 
   return (
     <>
@@ -79,7 +79,7 @@ const MainNav = () => {
               style={{ fontSize: "1.25rem" }}
             />
           </Nav.Link>
-          {auth.activeUser && (
+          {/* {auth.activeUser && (
             <Nav.Link className="px-2 my-2 text-center d-flex align-items-center text-primary">
               <OverlayTrigger
                 trigger="click"
@@ -109,8 +109,8 @@ const MainNav = () => {
                 />
               </OverlayTrigger>
             </Nav.Link>
-          )}
-          {!auth.activeUser && (
+          )} */}
+          {/* {!auth.activeUser && (
             <Nav.Link
               className="px-2 my-2 text-center d-flex align-items-center text-primary"
               onClick={() => login(auth.client)}
@@ -123,7 +123,7 @@ const MainNav = () => {
                 Log in
               </Button>
             </Nav.Link>
-          )}
+          )} */}
         </Nav>
       </Navbar>
       <Navbar
