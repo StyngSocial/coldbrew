@@ -5,27 +5,33 @@ import FeedBanner from "../../common/components/banners/FeedBanner";
 import UserList from "../../common/components/UserList";
 import ListGroup from "react-bootstrap/ListGroup";
 import Loading from "../../common/components/Loading";
-
-const fetcher = (url) => axios.get(url).then((r) => r.data);
+import { useHiveStore, useAppStore } from "../../common/store";
+import { useEffect } from "react";
+import { ColdBrew } from "../../common/util/constants";
 
 export default function users() {
-  const { data, error } = useSWR(
-    "/api/hive/subscribers?community=hive-152197",
-    fetcher
-  );
+  const {subscribers, getCommunitySubscribers} = useHiveStore()
+  const {setLoadingTrue, setLoadingFalse} = useAppStore()
 
   const banner = {
     title: "Ƀeta Testers",
     about: "All of the users on Cold Ƀrew",
   };
+
+  useEffect(() => {
+    setLoadingTrue()
+    getCommunitySubscribers(ColdBrew, 100)
+    setLoadingFalse()
+  }, [])
+
   return (
     <>
       <AppWrapper>
         <FeedBanner title={banner.title} about={banner.about} />
         <ListGroup variant="flush">
-          {!data && <Loading />}
-          {data &&
-            data.map((user) => {
+          {!subscribers && <Loading />}
+          {subscribers &&
+            subscribers.map((user) => {
               return <UserList key={user.username} username={user.username} />;
             })}
         </ListGroup>

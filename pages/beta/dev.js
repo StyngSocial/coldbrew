@@ -1,27 +1,33 @@
+import { useEffect } from "react";
 import Head from "next/head";
 import axios from "axios";
 import useSWR from "swr";
 import FeedModule from "../../common/modules/Feed.module";
 import { Observer } from "../../common/util/constants";
+import {useHiveStore, useAppStore} from "../../common/store"
 
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 
 const dev = () => {
+  const {posts, getRankedPosts} = useHiveStore()
+  const {loading, setLoadingTrue, setLoadingFalse} = useAppStore()
   const banner = {
     title: "Developer Notes",
     about:
       "Updates on bug fixes, new features, and release notes from the Cold Brew developer team.",
   };
-  const { data, error } = useSWR(
-    `/api/hive/rankedposts?sort=created&tag=coldbrew-dev&observer=${Observer}`,
-    fetcher
-  );
+  console.log(posts)
+  useEffect(() => {
+    setLoadingTrue()
+    getRankedPosts("coldbrew-dev")
+    setLoadingFalse()
+  }, []);
   return (
     <>
       <Head>
         <title>dev log</title>
       </Head>
-      <FeedModule data={data} loading={!data} banner={banner} error={error} />
+      <FeedModule data={posts} loading={loading} banner={banner} />
     </>
   );
 };
