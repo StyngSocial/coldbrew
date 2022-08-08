@@ -144,6 +144,7 @@ export const getHiveCommunitySubscribers = (
   return new Promise((resolve, reject) => {
     hive.api.callAsync("bridge.list_subscribers", params).then((resp) => {
       const communitySubs: SubscribersList = [];
+      console.log(resp)
       resp.map((subscriptions) => {
         const subscriber: Subscriber = {
           username: subscriptions[0],

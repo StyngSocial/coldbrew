@@ -4,9 +4,10 @@ import { ColdBrew, Observer } from "../util/constants"
 
 export const useHiveStore = create((set) => ({
   posts: [],
+  subscribers: [],
   sort: "feed",
-  getRankedPosts: async () => {
-    const posts = await getHiveRankedPosts("created", ColdBrew, Observer)
+  getRankedPosts: async (tag: string) => {
+    const posts = await getHiveRankedPosts("created", tag, Observer)
     set({posts: posts})
   },
   getTrendingPosts: async () => {
@@ -27,7 +28,7 @@ export const useHiveStore = create((set) => ({
   },
   getCommunitySubscribers: async (community:string, limit:number, last?:string) => {
     const subscribers = await getHiveCommunitySubscribers(community, limit, last)
-    return subscribers
+    set({subscribers: subscribers})
   },
   getProfile: async (username:string) => {
     const profile = await getHiveProfile(username, Observer)
