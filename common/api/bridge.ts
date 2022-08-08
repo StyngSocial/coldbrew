@@ -1,4 +1,4 @@
-import hive from "@hiveio/hive-js";
+import hive from '@hiveio/hive-js'
 
 /**
  // Returns account specific feeds.
@@ -11,24 +11,20 @@ import hive from "@hiveio/hive-js";
  * @param account name, points to valid account
  * @param {*} limit
  */
-export const getHiveAccountFeed = (
+export const getHiveAccountFeed = async (
   sort: String,
   account: String,
-  limit: Number
+  limit: Number,
 ) => {
-  let params = {
+  const params = {
     sort: sort,
     account: account,
     limit: limit,
-  };
-  let feed = hive.api
-    .callAsync("bridge.get_account_posts", params)
-    .then((res) => {
-      return res;
-    });
+  }
+  const feed = await hive.api.callAsync('bridge.get_account_posts', params)
 
-  return feed;
-};
+  return feed
+}
 
 /**
  // Retrieves feed posts ranked by filter with a given tag or community.
@@ -44,84 +40,77 @@ export const getHiveAccountFeed = (
  * @param observer 
  *  * Active account
  */
-export const getHiveRankedPosts = (sort: String, tag: String, observer: String) => {
-  let params = {
+export const getHiveRankedPosts = async (
+  sort: String,
+  tag: String,
+  observer: String,
+) => {
+  const params = {
     sort: sort,
     tag: tag,
     observer: observer,
-  };
+  }
 
-  let posts = hive.api
-    .callAsync("bridge.get_ranked_posts", params)
-    .then((res) => {
-      return res;
-    });
 
-  return posts;
-};
+  const posts = await hive.api.callAsync('bridge.get_ranked_posts', params)
+
+  return posts
+}
 
 // Popular community types
 type PopCommunity = {
-  category: String;
-  name: String;
-};
-type PopCommunitiesList = Array<PopCommunity>;
+  category: String
+  name: String
+}
+type PopCommunitiesList = Array<PopCommunity>
 
 /**
  // Returns a list of popular communities
  * @param limit 
  * * Number limit of communities to return
  */
-export const getHivePopularCommunities = (limit: Number) => {
+export const getHivePopularCommunities = async (limit: Number) => {
   const params = {
     limit,
-  };
-  return new Promise((resolve, reject) => {
-    hive.api
-      .callAsync("bridge.list_pop_communities", params)
-      .then((resp: Array<any>) => {
-        const popCommunities: PopCommunitiesList = [];
-        resp.map((hivePopCommunities) => {
-          const comObj: PopCommunity = {
-            category: hivePopCommunities[0],
-            name: hivePopCommunities[1],
-          };
-          popCommunities.push(comObj);
-        });
-        resolve(popCommunities);
-      })
-      .catch((err: Error) => {
-        reject(err);
-      });
-  });
-};
+  }
+  const popularCommunities: PopCommunitiesList = []
+  const hiveCommunities = await hive.api.callAsync("bridge.list_pop_communities", params)
+  hiveCommunities.map((community) => {
+    const comObj: PopCommunity = {
+      category: hiveCommunities[0],
+      name: hiveCommunities[1]
+    }
+    popularCommunities.push(comObj)
+  })
+  return popularCommunities
+}
 
 /**
  // Retrieves community by name 
  * @param communityId
  * * Community by hivemind ID
  */
-export const getHiveCommunityByName = (communityId: String, observer: String) => {
-  let params = {
+export const getHiveCommunityByName = async (
+  communityId: String,
+  observer: String,
+) => {
+  const params = {
     name: communityId,
     observer: observer,
-  };
-  let community = hive.api
-    .callAsync("bridge.get_community", params)
-    .then((res) => {
-      return res;
-    });
+  }
 
-  return community;
-};
+  const community = hive.api.callAsync('bridge.get_community', params)
+
+  return community
+}
 
 // Community subscription types
 type Subscriber = {
-  username: String;
-  role: String;
-  date: Date;
-};
-type SubscribersList = Array<Subscriber>;
+  username: String
+  role: String
+  date: Date
+}
+type SubscribersList = Array<Subscriber>
 /**
  // Returns a list of subscribed accounts to a community
  * @param community 
@@ -131,32 +120,29 @@ type SubscribersList = Array<Subscriber>;
  * @param last 
  * * OPTIONAL used to paginate subscribers. Indexed by username.
  */
-export const getHiveCommunitySubscribers = (
+export const getHiveCommunitySubscribers = async (
   community: String,
   limit: Number,
-  last?: String // used for pagination by username
+  last?: String, // used for pagination by username
 ) => {
   let params = {
     community: community,
     limit: limit,
     last: last,
-  };
-  return new Promise((resolve, reject) => {
-    hive.api.callAsync("bridge.list_subscribers", params).then((resp) => {
-      const communitySubs: SubscribersList = [];
-      console.log(resp)
-      resp.map((subscriptions) => {
-        const subscriber: Subscriber = {
-          username: subscriptions[0],
-          role: subscriptions[1],
-          date: new Date(subscriptions[2]),
-        };
-        communitySubs.push(subscriber);
-      });
-      resolve(communitySubs);
-    });
-  });
-};
+  }
+
+  const subscribers: SubscribersList = []
+  const hiveSubscribers = await hive.api.callAsync('bridge.list_subscribers', params)
+  hiveSubscribers.map((subscriber) => {
+    const subscriberObj: Subscriber = {
+      username: subscriber[0],
+      role: subscriber[1],
+      date: new Date(subscriber[2]),
+    }
+        subscribers.push(subscriberObj)
+  })
+  return subscribers
+}
 
 /**
  // Get profile by name
@@ -165,17 +151,15 @@ export const getHiveCommunitySubscribers = (
  * @param observer
  * * Username of active account
  */
-export const getHiveProfile = (username: String, observer: String) => {
+export const getHiveProfile = async (username: String, observer: String) => {
   let params = {
     account: username,
     observer: observer,
-  };
-  let profile = hive.api.callAsync("bridge.get_profile", params).then((res) => {
-    return res;
-  });
+  }
+  let profile = await hive.api.callAsync('bridge.get_profile', params)
 
-  return profile;
-};
+  return profile
+}
 
 /**
  // Returns a post and replies given an author and permlink
@@ -186,14 +170,18 @@ export const getHiveProfile = (username: String, observer: String) => {
  * @param observer 
  * * Active user
  */
-export const getHivePost = async (author: String, permlink: String, observer: String) => {
+export const getHivePost = async (
+  author: String,
+  permlink: String,
+  observer: String,
+) => {
   let params = {
     author: author,
     permlink: permlink,
     observer: observer,
-  };
-  const post = await hive.api.callAsync("bridge.get_discussion", params)
+  }
+  const post = await hive.api.callAsync('bridge.get_discussion', params)
   const posts = Object.values(post)
 
-  return posts;
-};
+  return posts
+}
