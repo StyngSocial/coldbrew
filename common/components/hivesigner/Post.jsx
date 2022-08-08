@@ -5,7 +5,7 @@ import Loading from "../Loading";
 import SendConfirmation from "../animations/SendConfirmation";
 
 const Post = ({ show, onHide, parent_author, parent_permlink, header }) => {
-  // const auth = useContext(HivesignerContext);
+  const auth = useContext(HivesignerContext);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [loading, setLoading] = useState(false);
@@ -19,34 +19,34 @@ const Post = ({ show, onHide, parent_author, parent_permlink, header }) => {
     };
     let date = new Date();
     let perm_link = `cb-${date.getFullYear()}${date.getHours()}${date.getMinutes()}${date.getSeconds()}`;
-    // auth.client.comment(
-    //   parent_author,
-    //   parent_permlink,
-    //   auth.activeUser.user,
-    //   perm_link,
-    //   title,
-    //   body,
-    //   coldbrew_meta,
-    //   (err, result) => {
-    //     if (result) {
-    //       setLoading(false);
-    //       setPosted(true);
-    //       setTitle("");
-    //       setBody("");
-    //       setTimeout(() => {
-    //         setPosted(false);
-    //       }, 5000);
-    //       return;
-    //     } else {
-    //       setLoading(false);
-    //       if (err.error_description.includes("HIVE_MIN_ROOT_COMMENT")) {
-    //         return alert("You can only post every five minutes.");
-    //       }
-    //       console.log(err);
-    //       return alert("Cannot post right now.");
-    //     }
-    //   }
-    // );
+    auth.client.comment(
+      parent_author,
+      parent_permlink,
+      auth.activeUser.user,
+      perm_link,
+      title,
+      body,
+      coldbrew_meta,
+      (err, result) => {
+        if (result) {
+          setLoading(false);
+          setPosted(true);
+          setTitle("");
+          setBody("");
+          setTimeout(() => {
+            setPosted(false);
+          }, 5000);
+          return;
+        } else {
+          setLoading(false);
+          if (err.error_description.includes("HIVE_MIN_ROOT_COMMENT")) {
+            return alert("You can only post every five minutes.");
+          }
+          console.log(err);
+          return alert("Cannot post right now.");
+        }
+      }
+    );
   };
   return (
     <Modal show={show} onHide={onHide} centered>
@@ -78,7 +78,7 @@ const Post = ({ show, onHide, parent_author, parent_permlink, header }) => {
               onChange={(e) => setBody(e.target.value)}
             />
 
-            {/* <Modal.Footer>
+            <Modal.Footer>
               <Button
                 variant="primary"
                 className="text-light"
@@ -89,7 +89,7 @@ const Post = ({ show, onHide, parent_author, parent_permlink, header }) => {
               >
                 Ƀrew
               </Button>
-            </Modal.Footer> */}
+            </Modal.Footer>
           </>
         )}
       </Modal.Body>

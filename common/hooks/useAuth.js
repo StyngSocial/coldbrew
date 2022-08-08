@@ -35,14 +35,13 @@ export default function HivesignerContextProvider({ children }) {
   const token = router.query.access_token;
   const lsToken = ls.get("token");
   const [client, setClient] = useState(hsClient);
-  const [activeUser, setActiveUser] = useState();
+  const [activeUser, setActiveUser] = useState({user: "benny.blockchain"});
 
 
   useEffect(() => {
-    console.log("In use effect")
-    if (!lsToken && !token) {
-      login(hsClient)
-    }
+    // if (!lsToken && !token) {
+    //   login(hsClient)
+    // }
     if (token) {
       ls.set("token", token);
       router.push("/beta");

@@ -7,11 +7,11 @@ import HivesignerContextProvider, {
 } from "../common/hooks/useAuth";
 
 function MyApp({ Component, pageProps }) {
-  // const auth = useContext(HivesignerContext);
+  const auth = useContext(HivesignerContext);
   return (
-    // <HivesignerContextProvider value={auth}>
+    <HivesignerContextProvider value={auth}>
       <Component {...pageProps} />
-    // </HivesignerContextProvider>
+    </HivesignerContextProvider>
   );
 }
 

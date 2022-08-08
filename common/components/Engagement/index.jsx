@@ -18,8 +18,7 @@ const Engagement = ({
   comments,
   reblogs,
 }) => {
-  // const auth = useContext(HivesignerContext)
-  // console.log(auth)
+  const auth = useContext(HivesignerContext)
   const usdPayout = parseFloat(payout).toFixed(2)
   const router = useRouter()
   const [liked, setLiked] = useState(voted)
