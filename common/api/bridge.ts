@@ -11,7 +11,7 @@ import hive from "@hiveio/hive-js";
  * @param account name, points to valid account
  * @param {*} limit
  */
-export const getAccountFeed = (
+export const getHiveAccountFeed = (
   sort: String,
   account: String,
   limit: Number
@@ -44,7 +44,7 @@ export const getAccountFeed = (
  * @param observer 
  *  * Active account
  */
-export const getRankedPosts = (sort: String, tag: String, observer: String) => {
+export const getHiveRankedPosts = (sort: String, tag: String, observer: String) => {
   let params = {
     sort: sort,
     tag: tag,
@@ -72,7 +72,7 @@ type PopCommunitiesList = Array<PopCommunity>;
  * @param limit 
  * * Number limit of communities to return
  */
-export const getPopularCommunities = (limit: Number) => {
+export const getHivePopularCommunities = (limit: Number) => {
   const params = {
     limit,
   };
@@ -101,7 +101,7 @@ export const getPopularCommunities = (limit: Number) => {
  * @param communityId
  * * Community by hivemind ID
  */
-export const getCommunityByName = (communityId: String, observer: String) => {
+export const getHiveCommunityByName = (communityId: String, observer: String) => {
   let params = {
     name: communityId,
     observer: observer,
@@ -131,7 +131,7 @@ type SubscribersList = Array<Subscriber>;
  * @param last 
  * * OPTIONAL used to paginate subscribers. Indexed by username.
  */
-export const getCommunitySubscribers = (
+export const getHiveCommunitySubscribers = (
   community: String,
   limit: Number,
   last?: String // used for pagination by username
@@ -164,7 +164,7 @@ export const getCommunitySubscribers = (
  * @param observer
  * * Username of active account
  */
-export const getProfile = (username: String, observer: String) => {
+export const getHiveProfile = (username: String, observer: String) => {
   let params = {
     account: username,
     observer: observer,
@@ -185,16 +185,14 @@ export const getProfile = (username: String, observer: String) => {
  * @param observer 
  * * Active user
  */
-export const getPost = (author: String, permlink: String, observer: String) => {
+export const getHivePost = async (author: String, permlink: String, observer: String) => {
   let params = {
     author: author,
     permlink: permlink,
     observer: observer,
   };
-  let post = hive.api.callAsync("bridge.get_discussion", params).then((res) => {
-    console.log("Post author", res);
-    return res;
-  });
+  const post = await hive.api.callAsync("bridge.get_discussion", params)
+  const posts = Object.values(post)
 
-  return post;
+  return posts;
 };
