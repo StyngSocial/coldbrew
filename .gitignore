@@ -1,38 +1,38 @@
-CHANGELOG.md
-/.archive
-/pages/test.js
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-config/
+# Frontend
+frontend/CHANGELOG.md
+frontend/.archive
+frontend/pages/test.js
+frontend/config/
 
 # dependencies
-/node_modules
-/.pnp
-.pnp.js
+frontend/node_modules
+frontend/.pnp
+frontend/.pnp.js
 
 # testing
-/coverage
+frontend/coverage
 
 # next.js
-/.next/
-/out/
+frontend/.next/
+frontend/out/
 
 # production
-/build
+frontend/build
 
 # misc
-.DS_Store
-*.pem
+**/*/.DS_Store
+**/*/*.pem
 
 # debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
 
 # local env files
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
 
 # vercel
-.vercel
+frontend/.vercel
