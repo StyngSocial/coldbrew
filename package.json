@@ -2,8 +2,8 @@
   "name": "coldbrew",
   "version": "0.0.18",
   "description": "goated social media",
-  "main": "index.js",
   "scripts": {
+    "cb:ci": "cd barista && yarn install && cd ../frontend && yarn install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
