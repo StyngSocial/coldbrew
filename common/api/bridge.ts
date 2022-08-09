@@ -50,8 +50,7 @@ export const getHiveRankedPosts = async (
     tag: tag,
     observer: observer,
   }
-
-
+  
   const posts = await hive.api.callAsync('bridge.get_ranked_posts', params)
 
   return posts

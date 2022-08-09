@@ -16,7 +16,7 @@ const dev = () => {
     about:
       "Updates on bug fixes, new features, and release notes from the Cold Brew developer team.",
   };
-  console.log(posts)
+  
   useEffect(() => {
     setLoadingTrue()
     getRankedPosts("coldbrew-dev")
