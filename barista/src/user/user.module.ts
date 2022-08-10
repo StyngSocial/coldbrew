@@ -13,5 +13,6 @@ import { User } from './schemas/User';
   ],
   controllers: [UserController],
   providers: [UserService],
+  exports: [UserService],
 })
-export class MongoModule {}
+export class UserModule {}
