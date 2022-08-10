@@ -7,6 +7,7 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
   @Post('register')
   async registerUser(@Body() user: CreateUserDto) {
+    console.log('env', process.env.MONGO_URL);
     const newUser = await this.authService.registerUser(user);
     return newUser;
   }

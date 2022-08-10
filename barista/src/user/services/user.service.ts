@@ -14,7 +14,6 @@ export class UserService {
       email: user.email,
       hashedPassword: user.password,
     });
-    console.log(user);
     const result = await newUser.save();
     return result;
   }

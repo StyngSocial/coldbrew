@@ -17,10 +17,8 @@ export class AuthService {
   }
 
   async registerUser(user: CreateUserDto): Promise<User> {
-    console.log(user);
     const registeredUser = await this.userService.getUserByEmail(user.email);
 
-    console.log(registeredUser);
     if (registeredUser) {
       throw new Error('User already exists.');
     }

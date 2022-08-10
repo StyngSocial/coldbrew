@@ -6,9 +6,7 @@ import { User } from './schemas/User';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://coldbrew:coldbrew@barista.bbhri.mongodb.net/barista?retryWrites=true&w=majority',
-    ),
+    MongooseModule.forRoot(process.env.MONGO_URL),
     MongooseModule.forFeature([{ name: 'User', schema: User }]),
   ],
   controllers: [UserController],
