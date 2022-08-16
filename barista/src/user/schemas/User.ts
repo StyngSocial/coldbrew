@@ -12,4 +12,13 @@ export const User = new Schema({
   hashedPassword: {
     type: String,
   },
+  ownerKey: {
+    type: String
+  },
+  activeKey: {
+    type: String
+  },
+  postingKey: {
+    type: String
+  }
 });

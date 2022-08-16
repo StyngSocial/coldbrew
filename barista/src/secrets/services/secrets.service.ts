@@ -11,7 +11,6 @@ export class SecretsService {
 
   async createSecret(userId:string, credentialId:string, data: any) {
     const vaultPath = this.constructVaultPath(userId, credentialId)
-    console.log("path", data)
     const requestOptions: AxiosRequestConfig = {
       baseURL: process.env.VAULT_URL,
       url: `/v1/secret/data/${vaultPath}`,
@@ -28,7 +27,6 @@ export class SecretsService {
 
   async getSecret(userId:string, credentialId: string) {
     const vaultPath = this.constructVaultPath(userId, credentialId)
-    console.log(vaultPath)
     const requestOptions: AxiosRequestConfig = {
       baseURL: process.env.VAULT_URL,
       url: `/v1/secret/data/${vaultPath}`,

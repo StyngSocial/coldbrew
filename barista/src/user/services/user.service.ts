@@ -22,4 +22,9 @@ export class UserService {
     const user = await this.user.findOne({ email: email });
     return user;
   }
+
+  async updateUser(userId: string, query: Partial<User>) {
+    const user = await this.user.findOneAndUpdate({userId: userId}, query)
+    return user
+  }
 }

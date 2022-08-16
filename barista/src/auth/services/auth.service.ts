@@ -38,7 +38,7 @@ export class AuthService {
     return await bcrypt.compare(password, hashedPassword);
   }
 
-  async validateUser(email: string, password: string): Promise<User | null> {
+  async validateUser(email: string, password: string): Promise<Partial<User> | null> {
     const user: User = await this.userService.getUserByEmail(email);
 
     const doesUserExist = !!user;
@@ -52,7 +52,7 @@ export class AuthService {
 
     if (!doesPasswordMatch) return null;
 
-    return user;
+    return { userId: user.userId, username: user.username, email: user.email, hashedPassword: user.hashedPassword};
   }
 
   async login(existingUser: LoginUserDto) {

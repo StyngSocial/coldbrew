@@ -4,6 +4,7 @@ import { SecretsController } from './controllers/secrets.controller';
 
 @Module({
   controllers: [SecretsController],
-  providers: [SecretsService]
+  providers: [SecretsService],
+  exports: [SecretsService]
 })
 export class SecretsModule {}

@@ -1,5 +1,5 @@
 import { Controller } from '@nestjs/common';
-import { HiveService } from './hive.service';
+import { HiveService } from '../services/hive.service';
 
 @Controller('hive')
 export class HiveController {

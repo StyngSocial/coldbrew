@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { HiveController } from './hive.controller';
-import { HiveService } from './hive.service';
+import { HiveService } from '../services/hive.service';
 
 describe('HiveController', () => {
   let controller: HiveController;
